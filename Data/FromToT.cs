@@ -16,7 +16,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
         var t = typeof(T);
         if (t == Types.tInt)
         {
-            ftUse = FromToUse.None;
+            ftUse = SunamoData.Enums.FromToUse.None;
         }
     }
 
@@ -36,7 +36,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    public FromToT(T from, T to, FromToUse ftUse = FromToUse.DateTime) : this()
+    public FromToT(T from, T to, SunamoData.Enums.FromToUse ftUse = SunamoData.Enums.FromToUse.DateTime) : this()
     {
         this.from = from;
         this.to = to;
@@ -123,7 +123,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
         }
         else
         {
-            if (ftUse == FromToUse.DateTime)
+            if (ftUse == SunamoData.Enums.FromToUse.DateTime)
             {
                 var from2 = DTHelperCs.ToShortTimeFromSeconds(fromL);
                 if (toL != 0)
@@ -132,7 +132,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
                 }
                 return $"{from2}";
             }
-            else if (ftUse == FromToUse.Unix)
+            else if (ftUse == SunamoData.Enums.FromToUse.Unix)
             {
 
                 var from2 = UnixDateConverter.From(fromL);
@@ -143,7 +143,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
                 }
                 return $"{from3}";
             }
-            else if (ftUse == FromToUse.UnixJustTime)
+            else if (ftUse == SunamoData.Enums.FromToUse.UnixJustTime)
             {
                 var from2 = UnixDateConverter.From(fromL);
                 var from3 = DTHelperMulti.TimeToString(from2, ThisApp.l, DTConstants.UnixFsStart);
@@ -153,7 +153,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
                 }
                 return $"{from3}";
             }
-            else if (ftUse == FromToUse.None)
+            else if (ftUse == SunamoData.Enums.FromToUse.None)
             {
                 return from + "-" + to;
 

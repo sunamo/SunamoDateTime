@@ -3,22 +3,22 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>24.1.7.1</Version>
-	  <Description>Working with date+time</Description>
+    <Version>24.1.10.1</Version>
+    <Description>Working with date+time</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoArgs" Version="24.1.9.1" />
-    <PackageReference Include="SunamoBts" Version="24.1.5.1" />
-    <PackageReference Include="SunamoCollectionsChangeContent" Version="24.1.7.1" />
-    <PackageReference Include="SunamoData" Version="24.1.5.5" />
-    <PackageReference Include="SunamoEnums" Version="24.1.7.2" />
-    <PackageReference Include="SunamoI18N" Version="24.1.9.1" />
-    <PackageReference Include="SunamoInterfaces" Version="24.1.7.1" />
-    <PackageReference Include="SunamoLang" Version="24.1.9.1" />
-    <PackageReference Include="SunamoNumbers" Version="24.1.7.1" />
-    <PackageReference Include="SunamoParsing" Version="24.1.5.1" />
-    <PackageReference Include="SunamoStringSplit" Version="24.1.5.1" />
-    <PackageReference Include="SunamoThisApp" Version="24.1.5.4" />
+    <PackageReference Include="SunamoArgs" Version="24.1.11.1" />
+    <PackageReference Include="SunamoBts" Version="24.1.13.2" />
+    <PackageReference Include="SunamoCollectionsChangeContent" Version="24.1.14.1" />
+    <PackageReference Include="SunamoData" Version="24.1.12.2" />
+    <PackageReference Include="SunamoEnums" Version="24.1.10.1" />
+    <PackageReference Include="SunamoI18N" Version="24.1.10.1" />
+    <PackageReference Include="SunamoInterfaces" Version="24.1.10.1" />
+    <PackageReference Include="SunamoLang" Version="24.1.10.1" />
+    <PackageReference Include="SunamoNumbers" Version="24.1.14.1" />
+    <PackageReference Include="SunamoParsing" Version="24.1.11.1" />
+    <PackageReference Include="SunamoStringSplit" Version="24.1.11.1" />
+    <PackageReference Include="SunamoThisApp" Version="24.1.10.1" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>

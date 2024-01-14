@@ -9,7 +9,7 @@ internal class CA
     internal static Func<List<string>, int, List<int>> ToInt1;
     internal static Func<List<string>, List<int>> ToInt0;
     internal static Func<int, IList, bool> HasIndex;
-    internal static Func<ChangeContentArgs2, List<string>, Func<string, string, string, string>, string, string> ChangeContent2;
+    internal static Func<ChangeContentArgs, List<string>, Func<string, string, string, string>, string, string> ChangeContent2;
 
     internal static T[] ToArrayT<T>(params T[] aB)
     {
