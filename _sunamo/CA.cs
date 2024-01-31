@@ -1,18 +1,18 @@
-namespace SunamoDateTime._sunamo;
+//namespace SunamoDateTime._sunamo;
 
 
-internal class CA
-{
-    internal static Func<List<string>, int, int, List<int>> ToInt2;
-    internal static Func<String[], List<string>> ToListString;
-    //internal static Func<IList, int, int, List<int>> ToInt;
-    internal static Func<List<string>, int, List<int>> ToInt1;
-    internal static Func<List<string>, List<int>> ToInt0;
-    internal static Func<int, IList, bool> HasIndex;
-    internal static Func<ChangeContentArgs, List<string>, Func<string, string, string, string>, string, string> ChangeContent2;
+//public class CA
+//{
+//    public static Func<List<string>, int, int, List<int>> ToInt2;
+//    public static Func<String[], List<string>> ToListString;
+//    //public static Func<IList, int, int, List<int>> ToInt;
+//    public static Func<List<string>, int, List<int>> ToInt1;
+//    public static Func<List<string>, List<int>> ToInt0;
+//    public static Func<int, IList, bool> HasIndex;
+//    public static Func<ChangeContentArgs, List<string>, Func<string, string, string, string>, string, string> ChangeContent2;
 
-    internal static T[] ToArrayT<T>(params T[] aB)
-    {
-        return aB;
-    }
-}
+//    public static T[] ToArrayT<T>(params T[] aB)
+//    {
+//        return aB;
+//    }
+//}

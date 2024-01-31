@@ -21,7 +21,7 @@ public partial class DTHelperCode
         }
         //2015-09-03T21:01
         var sp = SHSplit.SplitChar(v, new Char[] { AllChars.dash, 'T', AllChars.colon });
-        var dd = CA.ToInt0(sp);
+        var dd = CAToNumber.ToInt0(sp);
         return new DateTime(dd[0], dd[1], dd[2], dd[3], dd[4], 0);
     }
     #endregion

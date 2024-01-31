@@ -1,5 +1,3 @@
-using SunamoI18N.Values;
-
 namespace SunamoDateTime.DT;
 
 
@@ -8,6 +6,32 @@ namespace SunamoDateTime.DT;
 
 public partial class DTHelperMulti
 {
+    public System.DateTime lastDateTime = System.DateTime.Today;
+
+    /// <summary>
+    /// Vrátí True pokud se podaří vyparsovat, jinak false.
+    /// Výsledek najdeš v proměnné lastDateTime
+    /// </summary>
+    /// <param name="p"></param>
+    public bool TryParseDateTime(string r)
+    {
+        bool isValid = false;
+        lastDateTime = DTHelper.IsValidDateTimeText(r);
+        isValid = lastDateTime != System.DateTime.MinValue;
+        //}
+        if (!isValid)
+        {
+            lastDateTime = DTHelper.IsValidDateText(r);
+            isValid = lastDateTime != System.DateTime.MinValue;
+        }
+        if (!isValid)
+        {
+            lastDateTime = DTHelper.IsValidTimeText(r);
+            isValid = lastDateTime != System.DateTime.MinValue;
+        }
+        return lastDateTime != System.DateTime.MinValue;
+    }
+
     #region Other
     /// <summary>
     /// If A1 could be lower than 1d, return 1d
@@ -515,7 +539,7 @@ public partial class DTHelperMulti
         if (v.Contains(AllStrings.dash))
         {
 
-            var (b, a) = SunamoDateTime._sunamo.SH.GetPartsByLocationNoOut(v, AllChars.dash);
+            var (b, a) = SHSH.GetPartsByLocationNoOut(v, AllChars.dash);
             dayTo = BTS.ParseInt(v, -1);
             return b;
         }

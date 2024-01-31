@@ -16,7 +16,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
         var t = typeof(T);
         if (t == Types.tInt)
         {
-            ftUse = SunamoData.Enums.FromToUse.None;
+            ftUse = FromToUse.None;
         }
     }
 
@@ -36,15 +36,12 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    public FromToT(T from, T to, SunamoData.Enums.FromToUse ftUse = SunamoData.Enums.FromToUse.DateTime) : this()
+    public FromToT(T from, T to, FromToUse ftUse = FromToUse.DateTime) : this()
     {
         this.from = from;
         this.to = to;
         this.ftUse = ftUse;
     }
-
-
-
 
 
     /// <summary>
@@ -60,7 +57,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
         }
         else
         {
-            v = CA.ToListString(new String[] { input });
+            v = new List<string>(new String[] { input });
         }
 
         if (v[0] == "0")
@@ -123,7 +120,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
         }
         else
         {
-            if (ftUse == SunamoData.Enums.FromToUse.DateTime)
+            if (ftUse == FromToUse.DateTime)
             {
                 var from2 = DTHelperCs.ToShortTimeFromSeconds(fromL);
                 if (toL != 0)
@@ -132,7 +129,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
                 }
                 return $"{from2}";
             }
-            else if (ftUse == SunamoData.Enums.FromToUse.Unix)
+            else if (ftUse == FromToUse.Unix)
             {
 
                 var from2 = UnixDateConverter.From(fromL);
@@ -143,7 +140,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
                 }
                 return $"{from3}";
             }
-            else if (ftUse == SunamoData.Enums.FromToUse.UnixJustTime)
+            else if (ftUse == FromToUse.UnixJustTime)
             {
                 var from2 = UnixDateConverter.From(fromL);
                 var from3 = DTHelperMulti.TimeToString(from2, ThisApp.l, DTConstants.UnixFsStart);
@@ -153,7 +150,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
                 }
                 return $"{from3}";
             }
-            else if (ftUse == SunamoData.Enums.FromToUse.None)
+            else if (ftUse == FromToUse.None)
             {
                 return from + "-" + to;
 

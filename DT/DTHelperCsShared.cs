@@ -42,7 +42,7 @@ public partial class DTHelperCs
     public static string ToShortTimeWithSecond(DateTime value, bool fillUpByZeros = false)
     {
         // Must be array due to params []
-        var parts = CA.ToArrayT(value.Hour, value.Minute, value.Second);
+        var parts = CAG.ToArrayT(value.Hour, value.Minute, value.Second);
 
         return ToShortTimeWorker(parts, fillUpByZeros);
     }
@@ -72,7 +72,7 @@ public partial class DTHelperCs
     public static string ToShortTime(DateTime value, bool fillUpByZeros = false)
     {
         // Must be array due to params []
-        var parts = CA.ToArrayT(value.Hour, value.Minute);
+        var parts = CAG.ToArrayT(value.Hour, value.Minute);
 
         return ToShortTimeWorker(parts, fillUpByZeros);
     }

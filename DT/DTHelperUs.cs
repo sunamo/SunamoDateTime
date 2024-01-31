@@ -50,7 +50,7 @@ public class DTHelperUs
         if (time)
         {
             prefix = sp[0];
-            var dd = CA.ToInt2(sp, 5, 1);
+            var dd = CAToNumber.ToInt2(sp, 5, 1);
             if (dd == null)
             {
                 return null;
@@ -60,7 +60,7 @@ public class DTHelperUs
         else
         {
             prefix = sp[0];
-            var dd = CA.ToInt2(sp, 3, 1);
+            var dd = CAToNumber.ToInt2(sp, 3, 1);
             if (dd == null)
             {
                 return null;
@@ -90,13 +90,13 @@ public class DTHelperUs
                 return null;
             }
 
-            var date = CA.ToInt2(sp, 3, 0);
+            var date = CAToNumber.ToInt2(sp, 3, 0);
             if (date == null)
             {
                 return null;
             }
 
-            var time2 = CA.ToInt2(sp, 2, 3);
+            var time2 = CAToNumber.ToInt2(sp, 2, 3);
             if (time2 == null)
             {
                 return null;
@@ -116,7 +116,7 @@ public class DTHelperUs
                 return null;
             }
 
-            var dd = CA.ToInt2(sp, 3, 0);
+            var dd = CAToNumber.ToInt2(sp, 3, 0);
             if (dd == null)
             {
                 return null;
@@ -147,7 +147,7 @@ public class DTHelperUs
             return null;
         }
 
-        var date = CA.ToInt2(sp, 3, 0);
+        var date = CAToNumber.ToInt2(sp, 3, 0);
         if (date == null)
         {
             return null;
@@ -171,7 +171,7 @@ public class DTHelperUs
     {
         var sp = SHSplit.Split(fnwoe, AllStringsSE.lowbar);
         // Tady jsem to rozděloval na 6 ale pak mi to vracelo null. Úprava na 5
-        var dd = CA.ToInt1(sp, 5);
+        var dd = CAToNumber.ToInt1(sp, 5);
         if (dd == null)
         {
             return null;

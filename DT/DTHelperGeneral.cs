@@ -50,7 +50,7 @@ public partial class DTHelperGeneral
         {
             if (item.Length == 4)
             {
-                if (SH.IsNumber(item))
+                if (SHSH.IsNumber(item))
                 {
                     return item;
                 }

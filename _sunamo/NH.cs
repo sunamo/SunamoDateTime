@@ -1,7 +1,7 @@
-namespace SunamoDateTime._sunamo;
+//namespace SunamoDateTime._sunamo;
 
-internal class NH
-{
-    internal static Func<int, string> MakeUpTo2NumbersToZero;
-    internal static Func<int, string> MakeUpTo3NumbersToZero;
-}
+//public class NH
+//{
+//    public static Func<int, string> MakeUpTo2NumbersToZero;
+//    public static Func<int, string> MakeUpTo3NumbersToZero;
+//}
