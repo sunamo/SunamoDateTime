@@ -46,7 +46,7 @@ public class NormalizeDate
 
         if (m > 10)
         {
-            var ms = NH.MakeUpTo2NumbersToZero(m);
+            var ms = m.ToString("D2");
 
             if (ms[0] == '1')
             {
@@ -68,7 +68,7 @@ public class NormalizeDate
         november = 4,5,6,7
         december = -4,5,6,7
         */
-        var d = NH.MakeUpTo2NumbersToZero(dt.Day);
+        var d = dt.Day.ToString("D2");
         var firstChar = d[0];
 
         StringBuilder sb = new StringBuilder();

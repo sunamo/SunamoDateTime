@@ -14,7 +14,7 @@ public class DateTimeOrShort
     {
         get
         {
-            if (ThisApp.useShortAsDt && !useDt)
+            if (!useDt)
             {
                 return Item1;
             }

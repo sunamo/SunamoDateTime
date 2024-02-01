@@ -1,4 +1,7 @@
+
 namespace SunamoDateTime.DT;
+using SunamoLang;
+
 
 //using SunamoI18N.Values;
 
@@ -19,26 +22,28 @@ public partial class DTHelperMulti
         {
             if (l == Langs.cs)
             {
-                return sess.i18n(XlfKeys.ItWasNotMentioned);
+                return xItWasNotMentioned;
             }
             else
             {
-                return sess.i18n(XlfKeys.NotIndicated);
+                return xNotIndicated;
             }
         }
 
         if (l == Langs.cs)
         {
             // 21.6.1989 11:22 (fill zero)
-            return d.Day + AllStrings.dot + d.Month + AllStrings.dot + d.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
+            return d.Day + AllStrings.dot + d.Month + AllStrings.dot + d.Year + AllStrings.space + d.Hour.ToString("D2") + AllStrings.colon + d.Hour.ToString("D2");
         }
         else
         {
             // 6/21/1989 11:22 (fill zero)
-            return d.Month + AllStrings.slash + d.Day + AllStrings.slash + d.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
+            return d.Month + AllStrings.slash + d.Day + AllStrings.slash + d.Year + AllStrings.space + d.Hour.ToString("D2") + AllStrings.colon + d.Minute.ToString("D2");
         }
     }
 
+    public static string xItWasNotMentioned = "ItWasNotMentioned";
+    public static string xNotIndicated = "NotIndicated";
 
     public static string TimeToString(DateTime d, Langs l, DateTime dtMinVal)
     {
@@ -46,23 +51,23 @@ public partial class DTHelperMulti
         {
             if (l == Langs.cs)
             {
-                return sess.i18n(XlfKeys.ItWasNotMentioned);
+                return xItWasNotMentioned;
             }
             else
             {
-                return sess.i18n(XlfKeys.NotIndicated);
+                return xNotIndicated;
             }
         }
 
         if (l == Langs.cs)
         {
             // 21.6.1989 11:22 (fill zero)
-            return NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
+            return d.Hour.ToString("D2") + AllStrings.colon + d.Minute.ToString("D2");
         }
         else
         {
             // 6/21/1989 11:22 (fill zero)
-            return NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
+            return d.Hour.ToString("D2") + AllStrings.colon + d.Minute.ToString("D2");
         }
     }
 
@@ -94,23 +99,6 @@ public partial class DTHelperMulti
         return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
     }
     #endregion
-
-    public static string BoolToString(bool b, Langs l)
-    {
-        if (l == Langs.en)
-        {
-            return BTS.BoolToStringEn(b);
-        }
-        else if (l == Langs.cs)
-        {
-            return BTS.BoolToString(b);
-        }
-        else
-        {
-            ThrowEx.NotImplementedCase(l);
-            return string.Empty;
-        }
-    }
 
     public static string DateToStringWithDayOfWeek(DateTime dt, Langs l)
     {

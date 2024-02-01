@@ -11,7 +11,7 @@ public partial class DTHelperCs
     public static string AppendToFrontOnlyTime(string defin)
     {
         DateTime dt = DateTime.Now;
-        return NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStringsSE.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStringsSE.colon + NH.MakeUpTo2NumbersToZero(dt.Second) + AllStringsSE.colon + NH.MakeUpTo3NumbersToZero(dt.Millisecond) + AllStringsSE.space + defin;
+        return dt.Hour.ToString("D2") + AllStringsSE.colon + dt.Minute.ToString("D2") + AllStringsSE.colon + dt.Second.ToString("D2") + AllStringsSE.colon + dt.Millisecond.ToString("D3") + AllStringsSE.space + defin;
     }
     #endregion
 
@@ -34,7 +34,7 @@ public partial class DTHelperCs
     /// <param name="dt"></param>
     public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
     {
-        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStringsSE.dot + dt.Month + AllStringsSE.dot + dt.Year + AllStringsSE.space + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStringsSE.colon + NH.MakeUpTo2NumbersToZero(dt.Minute);
+        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStringsSE.dot + dt.Month + AllStringsSE.dot + dt.Year + AllStringsSE.space + dt.Hour.ToString("D2") + AllStringsSE.colon + dt.Minute.ToString("D2");
     }
 
     public static DateTime ParseDateTimeCzech(string s)

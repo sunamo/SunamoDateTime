@@ -1,4 +1,7 @@
+
 namespace SunamoDateTime.DT;
+using SunamoParsing;
+
 
 
 
@@ -16,7 +19,7 @@ public partial class DTHelperEn
     public static DateTime ParseDateUSA(string input)
     {
         DateTime vr = DateTime.MinValue;
-        var parts = SHSplit.SplitChar(input, new Char[] { AllChars.slash });
+        var parts = input.Split(AllChars.slash); //SHSplit.SplitChar(input, new Char[] { AllChars.slash });
         var day = -1;
         var month = -1;
         var year = -1;
@@ -55,7 +58,7 @@ public partial class DTHelperEn
     public static DateTime ParseTimeUSA(string t)
     {
         var vr = DateTime.MinValue;
-        var parts2 = SHSplit.SplitChar(t, new Char[] { AllChars.space });
+        var parts2 = t.Split(AllChars.space).ToList(); //SHSplit.SplitChar(t, new Char[] { AllChars.space });
         if (parts2.Count == 2)
         {
             var pm = false;
@@ -68,11 +71,11 @@ public partial class DTHelperEn
                     pm = true;
                 }
                 var t2 = parts2[0];
-                var parts = SHSplit.SplitChar(t2, new Char[] { AllChars.colon });
+                var parts = t2.Split(AllChars.colon).ToList(); //.SplitChar(t2, new Char[] { AllChars.colon });
                 if (parts.Count == 2)
                 {
                     t += ":00";
-                    parts = SHSplit.SplitChar(t, new Char[] { AllChars.colon });
+                    parts = t.Split(AllChars.colon).ToList(); //SHSplit.SplitChar(t, new Char[] { AllChars.colon });
                 }
                 int hours = -1;
                 int minutes = -1;
@@ -119,7 +122,7 @@ public partial class DTHelperEn
     /// <param name="s"></param>
     public static DateTime ParseDateTimeUSA(string s)
     {
-        var p = SHSplit.Split(s, AllStrings.space);
+        var p = s.Split(AllChars.space); //SHSplit.Split(s, AllStrings.space);
         DateTime result = ParseDateUSA(p[0]);
         var time = ParseTimeUSA(p[1] + AllStrings.space + p[2]);
         return DTHelperGeneral.Combine(result, time);
@@ -141,7 +144,7 @@ public partial class DTHelperEn
         int days = -1;
         int number = -1;
 
-        var arg = SHSplit.SplitNone(AddedAgo, new String[] { AllStrings.lowbar });
+        var arg = AddedAgo.Split(AllChars.lowbar).ToList(); //SHSplit.SplitNone(AddedAgo, new String[] { AllStrings.lowbar });
         if (arg.Count == 2)
         {
             TryParse.Integer dt = new TryParse.Integer();

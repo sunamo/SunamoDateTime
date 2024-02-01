@@ -1,4 +1,8 @@
+
 namespace SunamoDateTime.DT;
+using SunamoBts;
+using SunamoStringSplit;
+
 
 
 
@@ -29,10 +33,10 @@ public class DTHelperUs
         string dDate = AllStringsSE.lowbar;
         string dSpace = AllStringsSE.lowbar;
         string dTime = AllStringsSE.lowbar;
-        string vr = dt.Year + dDate + NH.MakeUpTo2NumbersToZero(dt.Month) + dDate + NH.MakeUpTo2NumbersToZero(dt.Day);
+        string vr = dt.Year + dDate + dt.Month.ToString("D2") + dDate + dt.Day.ToString("D2");
         if (time)
         {
-            vr += dSpace + NH.MakeUpTo2NumbersToZero(dt.Hour) + dTime + NH.MakeUpTo2NumbersToZero(dt.Minute);
+            vr += dSpace + dt.Hour.ToString("D2") + dTime + dt.Minute.ToString("D2");
         }
         return vr;
     }
@@ -80,7 +84,7 @@ public class DTHelperUs
         var sp = SHSplit.SplitToParts(fnwoe, time ? 6 : 4, AllStringsSE.lowbar);
         if (time)
         {
-            if (CA.HasIndex(5, sp))
+            if (sp.Count > 5)
             {
                 postfix = sp[5];
             }
@@ -106,7 +110,7 @@ public class DTHelperUs
         }
         else
         {
-            if (CA.HasIndex(3, sp))
+            if (sp.Count > 3)
             {
                 postfix = sp[3];
             }
@@ -137,7 +141,7 @@ public class DTHelperUs
 
         var sp = SHSplit.SplitToParts(fnwoe, 6, AllStringsSE.lowbar);
 
-        if (CA.HasIndex(5, sp))
+        if (sp.Count > 5)
         {
             postfix = sp[5];
         }

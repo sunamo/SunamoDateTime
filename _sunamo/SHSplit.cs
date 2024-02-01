@@ -1,12 +1,12 @@
 namespace SunamoDateTime._sunamo;
 
 //namespace SunamoDateTime._sunamo;
-//public class SHSplit
+//internal class SHSplit
 //{
-//    public static Func<string, char[], List<string>> SplitChar;
-//    public static Func<string, String[], List<int>> SplitToIntList;
-//    public static Func<string, string, List<string>> Split;
-//    public static Func<string, String[], List<string>> SplitNone;
-//    public static Func<string, int, Char[], List<string>> SplitToPartsFromEnd;
-//    public static Func<string, int, string, List<string>> SplitToParts;
+//    internal static Func<string, char[], List<string>> SplitChar;
+//    internal static Func<string, String[], List<int>> SplitToIntList;
+//    internal static Func<string, string, List<string>> Split;
+//    internal static Func<string, String[], List<string>> SplitNone;
+//    internal static Func<string, int, Char[], List<string>> SplitToPartsFromEnd;
+//    internal static Func<string, int, string, List<string>> SplitToParts;
 //}

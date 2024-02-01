@@ -21,7 +21,7 @@ public partial class DTHelperCode
         {
             return "";
         }
-        return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute);
+        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2");
     }
     #endregion
 
@@ -35,8 +35,8 @@ public partial class DTHelperCode
     /// <param name="dt"></param>
     public static string DateToStringjQueryDatePicker(DateTime dt)
     {
-        //return NH.MakeUpTo2NumbersToZero(dt.Day) + AllStrings.dot + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dot + dt.Year;
-        return NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.slash + NH.MakeUpTo2NumbersToZero(dt.Day) + AllStrings.slash + dt.Year;
+        //return dt.Day.ToString("D2") + AllStrings.dot + dt.Month.ToString("D2") + AllStrings.dot + dt.Year;
+        return dt.Month.ToString("D2") + AllStrings.slash + dt.Day.ToString("D2") + AllStrings.slash + dt.Year;
     }
     #endregion
 
@@ -48,7 +48,7 @@ public partial class DTHelperCode
     /// <param name="dt"></param>
     public static string DateAndTimeToStringAngularDateTime(DateTime dt)
     {
-        return dt.Year + NH.MakeUpTo2NumbersToZero(dt.Month) + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second);
+        return dt.Year + dt.Month.ToString("D2") + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2");
     }
     #endregion
     #endregion

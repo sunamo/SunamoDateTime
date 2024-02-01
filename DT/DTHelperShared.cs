@@ -1,4 +1,7 @@
+
 namespace SunamoDateTime.DT;
+using SunamoLang;
+
 
 public partial class DTHelper
 {
@@ -46,7 +49,7 @@ public partial class DTHelper
 
     public static string MakeUpTo2NumbersToZero(int p)
     {
-        return NH.MakeUpTo2NumbersToZero(p);
+        return p.ToString("D2");// NH.MakeUpTo2NumbersToZero(p);
     }
 
     public static string TimeToStringAngularTime(DateTime dt)

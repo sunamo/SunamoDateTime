@@ -1,4 +1,8 @@
+
 namespace SunamoDateTime.DT;
+
+using SunamoStringSplit;
+
 
 
 
@@ -50,7 +54,7 @@ public partial class DTHelperGeneral
         {
             if (item.Length == 4)
             {
-                if (SHSH.IsNumber(item))
+                if (double.TryParse(item, out var _))
                 {
                     return item;
                 }

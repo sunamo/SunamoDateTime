@@ -1,4 +1,8 @@
+
 namespace SunamoDateTime.DT;
+using SunamoExtensions;
+using SunamoLang;
+
 
 
 
@@ -306,9 +310,11 @@ public partial class DTHelperMulti
             {
                 return "Nezn\u00E1m\u00FD \u010Das";
             }
-            return sess.i18n(XlfKeys.NoKnownPeriod);
+            return xNoKnownPeriod;
         }
     }
+
+    public static string xNoKnownPeriod = "NoKnownPeriod";
 
     /// <summary>
     /// If A1 could be lower than 1d, return 1d
@@ -539,8 +545,8 @@ public partial class DTHelperMulti
         if (v.Contains(AllStrings.dash))
         {
 
-            var (b, a) = SHSH.GetPartsByLocationNoOut(v, AllChars.dash);
-            dayTo = BTS.ParseInt(v, -1);
+            var b = v.Split(AllChars.dash)[0];
+            dayTo = int.Parse(v);
             return b;
         }
         dayTo = -1;

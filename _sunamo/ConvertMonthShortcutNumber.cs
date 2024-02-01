@@ -1,7 +1,9 @@
+namespace SunamoDateTime._sunamo;
+
 //namespace SunamoDateTime._sunamo;
 
-//public class ConvertMonthShortcutNumber
+//internal class ConvertMonthShortcutNumber
 //{
-//    public static Func<string, int> FromShortcut;
+//    internal static Func<string, int> FromShortcut;
 
 //}

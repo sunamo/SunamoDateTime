@@ -14,7 +14,7 @@ public partial class DTHelperFormalizedWithT
     /// <param name="dt"></param>
     public static string DateTimeToStringStringifyDateEmptyTime(DateTime dt)
     {
-        return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T00:00:00.000Z";
+        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + "T00:00:00.000Z";
     }
 
     /// <summary>
@@ -23,7 +23,7 @@ public partial class DTHelperFormalizedWithT
     /// <param name="dt"></param>
     public static string DateTimeToStringStringifyDateTime(DateTime dt)
     {
-        return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second) + AllStrings.dot + NH.MakeUpTo3NumbersToZero(dt.Millisecond) + "Z";
+        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2") + AllStrings.dot + dt.Millisecond.ToString("D3") + "Z";
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public partial class DTHelperFormalizedWithT
     /// <param name = "dt"></param>
     public static string DateAndTimeToStringFormalizeDate(DateTime dt)
     {
-        return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second);
+        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2");
     }
     #endregion
 }

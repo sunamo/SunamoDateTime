@@ -11,7 +11,7 @@ public partial class DTHelperCode
     /// <param name="dt"></param>
     public static string TimeToStringAngularTime(DateTime dt)
     {
-        return NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second);
+        return dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2");
     }
     #endregion
 
@@ -22,7 +22,7 @@ public partial class DTHelperCode
     /// <param name="dt"></param>
     public static string DateToStringAngularDate(DateTime dt)
     {
-        return dt.Year + NH.MakeUpTo2NumbersToZero(dt.Month) + NH.MakeUpTo2NumbersToZero(dt.Day) + "T00:00:00";
+        return dt.Year + dt.Month.ToString("D2") + dt.Day.ToString("D2") + "T00:00:00";
     }
     #endregion
     #endregion

@@ -1,4 +1,8 @@
+
 namespace SunamoDateTime.DT;
+using SunamoLang;
+using SunamoParsing;
+
 
 
 
@@ -42,7 +46,7 @@ public partial class DTHelperCs
     public static string ToShortTimeWithSecond(DateTime value, bool fillUpByZeros = false)
     {
         // Must be array due to params []
-        var parts = CAG.ToArrayT(value.Hour, value.Minute, value.Second);
+        var parts = new int[] { value.Hour, value.Minute, value.Second };
 
         return ToShortTimeWorker(parts, fillUpByZeros);
     }
@@ -72,7 +76,7 @@ public partial class DTHelperCs
     public static string ToShortTime(DateTime value, bool fillUpByZeros = false)
     {
         // Must be array due to params []
-        var parts = CAG.ToArrayT(value.Hour, value.Minute);
+        var parts = new List<int>([value.Hour, value.Minute]).ToArray(); //CAG.ToArrayT();
 
         return ToShortTimeWorker(parts, fillUpByZeros);
     }
@@ -90,11 +94,11 @@ public partial class DTHelperCs
     public static DateTime ParseTimeCzech(string t)
     {
         var vr = DateTime.MinValue;
-        var parts = SHSplit.SplitChar(t, new char[] { AllCharsSE.colon });
+        var parts = t.Split(AllChars.colon).ToList(); //SHSplit.SplitChar(t, new char[] { AllCharsSE.colon });
         if (parts.Count == 2)
         {
             t += ":00";
-            parts = SHSplit.SplitChar(t, new char[] { AllCharsSE.colon });
+            parts = t.Split(AllChars.colon).ToList(); //SHSplit.SplitChar(t, new char[] { AllCharsSE.colon });
         }
         int hours = -1;
         int minutes = -1;
@@ -131,7 +135,7 @@ public partial class DTHelperCs
     public static DateTime ParseDateCzech(string input)
     {
         DateTime vr = DateTime.MinValue;
-        var parts = SHSplit.SplitChar(input, new char[] { AllCharsSE.dot });
+        var parts = input.Split(AllChars.dot).ToList(); //SHSplit.SplitChar(input, new char[] { AllCharsSE.dot });
         var day = -1;
         var month = -1;
         var year = -1;
@@ -346,7 +350,7 @@ public partial class DTHelperCs
             case DayOfWeek.Sunday:
                 return DTConstants.Nedele;
         }
-        ThrowEx.Custom("Nezn\u00E1m\u00FD den v t\u00FDdnu");
+        throw new Exception("Nezn\u00E1m\u00FD den v t\u00FDdnu");
         return null;
     }
     #endregion

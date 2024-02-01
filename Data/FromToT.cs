@@ -1,4 +1,9 @@
+
 namespace SunamoDateTime.Data;
+
+using SunamoData.Data;
+using SunamoLang;
+
 
 
 
@@ -53,7 +58,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
         List<string> v = null;
         if (input.Contains(AllStringsSE.dash))
         {
-            v = SHSplit.SplitChar(input, new Char[] { AllCharsSE.dash });
+            v = input.Split(AllChars.dash).ToList(); //SHSplit.SplitChar(input, new Char[] { AllCharsSE.dash });
         }
         else
         {
@@ -95,7 +100,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
         int result = 0;
         if (v.Contains(AllStringsSE.colon))
         {
-            var parts = SHSplit.SplitToIntList(v, new String[] { AllStringsSE.colon });
+            var parts = v.Split(AllChars.colon).ToList().ConvertAll(d => int.Parse(d)); //SHSplit.SplitToIntList(v, new String[] { AllStringsSE.colon });
             result += parts[0] * (int)DTConstants.secondsInHour;
             if (parts.Count > 1)
             {
@@ -104,7 +109,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
         }
         else
         {
-            if (BTSSE.IsInt(v))
+            if (int.TryParse(v, out var _))
             {
                 result += int.Parse(v) * (int)DTConstants.secondsInHour;
             }
@@ -112,7 +117,7 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
         return result;
     }
 
-    public override string ToString()
+    public string ToString(Langs l)
     {
         if (empty)
         {
@@ -133,20 +138,20 @@ public class FromToT<T> : FromToTSH<T>, IParser where T : struct
             {
 
                 var from2 = UnixDateConverter.From(fromL);
-                var from3 = DTHelperMulti.DateTimeToString(from2, ThisApp.l, DTConstants.UnixFsStart);
+                var from3 = DTHelperMulti.DateTimeToString(from2, l, DTConstants.UnixFsStart);
                 if (toL != 0)
                 {
-                    return $"{from3}-{DTHelperMulti.DateTimeToString(UnixDateConverter.From(toL), ThisApp.l, DTConstants.UnixFsStart)}";
+                    return $"{from3}-{DTHelperMulti.DateTimeToString(UnixDateConverter.From(toL), l, DTConstants.UnixFsStart)}";
                 }
                 return $"{from3}";
             }
             else if (ftUse == FromToUse.UnixJustTime)
             {
                 var from2 = UnixDateConverter.From(fromL);
-                var from3 = DTHelperMulti.TimeToString(from2, ThisApp.l, DTConstants.UnixFsStart);
+                var from3 = DTHelperMulti.TimeToString(from2, l, DTConstants.UnixFsStart);
                 if (toL != 0)
                 {
-                    return $"{from3}-{DTHelperMulti.TimeToString(UnixDateConverter.From(toL), ThisApp.l, DTConstants.UnixFsStart)}";
+                    return $"{from3}-{DTHelperMulti.TimeToString(UnixDateConverter.From(toL), l, DTConstants.UnixFsStart)}";
                 }
                 return $"{from3}";
             }

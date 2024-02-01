@@ -1,4 +1,7 @@
+
 namespace SunamoDateTime.DT;
+using SunamoLang;
+
 
 
 
@@ -303,12 +306,12 @@ public partial class DTHelper
         return DTHelperCs.DayOfWeek2DenVTydnu(dayOfWeek);
     }
 
-    public static DateTime ParseLl(string v)
+    public static DateTime ParseLl(string v, Func<string, int> ConvertMonthShortcutNumberFromShortcut)
     {
-        var p = SHSplit.Split(v, AllStringsSE.space);
+        var p = v.Split(AllChars.space); //SHSplit.Split(v, AllStringsSE.space);
 
 
-        return new DateTime(DateTime.Today.Year, ConvertMonthShortcutNumber.FromShortcut(p[0]), int.Parse(p[1]));
+        return new DateTime(DateTime.Today.Year, ConvertMonthShortcutNumberFromShortcut(p[0]), int.Parse(p[1]));
     }
     #endregion
 }

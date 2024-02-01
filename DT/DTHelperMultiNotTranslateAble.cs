@@ -1,11 +1,14 @@
+
 namespace SunamoDateTime.DT;
+using SunamoLang;
+
 
 
 public partial class DTHelperMulti
 {
-    public static string FilesFounded(int c)
+    public static string FilesFounded(int c, Langs l)
     {
-        if (ThisApp.l == Langs.cs)
+        if (l == Langs.cs)
         {
             if (c < 2)
             {
@@ -17,6 +20,8 @@ public partial class DTHelperMulti
             }
             return "souborů nalezeno";
         }
-        return sess.i18n(XlfKeys.filesFounded);
+        return xfilesFounded;
     }
+
+    public static string xfilesFounded = "filesFounded";
 }

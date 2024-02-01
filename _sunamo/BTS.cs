@@ -4,10 +4,10 @@ namespace SunamoDateTime._sunamo;
 
 
 //namespace SunamoDateTime._sunamo;
-//public static class BTS
+//internal static class BTS
 //{
-//    public static Func<string, int?, int?> ParseInt;
-//    public static Func<bool, bool, string> BoolToStringEn;
-//    public static Func<bool, string> BoolToString;
+//    internal static Func<string, int?, int?> ParseInt;
+//    internal static Func<bool, bool, string> BoolToStringEn;
+//    internal static Func<bool, string> BoolToString;
 
 //}
