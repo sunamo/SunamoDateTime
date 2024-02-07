@@ -3,18 +3,15 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>24.2.1.2</Version>
+    <Version>24.2.6.3</Version>
     <Description>Working with date+time</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoBts" Version="24.2.1.1" />
-    <PackageReference Include="SunamoData" Version="24.2.1.1" />
-    <PackageReference Include="SunamoEnums" Version="24.2.1.1" />
-    <PackageReference Include="SunamoExtensions" Version="24.2.1.3" />
-    <PackageReference Include="SunamoInterfaces" Version="24.2.1.2" />
-    <PackageReference Include="SunamoLang" Version="24.2.1.1" />
-    <PackageReference Include="SunamoParsing" Version="24.2.1.1" />
-    <PackageReference Include="SunamoStringSplit" Version="24.2.1.1" />
+    <PackageReference Include="SunamoData" Version="24.2.6.4" />
+    <PackageReference Include="SunamoEnums" Version="24.2.6.2" />
+    <PackageReference Include="SunamoExtensions" Version="24.2.6.2" />
+    <PackageReference Include="SunamoInterfaces" Version="24.2.6.3" />
+    <PackageReference Include="SunamoParsing" Version="24.2.6.2" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>

@@ -1,12 +1,5 @@
 
 namespace SunamoDateTime.DT;
-
-using SunamoStringSplit;
-
-
-
-
-
 public partial class DTHelperGeneral
 {
     public static List<DateTime> GetDatesBetween(DateTime startDate, DateTime endDate)
@@ -49,7 +42,7 @@ public partial class DTHelperGeneral
     /// </summary>
     public static string ParseYear(string s)
     {
-        var p = SHSplit.SplitChar(s, new Char[] { AllChars.dash, AllChars.slash });
+        var p = s.Split(new Char[] { AllChars.dash, AllChars.slash });
         foreach (var item in p)
         {
             if (item.Length == 4)

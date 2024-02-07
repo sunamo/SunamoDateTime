@@ -1,13 +1,7 @@
 
+using SunamoDateTime._sunamo;
+
 namespace SunamoDateTime.DT;
-using SunamoBts;
-using SunamoStringSplit;
-
-
-
-
-
-
 public partial class DTHelperCode
 {
     #region Parse
@@ -24,7 +18,7 @@ public partial class DTHelperCode
             return dtMinVal;
         }
         //2015-09-03T21:01
-        var sp = SHSplit.SplitChar(v, new Char[] { AllChars.dash, 'T', AllChars.colon });
+        var sp = v.Split(new Char[] { AllChars.dash, 'T', AllChars.colon }).ToList();
         var dd = CAToNumber.ToInt0(sp);
         return new DateTime(dd[0], dd[1], dd[2], dd[3], dd[4], 0);
     }

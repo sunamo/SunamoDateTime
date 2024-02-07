@@ -1,11 +1,7 @@
 
-namespace SunamoDateTime.DT;
 using SunamoParsing;
 
-
-
-
-
+namespace SunamoDateTime.DT;
 public partial class DTHelperEn
 {
     static Type type = typeof(DTHelperEn);

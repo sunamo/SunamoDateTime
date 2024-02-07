@@ -1,12 +1,7 @@
 
+using SunamoDateTime._sunamo;
+
 namespace SunamoDateTime.DT;
-using SunamoBts;
-using SunamoStringSplit;
-
-
-
-
-
 /// <summary>
 /// Underscore
 /// </summary>
@@ -173,7 +168,7 @@ public class DTHelperUs
     /// <param name="fnwoe"></param>
     public static DateTime? FileNameToDateTime(string fnwoe)
     {
-        var sp = SHSplit.Split(fnwoe, AllStringsSE.lowbar);
+        var sp = fnwoe.Split(new String[] { AllStrings.lowbar }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(fnwoe, AllStringsSE.lowbar);
         // Tady jsem to rozděloval na 6 ale pak mi to vracelo null. Úprava na 5
         var dd = CAToNumber.ToInt1(sp, 5);
         if (dd == null)
