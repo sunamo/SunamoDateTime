@@ -7,10 +7,6 @@
     <Description>Working with date+time</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoData" Version="24.2.6.4" />
-    <PackageReference Include="SunamoEnums" Version="24.2.6.2" />
-    <PackageReference Include="SunamoExtensions" Version="24.2.6.2" />
-    <PackageReference Include="SunamoInterfaces" Version="24.2.6.3" />
     <PackageReference Include="SunamoParsing" Version="24.2.6.2" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
