@@ -14,7 +14,7 @@ public partial class DTHelperCs
     /// <param name="dt"></param>
     public static string DateToStringWithDayOfWeekCS(DateTime dt)
     {
-        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStringsSE.dot + dt.Month + AllStringsSE.dot + dt.Year;
+        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year;
     }
     #endregion
 
@@ -55,9 +55,9 @@ public partial class DTHelperCs
     {
         if (fillUpByZeros)
         {
-            return string.Join(AllStringsSE.colon, parts);
+            return string.Join(AllStrings.colon, parts);
         }
-        return string.Join(AllStringsSE.colon, parts);
+        return string.Join(AllStrings.colon, parts);
     }
 
     #region Time without seconds
@@ -321,7 +321,7 @@ public partial class DTHelperCs
 
     public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, Langs l, DateTime dtMinVal)
     {
-        return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + AllStringsSE.swda + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
+        return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + AllStrings.swda + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
     }
 
     /// <param name="dayOfWeek"></param>

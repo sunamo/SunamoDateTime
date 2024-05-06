@@ -6,7 +6,7 @@ public class NormalizeDate
         var s = sh.ToString();
         s = s.Trim();
 
-        if (s.StartsWith(AllStringsSE.dash))
+        if (s.StartsWith(AllStrings.dash))
         {
             s = s.TrimStart(AllCharsSE.dash);
         }

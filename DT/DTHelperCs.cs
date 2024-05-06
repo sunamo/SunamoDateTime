@@ -11,7 +11,7 @@ public partial class DTHelperCs
     public static string AppendToFrontOnlyTime(string defin)
     {
         DateTime dt = DateTime.Now;
-        return dt.Hour.ToString("D2") + AllStringsSE.colon + dt.Minute.ToString("D2") + AllStringsSE.colon + dt.Second.ToString("D2") + AllStringsSE.colon + dt.Millisecond.ToString("D3") + AllStringsSE.space + defin;
+        return dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2") + AllStrings.colon + dt.Millisecond.ToString("D3") + AllStrings.space + defin;
     }
     #endregion
 
@@ -22,7 +22,7 @@ public partial class DTHelperCs
     /// <param name="d"></param>
     public static string ToShortDate(DateTime d)
     {
-        return string.Join(AllStringsSE.dot, d.Day, d.Month, d.Year);
+        return string.Join(AllStrings.dot, d.Day, d.Month, d.Year);
     }
     #endregion
 
@@ -34,7 +34,7 @@ public partial class DTHelperCs
     /// <param name="dt"></param>
     public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
     {
-        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStringsSE.dot + dt.Month + AllStringsSE.dot + dt.Year + AllStringsSE.space + dt.Hour.ToString("D2") + AllStringsSE.colon + dt.Minute.ToString("D2");
+        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year + AllStrings.space + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2");
     }
 
     public static DateTime ParseDateTimeCzech(string s)
