@@ -3,7 +3,7 @@ namespace SunamoDateTime.Converters;
 
 public class ConvertDateTimeToFileNamePostfix
 {
-    private static char s_delimiter = AllCharsSE.lowbar;
+    private static char s_delimiter = AllChars.lowbar;
 
     /// <summary>
     /// Convert from date to filename without ext

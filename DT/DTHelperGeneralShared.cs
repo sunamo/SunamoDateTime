@@ -9,7 +9,7 @@ public partial class DTHelperGeneral
 
     public static int FullYear(byte b)
     {
-        var bs = b.ToString().PadLeft(3, AllCharsSE.zero);
+        var bs = b.ToString().PadLeft(3, AllChars.zero);
         return int.Parse("2" + bs);
     }
 

@@ -8,7 +8,7 @@ public class NormalizeDate
 
         if (s.StartsWith(AllStrings.dash))
         {
-            s = s.TrimStart(AllCharsSE.dash);
+            s = s.TrimStart(AllChars.dash);
         }
 
         var y = s.Substring(0, 2);
@@ -74,7 +74,7 @@ public class NormalizeDate
         StringBuilder sb = new StringBuilder();
         if (timesMinus1)
         {
-            sb.Append(AllCharsSE.dash);
+            sb.Append(AllChars.dash);
         }
 
         int firstChar2 = int.Parse(firstChar.ToString());
