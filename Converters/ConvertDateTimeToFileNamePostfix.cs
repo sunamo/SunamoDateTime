@@ -1,4 +1,4 @@
-namespace SunamoDateTime.Converters;
+namespace SunamoDateTime;
 
 
 public class ConvertDateTimeToFileNamePostfix

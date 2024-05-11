@@ -1,4 +1,4 @@
-namespace SunamoDateTime.DT;
+namespace SunamoDateTime;
 
 public class TimeSpanHelper
 {

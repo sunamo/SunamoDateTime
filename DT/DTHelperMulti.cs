@@ -1,5 +1,5 @@
 
-namespace SunamoDateTime.DT;
+namespace SunamoDateTime;
 using SunamoExtensions;
 
 

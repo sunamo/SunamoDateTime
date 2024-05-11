@@ -1,4 +1,4 @@
-namespace SunamoDateTime.Data;
+namespace SunamoDateTime;
 
 
 /// <summary>

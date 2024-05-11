@@ -1,7 +1,7 @@
 
 using SunamoParsing;
 
-namespace SunamoDateTime.DT;
+namespace SunamoDateTime;
 public partial class DTHelperCs
 {
     static Type type = typeof(DTHelperCs);

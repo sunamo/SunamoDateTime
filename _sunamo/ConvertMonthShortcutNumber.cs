@@ -1,4 +1,4 @@
-namespace SunamoDateTime._sunamo;
+namespace SunamoDateTime;
 
 //namespace SunamoDateTime._sunamo;
 

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SunamoDateTime.Data;
+namespace SunamoDateTime;
 internal class FromToTDateTime<T> : FromToT<T> where T : struct
 {
     protected override string ToStringDateTime(Langs l)

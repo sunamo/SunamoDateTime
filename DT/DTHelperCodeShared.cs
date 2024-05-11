@@ -1,7 +1,7 @@
 
 using SunamoDateTime._sunamo;
 
-namespace SunamoDateTime.DT;
+namespace SunamoDateTime;
 public partial class DTHelperCode
 {
     #region Parse

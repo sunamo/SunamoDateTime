@@ -1,5 +1,5 @@
 
-namespace SunamoDateTime.Constants;
+namespace SunamoDateTime;
 //namespace SunamoDateTime.Constants;
 
 

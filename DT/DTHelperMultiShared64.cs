@@ -1,5 +1,5 @@
 
-namespace SunamoDateTime.DT;
+namespace SunamoDateTime;
 public partial class DTHelperMulti
 {
     /// <summary>
