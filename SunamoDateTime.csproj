@@ -7,7 +7,6 @@
     <Description>Working with date+time</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoParsing" Version="24.2.6.2" />
     <Compile Include="..\SunamoValues\AllStrings.cs" Link="_linked\SunamoValues\AllStrings.cs" />
     <Compile Include="..\SunamoValues\Constants\DTConstants.cs" Link="_linked\SunamoValues\Constants\DTConstants.cs" />
     <Compile Include="..\SunamoExceptions\OnlyInSE\ThrowEx.cs" Link="_linked\SunamoExceptions\OnlyInSE\ThrowEx.cs" />
