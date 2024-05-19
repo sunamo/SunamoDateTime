@@ -26,10 +26,11 @@
     <Compile Include="..\SunamoExceptions\OnlyInSE\Types.cs" Link="_linked\SunamoExceptions\OnlyInSE\Types.cs" />
     <Compile Include="..\SunamoXlfKeys\XlfKeys.cs" Link="_linked\SunamoXlfKeys\XlfKeys.cs" />
     <Compile Include="..\SunamoParsing\Parse.cs" Link="_linked\SunamoParsing\Parse.cs" />
-    <Compile Include="..\SunamoBts\CAToNumber.cs" Link="_linked\SunamoBts\CAToNumber.cs" />
     <Compile Include="..\SunamoParsing\TryParse.cs" Link="_linked\SunamoParsing\TryParse.cs" />
-    <Compile Include="..\SunamoStringSplit\SHSplit.cs" Link="_linked\SunamoStringSplit\SHSplit.cs" />
-    <Compile Include="..\SunamoBts\BTS.cs" Link="_linked\SunamoBts\BTS.cs" />
+    <Compile Include="..\SunamoData\Data\FromToTSH.cs" Link="_linked\SunamoData\Data\FromToTSH.cs" />
+    <Compile Include="..\SunamoInterfaces\Interfaces\IParser.cs" Link="_linked\SunamoInterfaces\Interfaces\IParser.cs" />
+    <Compile Include="..\SunamoData\Data\FromTo.cs" Link="_linked\SunamoData\Data\FromTo.cs" />
+    <Compile Include="..\SunamoExtensions\TimeSpanExtensions.cs" Link="_linked\SunamoExtensions\TimeSpanExtensions.cs" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC;SunamoDateTime</DefineConstants>
