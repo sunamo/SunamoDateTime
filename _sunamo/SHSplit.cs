@@ -1,6 +1,6 @@
 namespace SunamoDateTime;
 
-//namespace SunamoDateTime._sunamo;
+//namespace SunamoDateTime;
 internal class SHSplit
 {
     internal static List<string> SplitToParts(string what, int parts, string deli)

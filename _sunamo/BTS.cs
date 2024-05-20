@@ -3,7 +3,7 @@ namespace SunamoDateTime;
 // Bud 
 
 
-//namespace SunamoDateTime._sunamo;
+//namespace SunamoDateTime;
 internal static class BTS
 {
     //    internal static Func<string, int?, int?> ParseInt;
