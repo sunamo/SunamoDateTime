@@ -2,11 +2,11 @@ namespace SunamoDateTime;
 
 using System.Globalization;
 
-internal class CultureInfos
+public class CultureInfos
 {
-    internal static CultureInfo cz = null;
-    internal static IFormatProvider neutral { get; set; }
-    internal static void Init()
+    public static CultureInfo cz = null;
+    public static IFormatProvider neutral { get; set; }
+    public static void Init()
     {
         if (cz == null)
         {

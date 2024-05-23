@@ -1,9 +1,9 @@
 namespace SunamoDateTime;
 
 
-internal class Date
+public class Date
 {
-    internal int Day;
-    internal int Month;
-    internal int Year;
+    public int Day;
+    public int Month;
+    public int Year;
 }

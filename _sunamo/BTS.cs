@@ -4,13 +4,13 @@ namespace SunamoDateTime;
 
 
 //namespace SunamoDateTime;
-internal static class BTS
+public static class BTS
 {
-    //    internal static Func<string, int?, int?> ParseInt;
-    //    internal static Func<bool, bool, string> BoolToStringEn;
-    //    internal static Func<bool, string> BoolToString;
+    //    public static Func<string, int?, int?> ParseInt;
+    //    public static Func<bool, bool, string> BoolToStringEn;
+    //    public static Func<bool, string> BoolToString;
 
-    internal static int? ParseInt(string entry, int? _default)
+    public static int? ParseInt(string entry, int? _default)
     {
         int lastInt2 = 0;
         if (int.TryParse(entry, out lastInt2))
@@ -20,12 +20,12 @@ internal static class BTS
         return _default;
     }
 
-    internal static int TryParseInt(string entry, int def)
+    public static int TryParseInt(string entry, int def)
     {
         return TryParseInt(entry, def, false);
     }
 
-    internal static int TryParseInt(string entry, int def, bool throwEx)
+    public static int TryParseInt(string entry, int def, bool throwEx)
     {
         int lastInt = 0;
         if (int.TryParse(entry, out lastInt))
