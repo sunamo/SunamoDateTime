@@ -1,3 +1,5 @@
+
+namespace SunamoDateTime;
 public class TranslateAble
 {
     

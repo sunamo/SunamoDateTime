@@ -1,3 +1,5 @@
+
+namespace SunamoDateTime;
 using System.Diagnostics;
 using System.Text;
 
