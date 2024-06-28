@@ -1,7 +1,7 @@
 namespace SunamoDateTime;
 
 
-public interface IParser
+internal interface IParser
 {
     void Parse(string co);
 }

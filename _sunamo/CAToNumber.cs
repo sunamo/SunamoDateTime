@@ -1,19 +1,19 @@
 using System.Collections;
 
 namespace SunamoDateTime;
-public class CAToNumber
+internal class CAToNumber
 {
-    public static List<int> ToInt2(IList altitudes, int requiredLength, int startFrom)
+    internal static List<int> ToInt2(IList altitudes, int requiredLength, int startFrom)
     {
         return ToNumber<int>(BTS.TryParseInt, altitudes, requiredLength, startFrom);
     }
 
     #region ToInt1
-    public static List<int> ToInt1(IList enumerable, int requiredLength)
+    internal static List<int> ToInt1(IList enumerable, int requiredLength)
     {
         return ToNumber<int>(BTS.TryParseInt, enumerable, requiredLength);
     }
-    public static List<T> ToNumber<T>(Func<string, T, T> tryParse, IList enumerable, int requiredLength)
+    internal static List<T> ToNumber<T>(Func<string, T, T> tryParse, IList enumerable, int requiredLength)
     {
         int enumerableCount = enumerable.Count;
         if (enumerableCount != requiredLength)
@@ -39,7 +39,7 @@ public class CAToNumber
     }
     #endregion
 
-    public static List<T> ToNumber<T>(Func<string, T, T> tryParse, IList altitudes, int requiredLength, T startFrom) where T : IComparable
+    internal static List<T> ToNumber<T>(Func<string, T, T> tryParse, IList altitudes, int requiredLength, T startFrom) where T : IComparable
     {
         int finalLength = altitudes.Count - int.Parse(startFrom.ToString());
         if (finalLength < requiredLength)
@@ -72,7 +72,7 @@ public class CAToNumber
     }
 
     #region ToInt0
-    public static List<int> ToInt0(List<string> ts)
+    internal static List<int> ToInt0(List<string> ts)
     {
         //var ts = CASH.ToListStringIEnumerable2(enumerable);
 
@@ -88,7 +88,7 @@ public class CAToNumber
         return ToNumber<int, string>(int.Parse, ts);
     }
 
-    public static List<T> ToNumber<T, U>(Func<string, T> parse, IList<U> enumerable)
+    internal static List<T> ToNumber<T, U>(Func<string, T> parse, IList<U> enumerable)
     {
         List<T> result = new List<T>();
         foreach (var item in enumerable)

@@ -1,9 +1,9 @@
 namespace SunamoDateTime;
 
 //namespace SunamoDateTime;
-public class SHSplit
+internal class SHSplit
 {
-    public static List<string> SplitToParts(string what, int parts, string deli)
+    internal static List<string> SplitToParts(string what, int parts, string deli)
     {
         var s = what.Split(new string[] { deli }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(, deli);
         if (s.Count < parts)
@@ -63,7 +63,7 @@ public class SHSplit
     }
 
     #region SplitToPartsFromEnd
-    public static List<string> SplitToPartsFromEnd(string what, int parts, params char[] deli)
+    internal static List<string> SplitToPartsFromEnd(string what, int parts, params char[] deli)
     {
         List<char> chs = null;
         List<bool> bw = null;
@@ -115,7 +115,7 @@ public class SHSplit
         return v;
     }
 
-    public static void SplitCustom(string what, out List<char> chs, out List<bool> bs, out List<int> delimitersIndexes, params char[] deli)
+    internal static void SplitCustom(string what, out List<char> chs, out List<bool> bs, out List<int> delimitersIndexes, params char[] deli)
     {
         chs = new List<char>(what.Length);
         bs = new List<bool>(what.Length);
@@ -140,10 +140,10 @@ public class SHSplit
     }
     #endregion
 
-    //    public static Func<string, char[], List<string>> SplitChar;
-    //    public static Func<string, String[], List<int>> SplitToIntList;
-    //    public static Func<string, string, List<string>> Split;
-    //    public static Func<string, String[], List<string>> SplitNone;
-    //    public static Func<string, int, Char[], List<string>> SplitToPartsFromEnd;
-    //    public static Func<string, int, string, List<string>> SplitToParts;
+    //    internal static Func<string, char[], List<string>> SplitChar;
+    //    internal static Func<string, String[], List<int>> SplitToIntList;
+    //    internal static Func<string, string, List<string>> Split;
+    //    internal static Func<string, String[], List<string>> SplitNone;
+    //    internal static Func<string, int, Char[], List<string>> SplitToPartsFromEnd;
+    //    internal static Func<string, int, string, List<string>> SplitToParts;
 }
