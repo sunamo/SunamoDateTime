@@ -21,7 +21,7 @@ public partial class DTHelperEn
     /// <param name="today"></param>
     public static string ToShortDateString(DateTime today)
     {
-        return ToShortDateString(today, DateTime.MinValue, DTHelperMulti.DateToString(today, Langs.en));
+        return ToShortDateString(today, DateTime.MinValue, DTHelperMulti.DateToString(today, LangsDt.en));
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public partial class DTHelperEn
         {
             return returnWhenA1isA2;
         }
-        return DTHelperMulti.DateToString(today, Langs.en);
+        return DTHelperMulti.DateToString(today, LangsDt.en);
     }
     #endregion
 

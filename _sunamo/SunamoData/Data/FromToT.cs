@@ -99,7 +99,7 @@ internal class FromToT<T> : FromToTSH<T>, IParser where T : struct
         }
         return result;
     }
-    internal string ToString(Langs l)
+    internal string ToString(LangsDt l)
     {
         if (empty)
         {
@@ -122,7 +122,7 @@ internal class FromToT<T> : FromToTSH<T>, IParser where T : struct
             }
         }
     }
-    protected virtual string ToStringDateTime(Langs l)
+    protected virtual string ToStringDateTime(LangsDt l)
     {
         return "";
     }

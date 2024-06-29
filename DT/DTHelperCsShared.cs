@@ -183,9 +183,9 @@ public partial class DTHelperCs
     /// </summary>
     /// <param name="dateTime"></param>
     /// <param name="calculateTime"></param>
-    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, Langs l, DateTime dtMinVal)
+    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt l, DateTime dtMinVal)
     {
-        if (l != Langs.cs)
+        if (l != LangsDt.cs)
         {
             ThrowEx.NotImplementedCase(l);
         }
@@ -319,7 +319,7 @@ public partial class DTHelperCs
         }
     }
 
-    public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, Langs l, DateTime dtMinVal)
+    public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, LangsDt l, DateTime dtMinVal)
     {
         return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + AllStrings.swda + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
     }

@@ -39,7 +39,7 @@ public partial class DTHelper
         return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
     }
 
-    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, Langs l, DateTime dtMinVal)
+    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt l, DateTime dtMinVal)
     {
         return DTHelperCs.CalculateAgeAndAddRightStringKymCim(dateTime, calculateTime, l, dtMinVal);
     }
@@ -59,12 +59,12 @@ public partial class DTHelper
         return DTHelperCode.DateToStringAngularDate(dt);
     }
 
-    public static string DateToString(DateTime p, Langs l)
+    public static string DateToString(DateTime p, LangsDt l)
     {
         return DTHelperMulti.DateToString(p, l);
     }
 
-    public static string DateTimeToString(DateTime d, Langs l, DateTime dtMinVal)
+    public static string DateTimeToString(DateTime d, LangsDt l, DateTime dtMinVal)
     {
         return DTHelperMulti.DateTimeToString(d, l, dtMinVal);
     }

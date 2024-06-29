@@ -5,9 +5,9 @@ namespace SunamoDateTime;
 
 public partial class DTHelperMulti
 {
-    public static string FilesFounded(int c, Langs l)
+    public static string FilesFounded(int c, LangsDt l)
     {
-        if (l == Langs.cs)
+        if (l == LangsDt.cs)
         {
             if (c < 2)
             {

@@ -6,9 +6,9 @@ public partial class DTHelperMulti
     /// 21.6.1989 / 6/21/1989
     /// </summary>
     /// <param name="p"></param>
-    public static string DateToString(DateTime p, Langs l)
+    public static string DateToString(DateTime p, LangsDt l)
     {
-        if (l == Langs.cs)
+        if (l == LangsDt.cs)
         {
             return p.Day + AllStrings.dot + p.Month + AllStrings.dot + p.Year;
         }

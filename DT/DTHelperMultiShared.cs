@@ -13,11 +13,11 @@ public partial class DTHelperMulti
     /// Vrátí datum a čas v českém formátu bez ms a s
     /// </summary>
     /// <param name="d"></param>
-    public static string DateTimeToString(DateTime d, Langs l, DateTime dtMinVal)
+    public static string DateTimeToString(DateTime d, LangsDt l, DateTime dtMinVal)
     {
         if (d == dtMinVal)
         {
-            if (l == Langs.cs)
+            if (l == LangsDt.cs)
             {
                 return xItWasNotMentioned;
             }
@@ -27,7 +27,7 @@ public partial class DTHelperMulti
             }
         }
 
-        if (l == Langs.cs)
+        if (l == LangsDt.cs)
         {
             // 21.6.1989 11:22 (fill zero)
             return d.Day + AllStrings.dot + d.Month + AllStrings.dot + d.Year + AllStrings.space + d.Hour.ToString("D2") + AllStrings.colon + d.Hour.ToString("D2");
@@ -42,11 +42,11 @@ public partial class DTHelperMulti
     public static string xItWasNotMentioned = "ItWasNotMentioned";
     public static string xNotIndicated = "NotIndicated";
 
-    public static string TimeToString(DateTime d, Langs l, DateTime dtMinVal)
+    public static string TimeToString(DateTime d, LangsDt l, DateTime dtMinVal)
     {
         if (d == dtMinVal)
         {
-            if (l == Langs.cs)
+            if (l == LangsDt.cs)
             {
                 return xItWasNotMentioned;
             }
@@ -56,7 +56,7 @@ public partial class DTHelperMulti
             }
         }
 
-        if (l == Langs.cs)
+        if (l == LangsDt.cs)
         {
             // 21.6.1989 11:22 (fill zero)
             return d.Hour.ToString("D2") + AllStrings.colon + d.Minute.ToString("D2");
@@ -75,7 +75,7 @@ public partial class DTHelperMulti
     /// </summary>
     /// <param name="dateTime"></param>
     /// <param name="l"></param>
-    public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
+    public static string DateWithDayOfWeek(DateTime dateTime, LangsDt l)
     {
         int day = (int)dateTime.DayOfWeek;
         if (day == 0)
@@ -88,7 +88,7 @@ public partial class DTHelperMulti
         }
 
         string dayOfWeek = DTConstants.daysInWeekEN[day];
-        if (l == Langs.cs)
+        if (l == LangsDt.cs)
         {
             dayOfWeek = DTConstants.daysInWeekCS[day];
         }
@@ -97,13 +97,13 @@ public partial class DTHelperMulti
     }
     #endregion
 
-    public static string DateToStringWithDayOfWeek(DateTime dt, Langs l)
+    public static string DateToStringWithDayOfWeek(DateTime dt, LangsDt l)
     {
-        if (l == Langs.en)
+        if (l == LangsDt.en)
         {
             return DTHelperEn.DateToStringWithDayOfWeekEN(dt);
         }
-        else if (l == Langs.cs)
+        else if (l == LangsDt.cs)
         {
             return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
         }

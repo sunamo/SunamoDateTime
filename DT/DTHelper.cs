@@ -128,7 +128,7 @@ public partial class DTHelper
     /// <param name="p"></param>
     /// <param name="l"></param>
     /// <param name="dtMinVal"></param>
-    public static string DateToStringOrSE(DateTime p, Langs l, DateTime dtMinVal)
+    public static string DateToStringOrSE(DateTime p, LangsDt l, DateTime dtMinVal)
     {
         return DTHelperMulti.DateToStringOrSE(p, l, dtMinVal);
     }
@@ -138,7 +138,7 @@ public partial class DTHelper
     /// </summary>
     /// <param name="dateTime"></param>
     /// <param name="l"></param>
-    public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
+    public static string DateWithDayOfWeek(DateTime dateTime, LangsDt l)
     {
         return DTHelperMulti.DateWithDayOfWeek(dateTime, l);
     }
@@ -266,12 +266,12 @@ public partial class DTHelper
     /// <param name="tt"></param>
     /// <param name="calculateTime"></param>
     /// <param name="l"></param>
-    public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, Langs l)
+    public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, LangsDt l)
     {
         return DTHelperMulti.AddRightStringToTimeSpan(tt, calculateTime, l);
     }
 
-    public static string OperationLastedInLocalizateString(TimeSpan tt, Langs l)
+    public static string OperationLastedInLocalizateString(TimeSpan tt, LangsDt l)
     {
         return DTHelperMulti.OperationLastedInLocalizateString(tt, l);
     }

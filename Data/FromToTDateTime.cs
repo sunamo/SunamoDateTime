@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SunamoDateTime;
 internal class FromToTDateTime<T> : FromToT<T> where T : struct
 {
-    protected override string ToStringDateTime(Langs l)
+    protected override string ToStringDateTime(LangsDt l)
     {
         if (ftUse == FromToUse.DateTime)
         {
