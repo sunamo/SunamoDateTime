@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SunamoDateTime;
-internal class FromToTDateTime<T> : FromToT<T> where T : struct
+internal class FromToTDateTime<T> : FromToTDt<T> where T : struct
 {
     protected override string ToStringDateTime(LangsDt l)
     {
