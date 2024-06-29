@@ -9,7 +9,7 @@ internal class FromToTDateTime<T> : FromToTDt<T> where T : struct
 {
     protected override string ToStringDateTime(LangsDt l)
     {
-        if (ftUse == FromToUse.DateTime)
+        if (ftUse == FromToUseDateTime.DateTime)
         {
             var from2 = DTHelperCs.ToShortTimeFromSeconds(fromL);
             if (toL != 0)
@@ -18,7 +18,7 @@ internal class FromToTDateTime<T> : FromToTDt<T> where T : struct
             }
             return $"{from2}";
         }
-        else if (ftUse == FromToUse.Unix)
+        else if (ftUse == FromToUseDateTime.Unix)
         {
 
             var from2 = UnixDateConverter.From(fromL);
@@ -29,7 +29,7 @@ internal class FromToTDateTime<T> : FromToTDt<T> where T : struct
             }
             return $"{from3}";
         }
-        else if (ftUse == FromToUse.UnixJustTime)
+        else if (ftUse == FromToUseDateTime.UnixJustTime)
         {
             var from2 = UnixDateConverter.From(fromL);
             var from3 = DTHelperMulti.TimeToString(from2, l, DTConstants.UnixFsStart);

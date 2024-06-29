@@ -6,14 +6,14 @@ namespace SunamoDateTime;
 /// 
 /// </summary>
 /// <typeparam name="T"></typeparam>
-internal class FromToTDt<T> : FromToTSHDt<T>, IParser where T : struct
+internal class FromToTDt<T> : FromToTSHDt<T> where T : struct
 {
     internal FromToTDt()
     {
         var t = typeof(T);
         if (t == Types.tInt)
         {
-            ftUse = FromToUse.None;
+            ftUse = FromToUseDateTime.None;
         }
     }
     /// <summary>
@@ -31,7 +31,7 @@ internal class FromToTDt<T> : FromToTSHDt<T>, IParser where T : struct
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    internal FromToTDt(T from, T to, FromToUse ftUse = FromToUse.DateTime) : this()
+    internal FromToTDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
     {
         this.from = from;
         this.to = to;
@@ -107,11 +107,11 @@ internal class FromToTDt<T> : FromToTSHDt<T>, IParser where T : struct
         }
         else
         {
-            if (new List<FromToUse>([FromToUse.DateTime, FromToUse.Unix, FromToUse.UnixJustTime]).Any(d => d == ftUse))
+            if (new List<FromToUseDateTime>([FromToUseDateTime.DateTime, FromToUseDateTime.Unix, FromToUseDateTime.UnixJustTime]).Any(d => d == ftUse))
             {
                 return ToStringDateTime(l);
             }
-            else if (ftUse == FromToUse.None)
+            else if (ftUse == FromToUseDateTime.None)
             {
                 return from + "-" + to;
             }
