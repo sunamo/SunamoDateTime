@@ -1,12 +1,6 @@
 namespace SunamoDateTime;
 
-
-/// <summary>
-/// For web frameworks - angular, jquery etc.
-/// Must contains in header Input, Angular, jQuery, etc.
-/// Next relative methods are in DTHelperFormalized / DTHelperFormalizedWithT
-/// </summary>
-public partial class DTHelperCode
+public class DTHelperCode
 {
     #region ToString
     #region Date with time (without seconds)
@@ -49,6 +43,51 @@ public partial class DTHelperCode
     public static string DateAndTimeToStringAngularDateTime(DateTime dt)
     {
         return dt.Year + dt.Month.ToString("D2") + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2");
+    }
+    #endregion
+    #endregion
+
+    #region ToString
+    #region Time (with seconds)
+    /// <summary>
+    /// 12:00:00
+    /// </summary>
+    /// <param name="dt"></param>
+    public static string TimeToStringAngularTime(DateTime dt)
+    {
+        return dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2");
+    }
+    #endregion
+
+    #region Date and time (with seconds)
+    /// <summary>
+    /// 19890621T00:00:00
+    /// </summary>
+    /// <param name="dt"></param>
+    public static string DateToStringAngularDate(DateTime dt)
+    {
+        return dt.Year + dt.Month.ToString("D2") + dt.Day.ToString("D2") + "T00:00:00";
+    }
+    #endregion
+    #endregion
+
+    #region Parse
+    #region Date with time (without seconds)
+    /// <summary>
+    /// Input in format like 2015-09-03T21:01
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="dtMinVal"></param>
+    public static DateTime StringToDateTimeFromInputDateTimeLocal(string v, DateTime dtMinVal)
+    {
+        if (!v.Contains(AllStrings.dash))
+        {
+            return dtMinVal;
+        }
+        //2015-09-03T21:01
+        var sp = v.Split(new Char[] { AllChars.dash, 'T', AllChars.colon }).ToList();
+        var dd = CAToNumber.ToInt0(sp);
+        return new DateTime(dd[0], dd[1], dd[2], dd[3], dd[4], 0);
     }
     #endregion
     #endregion
