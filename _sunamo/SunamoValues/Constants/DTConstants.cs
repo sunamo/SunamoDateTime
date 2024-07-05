@@ -1,4 +1,4 @@
-namespace SunamoDateTime;
+namespace SunamoDateTime._sunamo.SunamoValues.Constants;
 
 
 internal class DTConstants

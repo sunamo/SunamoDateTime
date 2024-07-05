@@ -1,4 +1,4 @@
-namespace SunamoDateTime;
+namespace SunamoDateTime._sunamo.SunamoEnums.Enums;
 
 
 internal enum FromToUseDateTime

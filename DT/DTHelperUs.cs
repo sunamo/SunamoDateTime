@@ -1,7 +1,7 @@
 
 
 
-namespace SunamoDateTime;
+namespace SunamoDateTime.DT;
 /// <summary>
 /// Underscore
 /// </summary>

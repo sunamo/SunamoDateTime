@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SunamoDateTime;
+namespace SunamoDateTime.Data;
 internal class FromToTDateTime<T> : FromToTDt<T> where T : struct
 {
     protected override string ToStringDateTime(LangsDt l)

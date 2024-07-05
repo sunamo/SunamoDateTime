@@ -1,4 +1,4 @@
-namespace SunamoDateTime;
+namespace SunamoDateTime._sunamo.SunamoExceptions.OnlyInSE;
 
 using System.Collections;
 using System.Text;

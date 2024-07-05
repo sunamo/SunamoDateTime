@@ -1,4 +1,4 @@
-namespace SunamoDateTime;
+namespace SunamoDateTime.Converters;
 
 public class UnixDateConverter
 {

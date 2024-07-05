@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace SunamoDateTime;
+namespace SunamoDateTime._sunamo.SunamoBts;
 internal class CAToNumber
 {
     internal static List<int> ToInt2(IList altitudes, int requiredLength, int startFrom)

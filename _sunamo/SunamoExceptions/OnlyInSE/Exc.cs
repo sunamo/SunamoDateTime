@@ -1,5 +1,5 @@
 
-namespace SunamoDateTime;
+namespace SunamoDateTime._sunamo.SunamoExceptions.OnlyInSE;
 using System.Diagnostics;
 using System.Text;
 

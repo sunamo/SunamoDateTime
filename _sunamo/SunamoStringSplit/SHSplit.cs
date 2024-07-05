@@ -1,4 +1,4 @@
-namespace SunamoDateTime;
+namespace SunamoDateTime._sunamo.SunamoStringSplit;
 
 //namespace SunamoDateTime;
 internal class SHSplit

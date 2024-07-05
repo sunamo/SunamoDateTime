@@ -1,4 +1,4 @@
-namespace SunamoDateTime;
+namespace SunamoDateTime._sunamo.SunamoExtensions;
 
 
 internal static class TimeSpanExtensions
