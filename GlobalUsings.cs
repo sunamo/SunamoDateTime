@@ -28,3 +28,6 @@ global using SunamoDateTime._sunamo.SunamoExceptions._AddedToAllCsproj;
 global using SunamoDateTime._sunamo.SunamoInterfaces.Interfaces;
 global using SunamoDateTime._sunamo.SunamoValues.Constants;
 global using SunamoDateTime._sunamo.SunamoValues.Values;
+global using System.Globalization;
+global using System.Net;
+global using System.Threading.Tasks;

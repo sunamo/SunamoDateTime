@@ -1,4 +1,3 @@
-
 namespace SunamoDateTime.DT;
 
 public class DTHelperMulti

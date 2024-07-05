@@ -1,6 +1,5 @@
 namespace SunamoDateTime._sunamo.SunamoValues.Values;
 
-using System.Globalization;
 
 internal class CultureInfos
 {

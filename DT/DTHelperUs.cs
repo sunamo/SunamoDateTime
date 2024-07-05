@@ -1,6 +1,3 @@
-
-
-
 namespace SunamoDateTime.DT;
 /// <summary>
 /// Underscore
