@@ -22,7 +22,6 @@ global using SunamoDateTime._sunamo.SunamoValues;
 global using SunamoDateTime._sunamo.SunamoXlfKeys;
 global using SunamoDateTime._public.SunamoEnums.Enums;
 global using SunamoDateTime._sunamo.SunamoData.Data;
-global using SunamoDateTime._sunamo.SunamoEnums.Enums;
 global using SunamoDateTime._sunamo.SunamoExceptions.OnlyInSE;
 global using SunamoDateTime._sunamo.SunamoExceptions._AddedToAllCsproj;
 global using SunamoDateTime._sunamo.SunamoInterfaces.Interfaces;
