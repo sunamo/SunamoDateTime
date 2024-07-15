@@ -1,5 +1,8 @@
+using SunamoDateTime._public;
+
 namespace SunamoDateTime.Data;
-internal class FromToTDateTime<T> : FromToTDt<T> where T : struct
+
+public class FromToTDateTime<T> : FromToTDt<T> where T : struct
 {
     protected override string ToStringDateTime(LangsDt l)
     {

@@ -1,14 +1,14 @@
-namespace SunamoDateTime._sunamo.SunamoData.Data;
+namespace SunamoDateTime._public;
 
 
 /// <summary>
 ///     Must have always entered both from and to
 ///     None of event could have unlimited time!
 /// </summary>
-internal class FromToDt : FromToTSHDt<long>
+public class FromToDt : FromToTSHDt<long>
 {
-    internal static FromToDt Empty = new(true);
-    internal FromToDt()
+    public static FromToDt Empty = new(true);
+    public FromToDt()
     {
     }
     /// <summary>
@@ -26,7 +26,7 @@ internal class FromToDt : FromToTSHDt<long>
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    internal FromToDt(long from, long to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime)
+    public FromToDt(long from, long to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime)
     {
         this.from = from;
         this.to = to;

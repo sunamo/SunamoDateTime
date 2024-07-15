@@ -1,4 +1,4 @@
-namespace SunamoDateTime._sunamo.SunamoData.Data;
+namespace SunamoDateTime._public;
 
 
 /// <summary>
@@ -6,9 +6,9 @@ namespace SunamoDateTime._sunamo.SunamoData.Data;
 /// 
 /// </summary>
 /// <typeparam name="T"></typeparam>
-internal class FromToTDt<T> : FromToTSHDt<T> where T : struct
+public class FromToTDt<T> : FromToTSHDt<T> where T : struct
 {
-    internal FromToTDt()
+    public FromToTDt()
     {
         var t = typeof(T);
         if (t == Types.tInt)
@@ -31,7 +31,7 @@ internal class FromToTDt<T> : FromToTSHDt<T> where T : struct
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    internal FromToTDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
+    public FromToTDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
     {
         this.from = from;
         this.to = to;
@@ -41,7 +41,7 @@ internal class FromToTDt<T> : FromToTSHDt<T> where T : struct
     /// After it could be called IsFilledWithData
     /// </summary>
     /// <param name="input"></param>
-    internal void Parse(string input)
+    public void Parse(string input)
     {
         List<string> v = null;
         if (input.Contains(AllStrings.dash))
@@ -50,7 +50,7 @@ internal class FromToTDt<T> : FromToTSHDt<T> where T : struct
         }
         else
         {
-            v = new List<string>(new String[] { input });
+            v = new List<string>(new string[] { input });
         }
         if (v[0] == "0")
         {
@@ -68,7 +68,7 @@ internal class FromToTDt<T> : FromToTSHDt<T> where T : struct
             toL = v1;
         }
     }
-    internal bool IsFilledWithData()
+    public bool IsFilledWithData()
     {
         //from != 0 && - cant be, if entered 0-24 fails
         return toL >= 0 && toL != 0;
@@ -99,7 +99,7 @@ internal class FromToTDt<T> : FromToTSHDt<T> where T : struct
         }
         return result;
     }
-    internal string ToString(LangsDt l)
+    public string ToString(LangsDt l)
     {
         if (empty)
         {

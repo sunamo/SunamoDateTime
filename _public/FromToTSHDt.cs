@@ -1,14 +1,14 @@
-namespace SunamoDateTime._sunamo.SunamoData.Data;
+namespace SunamoDateTime._public;
 
 
-internal class FromToTSHDt<T>
+public class FromToTSHDt<T>
 {
-    
-    internal bool empty;
+
+    public bool empty;
     protected long fromL;
-    internal FromToUseDateTime ftUse = FromToUseDateTime.DateTime;
+    public FromToUseDateTime ftUse = FromToUseDateTime.DateTime;
     protected long toL;
-    internal FromToTSHDt()
+    public FromToTSHDt()
     {
         var t = typeof(T);
         if (t == Types.tInt) ftUse = FromToUseDateTime.None;
@@ -28,22 +28,22 @@ internal class FromToTSHDt<T>
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    internal FromToTSHDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
+    public FromToTSHDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
     {
         this.from = from;
         this.to = to;
         this.ftUse = ftUse;
     }
-    internal T from
+    public T from
     {
         get => (T)(dynamic)fromL;
         set => fromL = (long)(dynamic)value;
     }
-    internal T to
+    public T to
     {
         get => (T)(dynamic)toL;
         set => toL = (long)(dynamic)value;
     }
-    internal long FromL => fromL;
-    internal long ToL => toL;
+    public long FromL => fromL;
+    public long ToL => toL;
 }
