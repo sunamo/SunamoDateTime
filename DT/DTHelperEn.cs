@@ -13,7 +13,7 @@ public class DTHelperEn
     public static DateTime ParseDateUSA(string input)
     {
         DateTime vr = DateTime.MinValue;
-        var parts = input.Split(AllChars.slash); //SHSplit.SplitChar(input, new Char[] { AllChars.slash });
+        var parts = input.Split(AllChars.slash); //SHSplit.SplitCharMore(input, new Char[] { AllChars.slash });
         var day = -1;
         var month = -1;
         var year = -1;
@@ -52,7 +52,7 @@ public class DTHelperEn
     public static DateTime ParseTimeUSA(string t)
     {
         var vr = DateTime.MinValue;
-        var parts2 = t.Split(AllChars.space).ToList(); //SHSplit.SplitChar(t, new Char[] { AllChars.space });
+        var parts2 = t.Split(AllChars.space).ToList(); //SHSplit.SplitCharMore(t, new Char[] { AllChars.space });
         if (parts2.Count == 2)
         {
             var pm = false;
@@ -69,7 +69,7 @@ public class DTHelperEn
                 if (parts.Count == 2)
                 {
                     t += ":00";
-                    parts = t.Split(AllChars.colon).ToList(); //SHSplit.SplitChar(t, new Char[] { AllChars.colon });
+                    parts = t.Split(AllChars.colon).ToList(); //SHSplit.SplitCharMore(t, new Char[] { AllChars.colon });
                 }
                 int hours = -1;
                 int minutes = -1;
@@ -116,7 +116,7 @@ public class DTHelperEn
     /// <param name="s"></param>
     public static DateTime ParseDateTimeUSA(string s)
     {
-        var p = s.Split(AllChars.space); //SHSplit.Split(s, AllStrings.space);
+        var p = s.Split(AllChars.space); //SHSplit.SplitMore(s, AllStrings.space);
         DateTime result = ParseDateUSA(p[0]);
         var time = ParseTimeUSA(p[1] + AllStrings.space + p[2]);
         return DTHelperGeneral.Combine(result, time);

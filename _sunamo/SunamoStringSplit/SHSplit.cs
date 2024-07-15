@@ -3,9 +3,14 @@ namespace SunamoDateTime._sunamo.SunamoStringSplit;
 //namespace SunamoDateTime;
 internal class SHSplit
 {
+    internal static List<string> SplitNone(string p, params string[] newLine)
+    {
+        return p.Split(newLine, StringSplitOptions.None).ToList();
+    }
+
     internal static List<string> SplitToParts(string what, int parts, string deli)
     {
-        var s = what.Split(new string[] { deli }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(, deli);
+        var s = what.Split(new string[] { deli }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.SplitMore(, deli);
         if (s.Count < parts)
         {
             // Pokud je pocet ziskanych partu mensi, vlozim do zbytku prazdne retezce

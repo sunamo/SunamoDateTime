@@ -506,10 +506,10 @@ public class DTHelperMulti
     {
         dayTo = -1;
 
-        var s = SHSunamoExceptions.SplitNone(p, new string[] { AllStrings.slash });
+        var s = SHSplit.SplitNone(p, new string[] { AllStrings.slash });
         if (s.Count == 1)
         {
-            s = SHSunamoExceptions.SplitNone(p, new string[] { AllStrings.dot });
+            s = SHSplit.SplitNone(p, new string[] { AllStrings.dot });
 
             s[0] = DayTo(s[0], out dayTo);
 

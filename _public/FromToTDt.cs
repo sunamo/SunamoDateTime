@@ -1,6 +1,5 @@
 namespace SunamoDateTime._public;
 
-
 /// <summary>
 /// Contains methods which was earlier in FromToT
 /// 
@@ -46,7 +45,7 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         List<string> v = null;
         if (input.Contains(AllStrings.dash))
         {
-            v = input.Split(AllChars.dash).ToList(); //SHSplit.SplitChar(input, new Char[] { AllChars.dash });
+            v = input.Split(AllChars.dash).ToList(); //SHSplit.SplitCharMore(input, new Char[] { AllChars.dash });
         }
         else
         {
