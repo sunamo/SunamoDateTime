@@ -1,6 +1,6 @@
-using SunamoDateTime._public;
 
 namespace SunamoDateTime.Data;
+using SunamoDateTime._public;
 
 public class FromToTDateTime<T> : FromToTDt<T> where T : struct
 {

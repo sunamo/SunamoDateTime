@@ -1,5 +1,7 @@
-namespace SunamoDateTime._sunamo.SunamoExceptions._AddedToAllCsproj;
-internal class FSSunamoExceptions
+//namespace SunamoDateTime._sunamo.SunamoExceptions._AddedToAllCsproj;
+
+//namespace SunamoDateTime._sunamo.SunamoExceptions._AddedToAllCsproj;
+internal class FS
 {
     internal static void CreateUpfoldersPsysicallyUnlessThere(string nad)
     {
