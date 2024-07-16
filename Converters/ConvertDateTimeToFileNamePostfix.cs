@@ -1,6 +1,5 @@
 namespace SunamoDateTime.Converters;
 
-
 public class ConvertDateTimeToFileNamePostfix
 {
     private static char s_delimiter = AllChars.lowbar;

@@ -1,4 +1,5 @@
 namespace SunamoDateTime;
+
 public class NormalizeDate
 {
     public static DateTime From(short sh)

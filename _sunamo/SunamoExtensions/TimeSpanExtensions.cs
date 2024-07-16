@@ -1,6 +1,5 @@
 namespace SunamoDateTime._sunamo.SunamoExtensions;
 
-
 internal static class TimeSpanExtensions
 {
     #region For easy copy from TimeSpanExtensionsSunamo.cs

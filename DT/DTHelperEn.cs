@@ -65,7 +65,7 @@ public class DTHelperEn
                     pm = true;
                 }
                 var t2 = parts2[0];
-                var parts = t2.Split(AllChars.colon).ToList(); //.SplitChar(t2, new Char[] { AllChars.colon });
+                var parts = t2.Split(AllChars.colon).ToList(); //SH.SplitChar(t2, new Char[] { AllChars.colon });
                 if (parts.Count == 2)
                 {
                     t += ":00";

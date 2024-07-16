@@ -1,8 +1,5 @@
 namespace SunamoDateTime.ConvertersSimple;
 
-
-
-
 public class DTOnlyNumber
 {
     static Type type = typeof(DTOnlyNumber);
