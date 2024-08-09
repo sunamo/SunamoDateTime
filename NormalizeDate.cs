@@ -7,10 +7,7 @@ public class NormalizeDate
         var s = sh.ToString();
         s = s.Trim();
 
-        if (s.StartsWith(AllStrings.dash))
-        {
-            s = s.TrimStart(AllChars.dash);
-        }
+        if (s.StartsWith(AllStrings.dash)) s = s.TrimStart(AllChars.dash);
 
         var y = s.Substring(0, 2);
         var m = s.Substring(2, 1);
@@ -31,14 +28,14 @@ public class NormalizeDate
 
         var longYear = DTHelperGeneral.LongYear(y);
 
-        DateTime dt = new DateTime(int.Parse(longYear), int.Parse(m), int.Parse(d));
+        var dt = new DateTime(int.Parse(longYear), int.Parse(m), int.Parse(d));
         return dt;
     }
 
     public static short To(DateTime dt)
     {
-        bool timesMinus1 = false;
-        bool addFour = false;
+        var timesMinus1 = false;
+        var addFour = false;
 
         var y = DTHelperGeneral.ShortYear(dt.Year);
         // months never start with zero
@@ -51,10 +48,7 @@ public class NormalizeDate
 
             if (ms[0] == '1')
             {
-                if (ms[0] == '2')
-                {
-                    timesMinus1 = true;
-                }
+                if (ms[0] == '2') timesMinus1 = true;
                 addFour = true;
                 ms2 = ms[1].ToString();
             }
@@ -72,17 +66,11 @@ public class NormalizeDate
         var d = dt.Day.ToString("D2");
         var firstChar = d[0];
 
-        StringBuilder sb = new StringBuilder();
-        if (timesMinus1)
-        {
-            sb.Append(AllChars.dash);
-        }
+        var sb = new StringBuilder();
+        if (timesMinus1) sb.Append(AllChars.dash);
 
-        int firstChar2 = int.Parse(firstChar.ToString());
-        if (addFour)
-        {
-            firstChar2 += 4;
-        }
+        var firstChar2 = int.Parse(firstChar.ToString());
+        if (addFour) firstChar2 += 4;
 
         sb.Append(y);
         sb.Append(ms2);
