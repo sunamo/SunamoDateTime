@@ -1,4 +1,3 @@
-
 namespace SunamoDateTime.Data;
 using SunamoDateTime._public;
 

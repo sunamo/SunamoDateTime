@@ -11,7 +11,7 @@ public class FromToTSHDt<T>
     public FromToTSHDt()
     {
         var t = typeof(T);
-        if (t == Types.tInt) ftUse = FromToUseDateTime.None;
+        if (t == typeof(int)) ftUse = FromToUseDateTime.None;
     }
     /// <summary>
     ///     Use Empty contstant outside of class

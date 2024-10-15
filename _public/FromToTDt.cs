@@ -10,7 +10,7 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
     public FromToTDt()
     {
         var t = typeof(T);
-        if (t == Types.tInt)
+        if (t == typeof(int))
         {
             ftUse = FromToUseDateTime.None;
         }
