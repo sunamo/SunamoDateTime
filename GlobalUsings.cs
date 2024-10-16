@@ -19,3 +19,4 @@ global using SunamoDateTime._sunamo.SunamoValues.Values;
 global using System.Globalization;
 global using System.Reflection;
 global using System.Net;
+global using System.Diagnostics.CodeAnalysis;
