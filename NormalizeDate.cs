@@ -7,7 +7,7 @@ public class NormalizeDate
         var s = sh.ToString();
         s = s.Trim();
 
-        if (s.StartsWith(AllStrings.dash)) s = s.TrimStart(AllChars.dash);
+        if (s.StartsWith("-")) s = s.TrimStart('-');
 
         var y = s.Substring(0, 2);
         var m = s.Substring(2, 1);
@@ -67,7 +67,7 @@ public class NormalizeDate
         var firstChar = d[0];
 
         var sb = new StringBuilder();
-        if (timesMinus1) sb.Append(AllChars.dash);
+        if (timesMinus1) sb.Append('-');
 
         var firstChar2 = int.Parse(firstChar.ToString());
         if (addFour) firstChar2 += 4;

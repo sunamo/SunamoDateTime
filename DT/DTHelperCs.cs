@@ -12,7 +12,7 @@ public class DTHelperCs
     /// <param name="dt"></param>
     public static string DateToStringWithDayOfWeekCS(DateTime dt)
     {
-        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year;
+        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year;
     }
     #endregion
 
@@ -53,9 +53,9 @@ public class DTHelperCs
     {
         if (fillUpByZeros)
         {
-            return string.Join(AllStrings.colon, parts);
+            return string.Join(":", parts);
         }
-        return string.Join(AllStrings.colon, parts);
+        return string.Join(":", parts);
     }
 
     #region Time without seconds
@@ -86,11 +86,11 @@ public class DTHelperCs
     public static DateTime ParseTimeCzech(string t)
     {
         var vr = DateTime.MinValue;
-        var parts = t.Split(AllChars.colon).ToList(); //SHSplit.SplitCharMore(t, new char[] { AllChars.colon });
+        var parts = t.Split(':').ToList(); //SHSplit.SplitCharMore(t, new char[] { ':' });
         if (parts.Count == 2)
         {
             t += ":00";
-            parts = t.Split(AllChars.colon).ToList(); //SHSplit.SplitCharMore(t, new char[] { AllChars.colon });
+            parts = t.Split(':').ToList(); //SHSplit.SplitCharMore(t, new char[] { ':' });
         }
         int hours = -1;
         int minutes = -1;
@@ -127,7 +127,7 @@ public class DTHelperCs
     public static DateTime ParseDateCzech(string input)
     {
         DateTime vr = DateTime.MinValue;
-        var parts = input.Split(AllChars.dot).ToList(); //SHSplit.SplitCharMore(input, new char[] { AllChars.dot });
+        var parts = input.Split('.').ToList(); //SHSplit.SplitCharMore(input, new char[] { '.' });
         var day = -1;
         var month = -1;
         var year = -1;
@@ -319,7 +319,7 @@ public class DTHelperCs
 
     public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, LangsDt l, DateTime dtMinVal)
     {
-        return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + AllStrings.swda + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
+        return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + "-" + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
     }
 
     /// <param name="dayOfWeek"></param>
@@ -356,7 +356,7 @@ public class DTHelperCs
     public static string AppendToFrontOnlyTime(string defin)
     {
         DateTime dt = DateTime.Now;
-        return dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2") + AllStrings.colon + dt.Millisecond.ToString("D3") + AllStrings.space + defin;
+        return dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2") + ":" + dt.Millisecond.ToString("D3") + "" + defin;
     }
     #endregion
 
@@ -367,7 +367,7 @@ public class DTHelperCs
     /// <param name="d"></param>
     public static string ToShortDate(DateTime d)
     {
-        return string.Join(AllStrings.dot, d.Day, d.Month, d.Year);
+        return string.Join(".", d.Day, d.Month, d.Year);
     }
     #endregion
 
@@ -379,7 +379,7 @@ public class DTHelperCs
     /// <param name="dt"></param>
     public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
     {
-        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year + AllStrings.space + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2");
+        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year + "" + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2");
     }
 
     public static DateTime ParseDateTimeCzech(string s)

@@ -14,7 +14,7 @@ public class DTHelperFormalized
         if (fullCalendar == DateTimeFormatStyles.FullCalendar)
         {
             //2011-10-18 10:30
-            return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + AllStrings.space + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2");
+            return dt.Year + "-" + dt.Month.ToString("D2") + "-" + dt.Day.ToString("D2") + "" + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2");
         }
 
         return "";
@@ -28,7 +28,7 @@ public class DTHelperFormalized
     /// <param name = "dt"></param>
     public static string DateTimeToStringFormalizeDate(DateTime dt)
     {
-        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2");
+        return dt.Year + "-" + dt.Month.ToString("D2") + "-" + dt.Day.ToString("D2");
     }
     #endregion
     #endregion

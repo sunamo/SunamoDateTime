@@ -2,7 +2,7 @@ namespace SunamoDateTime.Converters;
 
 public class ConvertDateTimeToFileNamePostfix
 {
-    private static char s_delimiter = AllChars.lowbar;
+    private static char s_delimiter = '_';
 
     /// <summary>
     /// Convert from date to filename without ext
@@ -10,7 +10,7 @@ public class ConvertDateTimeToFileNamePostfix
     /// </summary>
     public static string ToConvention(string postfix, DateTime dt, bool time)
     {
-        //postfix = SHReplace.ReplaceAll(postfix, AllStrings.space, AllStrings.lowbar);
+        //postfix = SHReplace.ReplaceAll(postfix, "", "_");
         return DTHelper.DateTimeToFileName(dt, time) + s_delimiter + postfix;
     }
 

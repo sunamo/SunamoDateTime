@@ -10,7 +10,7 @@ public class DTHelperFormalizedWithT
     /// <param name = "dt"></param>
     public static string DateTimeToStringFormalizeDateEmptyTime(DateTime dt)
     {
-        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + "T00:00:00";
+        return dt.Year + "-" + dt.Month.ToString("D2") + "-" + dt.Day.ToString("D2") + "T00:00:00";
     }
     #endregion
 
@@ -21,7 +21,7 @@ public class DTHelperFormalizedWithT
     /// <param name="dt"></param>
     public static string DateTimeToStringStringifyDateEmptyTime(DateTime dt)
     {
-        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + "T00:00:00.000Z";
+        return dt.Year + "-" + dt.Month.ToString("D2") + "-" + dt.Day.ToString("D2") + "T00:00:00.000Z";
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public class DTHelperFormalizedWithT
     /// <param name="dt"></param>
     public static string DateTimeToStringStringifyDateTime(DateTime dt)
     {
-        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2") + AllStrings.dot + dt.Millisecond.ToString("D3") + "Z";
+        return dt.Year + "-" + dt.Month.ToString("D2") + "-" + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2") + "." + dt.Millisecond.ToString("D3") + "Z";
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class DTHelperFormalizedWithT
     /// <param name = "dt"></param>
     public static string DateAndTimeToStringFormalizeDate(DateTime dt)
     {
-        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2");
+        return dt.Year + "-" + dt.Month.ToString("D2") + "-" + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2");
     }
     #endregion
 }

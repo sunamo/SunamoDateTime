@@ -23,9 +23,9 @@ public class DTHelperUs
     /// <param name="time"></param>
     public static string DateTimeToFileName(DateTime dt, bool time)
     {
-        string dDate = AllStrings.lowbar;
-        string dSpace = AllStrings.lowbar;
-        string dTime = AllStrings.lowbar;
+        string dDate = "_";
+        string dSpace = "_";
+        string dTime = "_";
         string vr = dt.Year + dDate + dt.Month.ToString("D2") + dDate + dt.Day.ToString("D2");
         if (time)
         {
@@ -43,7 +43,7 @@ public class DTHelperUs
     /// <param name="fnwoe"></param>
     public static DateTime? FileNameToDateTimePrefix(string fnwoe, bool time, out string prefix)
     {
-        List<string> sp = SHSplit.SplitToPartsFromEnd(fnwoe, time ? 6 : 4, new Char[] { AllStrings.lowbar[0] });
+        List<string> sp = SHSplit.SplitToPartsFromEnd(fnwoe, time ? 6 : 4, new Char[] { "_"[0] });
         if (time)
         {
             prefix = sp[0];
@@ -74,7 +74,7 @@ public class DTHelperUs
     /// </summary>
     public static DateTime? FileNameToDateTimePostfix(string fnwoe, bool time, out string postfix)
     {
-        var sp = SHSplit.SplitToParts(fnwoe, time ? 6 : 4, AllStrings.lowbar);
+        var sp = SHSplit.SplitToParts(fnwoe, time ? 6 : 4, "_");
         if (time)
         {
             if (sp.Count > 5)
@@ -132,7 +132,7 @@ public class DTHelperUs
         postfix = "";
         serie = null;
 
-        var sp = SHSplit.SplitToParts(fnwoe, 6, AllStrings.lowbar);
+        var sp = SHSplit.SplitToParts(fnwoe, 6, "_");
 
         if (sp.Count > 5)
         {
@@ -166,7 +166,7 @@ public class DTHelperUs
     /// <param name="fnwoe"></param>
     public static DateTime? FileNameToDateTime(string fnwoe)
     {
-        var sp = fnwoe.Split(new String[] { AllStrings.lowbar }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.SplitMore(fnwoe, AllStrings.lowbar);
+        var sp = fnwoe.Split(new String[] { "_" }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.SplitMore(fnwoe, "_");
         // Tady jsem to rozděloval na 6 ale pak mi to vracelo null. Úprava na 5
         var dd = CAToNumber.ToInt1(sp, 5);
         if (dd == null)

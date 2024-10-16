@@ -15,7 +15,7 @@ public class DTHelperCode
         {
             return "";
         }
-        return dt.Year + AllStrings.dash + dt.Month.ToString("D2") + AllStrings.dash + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2");
+        return dt.Year + "-" + dt.Month.ToString("D2") + "-" + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2");
     }
     #endregion
 
@@ -29,8 +29,8 @@ public class DTHelperCode
     /// <param name="dt"></param>
     public static string DateToStringjQueryDatePicker(DateTime dt)
     {
-        //return dt.Day.ToString("D2") + AllStrings.dot + dt.Month.ToString("D2") + AllStrings.dot + dt.Year;
-        return dt.Month.ToString("D2") + AllStrings.slash + dt.Day.ToString("D2") + AllStrings.slash + dt.Year;
+        //return dt.Day.ToString("D2") + "." + dt.Month.ToString("D2") + "." + dt.Year;
+        return dt.Month.ToString("D2") + "/" + dt.Day.ToString("D2") + "/" + dt.Year;
     }
     #endregion
 
@@ -42,7 +42,7 @@ public class DTHelperCode
     /// <param name="dt"></param>
     public static string DateAndTimeToStringAngularDateTime(DateTime dt)
     {
-        return dt.Year + dt.Month.ToString("D2") + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2");
+        return dt.Year + dt.Month.ToString("D2") + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2");
     }
     #endregion
     #endregion
@@ -55,7 +55,7 @@ public class DTHelperCode
     /// <param name="dt"></param>
     public static string TimeToStringAngularTime(DateTime dt)
     {
-        return dt.Hour.ToString("D2") + AllStrings.colon + dt.Minute.ToString("D2") + AllStrings.colon + dt.Second.ToString("D2");
+        return dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2");
     }
     #endregion
 
@@ -80,12 +80,12 @@ public class DTHelperCode
     /// <param name="dtMinVal"></param>
     public static DateTime StringToDateTimeFromInputDateTimeLocal(string v, DateTime dtMinVal)
     {
-        if (!v.Contains(AllStrings.dash))
+        if (!v.Contains("-"))
         {
             return dtMinVal;
         }
         //2015-09-03T21:01
-        var sp = v.Split(new Char[] { AllChars.dash, 'T', AllChars.colon }).ToList();
+        var sp = v.Split(new Char[] { '-', 'T', ':' }).ToList();
         var dd = CAToNumber.ToInt0(sp);
         return new DateTime(dd[0], dd[1], dd[2], dd[3], dd[4], 0);
     }

@@ -42,7 +42,7 @@ public class DTHelperGeneral
     /// </summary>
     public static string ParseYear(string s)
     {
-        var p = s.Split(new Char[] { AllChars.dash, AllChars.slash });
+        var p = s.Split(new Char[] { '-', '/' });
         foreach (var item in p)
         {
             if (item.Length == 4)
@@ -193,7 +193,7 @@ public class DTHelperGeneral
 
     public static int FullYear(byte b)
     {
-        var bs = b.ToString().PadLeft(3, AllChars.zero);
+        var bs = b.ToString().PadLeft(3, '0');
         return int.Parse("2" + bs);
     }
 

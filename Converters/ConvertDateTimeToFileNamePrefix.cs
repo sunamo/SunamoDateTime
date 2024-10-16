@@ -5,7 +5,7 @@ namespace SunamoDateTime.Converters;
 /// </summary>
 public class ConvertDateTimeToFileNamePrefix
 {
-    private static char s_delimiter = AllChars.lowbar;
+    private static char s_delimiter = '_';
 
     /// <summary>
     /// Convert from date to filename without ext
@@ -13,7 +13,7 @@ public class ConvertDateTimeToFileNamePrefix
     /// </summary>
     public static string ToConvention(string prefix, DateTime dt, bool time)
     {
-        //prefix = SHReplace.ReplaceAll(prefix, AllStrings.space, AllStrings.lowbar);
+        //prefix = SHReplace.ReplaceAll(prefix, "", "_");
         return prefix + s_delimiter + DTHelper.DateTimeToFileName(dt, time);
     }
 

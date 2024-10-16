@@ -43,9 +43,9 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
     public void Parse(string input)
     {
         List<string> v = null;
-        if (input.Contains(AllStrings.dash))
+        if (input.Contains("-"))
         {
-            v = input.Split(AllChars.dash).ToList(); //SHSplit.SplitCharMore(input, new Char[] { AllChars.dash });
+            v = input.Split('-').ToList(); //SHSplit.SplitCharMore(input, new Char[] { '-' });
         }
         else
         {
@@ -80,9 +80,9 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
     private int ReturnSecondsFromTimeFormat(string v)
     {
         int result = 0;
-        if (v.Contains(AllStrings.colon))
+        if (v.Contains(":"))
         {
-            var parts = v.Split(AllChars.colon).ToList().ConvertAll(d => int.Parse(d)); //SHSplit.SplitToIntList(v, new String[] { AllStrings.colon });
+            var parts = v.Split(':').ToList().ConvertAll(d => int.Parse(d)); //SHSplit.SplitToIntList(v, new String[] { ":" });
             result += parts[0] * (int)DTConstants.secondsInHour;
             if (parts.Count > 1)
             {

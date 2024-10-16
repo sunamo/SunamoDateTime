@@ -12,7 +12,7 @@ global using SunamoDateTime._sunamo.SunamoBts;
 global using SunamoDateTime._sunamo.SunamoExtensions;
 global using SunamoDateTime._sunamo.SunamoParsing;
 global using SunamoDateTime._sunamo.SunamoStringSplit;
-global using SunamoDateTime._sunamo.SunamoValues;
+global using SunamoDateTime;
 global using SunamoDateTime._public.SunamoEnums.Enums;
 global using SunamoDateTime._sunamo.SunamoExceptions;
 global using SunamoDateTime._sunamo.SunamoValues.Constants;

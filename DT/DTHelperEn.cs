@@ -13,7 +13,7 @@ public class DTHelperEn
     public static DateTime ParseDateUSA(string input)
     {
         DateTime vr = DateTime.MinValue;
-        var parts = input.Split(AllChars.slash); //SHSplit.SplitCharMore(input, new Char[] { AllChars.slash });
+        var parts = input.Split('/'); //SHSplit.SplitCharMore(input, new Char[] { '/' });
         var day = -1;
         var month = -1;
         var year = -1;
@@ -52,7 +52,7 @@ public class DTHelperEn
     public static DateTime ParseTimeUSA(string t)
     {
         var vr = DateTime.MinValue;
-        var parts2 = t.Split(AllChars.space).ToList(); //SHSplit.SplitCharMore(t, new Char[] { AllChars.space });
+        var parts2 = t.Split(' ').ToList(); //SHSplit.SplitCharMore(t, new Char[] { ' ' });
         if (parts2.Count == 2)
         {
             var pm = false;
@@ -65,11 +65,11 @@ public class DTHelperEn
                     pm = true;
                 }
                 var t2 = parts2[0];
-                var parts = t2.Split(AllChars.colon).ToList(); //SH.SplitChar(t2, new Char[] { AllChars.colon });
+                var parts = t2.Split(':').ToList(); //SH.SplitChar(t2, new Char[] { ':' });
                 if (parts.Count == 2)
                 {
                     t += ":00";
-                    parts = t.Split(AllChars.colon).ToList(); //SHSplit.SplitCharMore(t, new Char[] { AllChars.colon });
+                    parts = t.Split(':').ToList(); //SHSplit.SplitCharMore(t, new Char[] { ':' });
                 }
                 int hours = -1;
                 int minutes = -1;
@@ -116,9 +116,9 @@ public class DTHelperEn
     /// <param name="s"></param>
     public static DateTime ParseDateTimeUSA(string s)
     {
-        var p = s.Split(AllChars.space); //SHSplit.SplitMore(s, AllStrings.space);
+        var p = s.Split(' '); //SHSplit.SplitMore(s, "");
         DateTime result = ParseDateUSA(p[0]);
-        var time = ParseTimeUSA(p[1] + AllStrings.space + p[2]);
+        var time = ParseTimeUSA(p[1] + "" + p[2]);
         return DTHelperGeneral.Combine(result, time);
         //return DateTime.Parse(s, CultureInfo.GetCultureInfo("en-us"));
     }
@@ -138,7 +138,7 @@ public class DTHelperEn
         int days = -1;
         int number = -1;
 
-        var arg = AddedAgo.Split(AllChars.lowbar).ToList(); //SHSplit.SplitNone(AddedAgo, new String[] { AllStrings.lowbar });
+        var arg = AddedAgo.Split('_').ToList(); //SHSplit.SplitNone(AddedAgo, new String[] { "_" });
         if (arg.Count == 2)
         {
             TryParse.Integer dt = new TryParse.Integer();

@@ -77,12 +77,12 @@ internal class CAToNumber
 
         for (int i = 0; i < ts.Count; i++)
         {
-            ts[i] = ts[i].Replace(AllChars.comma, AllChars.dot);
-            ts[i] = ts[i].Substring(0, ts[i].IndexOf(AllChars.dot) + 1);
+            ts[i] = ts[i].Replace(',', '.');
+            ts[i] = ts[i].Substring(0, ts[i].IndexOf('.') + 1);
         }
 
-        //CAChangeContent.ChangeContent0(null, ts, d => d.Replace(AllChars.comma, AllChars.dot));
-        //CAChangeContent.ChangeContent0(null, ts, d => d.Substring(0, d.IndexOf(AllChars.dot) + 1));
+        //CAChangeContent.ChangeContent0(null, ts, d => d.Replace(',', '.'));
+        //CAChangeContent.ChangeContent0(null, ts, d => d.Substring(0, d.IndexOf('.') + 1));
 
         return ToNumber<int, string>(int.Parse, ts);
     }
@@ -97,7 +97,7 @@ internal class CAToNumber
                 continue;
             }
 
-            if (double.TryParse(item.ToString(), out var _) /*SH.IsNumber(item.ToString(), new Char[] { AllChars.comma, AllChars.dot, AllChars.dash })*/)
+            if (double.TryParse(item.ToString(), out var _) /*SH.IsNumber(item.ToString(), new Char[] { ',', '.', '-' })*/)
             {
                 var number = parse.Invoke(item.ToString());
 

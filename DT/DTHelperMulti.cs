@@ -471,7 +471,7 @@ public class DTHelperMulti
             }
         }
 
-        string s = string.Join(AllChars.space, vr);
+        string s = string.Join(' ', vr);
 
         return s;
     }
@@ -506,14 +506,14 @@ public class DTHelperMulti
     {
         dayTo = -1;
 
-        var s = SHSplit.SplitNone(p, new string[] { AllStrings.slash });
+        var s = SHSplit.SplitNone(p, new string[] { "/" });
         if (s.Count == 1)
         {
-            s = SHSplit.SplitNone(p, new string[] { AllStrings.dot });
+            s = SHSplit.SplitNone(p, new string[] { "." });
 
             s[0] = DayTo(s[0], out dayTo);
 
-            DateTime vr = DTHelperCs.ParseDateCzech(s[0] + AllStrings.dot + s[1] + AllStrings.dot + s[2]);
+            DateTime vr = DTHelperCs.ParseDateCzech(s[0] + "." + s[1] + "." + s[2]);
             if (vr != DateTime.MinValue)
             {
                 return vr;
@@ -523,7 +523,7 @@ public class DTHelperMulti
         {
             s[1] = DayTo(s[1], out dayTo);
 
-            DateTime vr = DTHelperCs.ParseDateCzech(s[1] + AllStrings.dot + s[0] + AllStrings.dot + s[2]);
+            DateTime vr = DTHelperCs.ParseDateCzech(s[1] + "." + s[0] + "." + s[2]);
             if (vr != DateTime.MinValue)
             {
                 return vr;
@@ -534,10 +534,10 @@ public class DTHelperMulti
 
     private static string DayTo(string v, out int? dayTo)
     {
-        if (v.Contains(AllStrings.dash))
+        if (v.Contains("-"))
         {
 
-            var b = v.Split(AllChars.dash)[0];
+            var b = v.Split('-')[0];
             dayTo = int.Parse(v);
             return b;
         }
@@ -572,12 +572,12 @@ public class DTHelperMulti
         if (l == LangsDt.cs)
         {
             // 21.6.1989 11:22 (fill zero)
-            return d.Day + AllStrings.dot + d.Month + AllStrings.dot + d.Year + AllStrings.space + d.Hour.ToString("D2") + AllStrings.colon + d.Hour.ToString("D2");
+            return d.Day + "." + d.Month + "." + d.Year + "" + d.Hour.ToString("D2") + ":" + d.Hour.ToString("D2");
         }
         else
         {
             // 6/21/1989 11:22 (fill zero)
-            return d.Month + AllStrings.slash + d.Day + AllStrings.slash + d.Year + AllStrings.space + d.Hour.ToString("D2") + AllStrings.colon + d.Minute.ToString("D2");
+            return d.Month + "/" + d.Day + "/" + d.Year + "" + d.Hour.ToString("D2") + ":" + d.Minute.ToString("D2");
         }
     }
 
@@ -601,12 +601,12 @@ public class DTHelperMulti
         if (l == LangsDt.cs)
         {
             // 21.6.1989 11:22 (fill zero)
-            return d.Hour.ToString("D2") + AllStrings.colon + d.Minute.ToString("D2");
+            return d.Hour.ToString("D2") + ":" + d.Minute.ToString("D2");
         }
         else
         {
             // 6/21/1989 11:22 (fill zero)
-            return d.Hour.ToString("D2") + AllStrings.colon + d.Minute.ToString("D2");
+            return d.Hour.ToString("D2") + ":" + d.Minute.ToString("D2");
         }
     }
 
@@ -635,7 +635,7 @@ public class DTHelperMulti
             dayOfWeek = DTConstants.daysInWeekCS[day];
         }
 
-        return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
+        return DateToString(dateTime, l) + " (" + dayOfWeek + ")";
     }
     #endregion
 
@@ -667,7 +667,7 @@ public class DTHelperMulti
         r = r.Trim();
         if (r != "")
         {
-            var indexTecky = r.IndexOf(AllChars.dot);
+            var indexTecky = r.IndexOf('.');
             if (indexTecky != -1)
             {
                 dt = DTHelperCs.ParseDateCzech(r);
@@ -688,7 +688,7 @@ public class DTHelperMulti
     public static DateTime IsValidDateTimeText(string datum)
     {
         DateTime vr = DateTime.MinValue;
-        int indexMezery = datum.IndexOf(AllChars.space);
+        int indexMezery = datum.IndexOf(' ');
         if (indexMezery != -1)
         {
             var datum2 = DateTime.Today;
@@ -696,7 +696,7 @@ public class DTHelperMulti
             var datum3 = datum.Substring(0, indexMezery);
             var cas3 = datum.Substring(indexMezery + 1);
 
-            if (datum3.IndexOf(AllChars.dot) != -1)
+            if (datum3.IndexOf('.') != -1)
             {
                 datum2 = DTHelperCs.ParseDateCzech(datum3);
             }
@@ -705,7 +705,7 @@ public class DTHelperMulti
                 datum2 = DTHelperEn.ParseDateUSA(datum3);
             }
 
-            if (cas3.IndexOf(AllChars.space) == -1)
+            if (cas3.IndexOf(' ') == -1)
             {
                 cas2 = DTHelperCs.ParseTimeCzech(cas3);
             }
@@ -729,7 +729,7 @@ public class DTHelperMulti
         r = r.Trim();
         if (r != "")
         {
-            var indexMezery = r.IndexOf(AllChars.space);
+            var indexMezery = r.IndexOf(' ');
             if (indexMezery == -1)
             {
                 dt = DTHelperCs.ParseTimeCzech(r);
@@ -751,9 +751,9 @@ public class DTHelperMulti
     {
         if (l == LangsDt.cs)
         {
-            return p.Day + AllStrings.dot + p.Month + AllStrings.dot + p.Year;
+            return p.Day + "." + p.Month + "." + p.Year;
         }
-        return p.Month + AllStrings.slash + p.Day + AllStrings.slash + p.Year;
+        return p.Month + "/" + p.Day + "/" + p.Year;
     }
 
     public static string FilesFounded(int c, LangsDt l)
