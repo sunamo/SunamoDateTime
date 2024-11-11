@@ -379,7 +379,7 @@ public class DTHelperCs
     /// <param name="dt"></param>
     public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
     {
-        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year + "" + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2");
+        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year + " " + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2");
     }
 
     public static DateTime ParseDateTimeCzech(string s)

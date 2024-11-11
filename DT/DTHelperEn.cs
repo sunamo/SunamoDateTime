@@ -118,7 +118,7 @@ public class DTHelperEn
     {
         var p = s.Split(' '); //SHSplit.SplitMore(s, "");
         DateTime result = ParseDateUSA(p[0]);
-        var time = ParseTimeUSA(p[1] + "" + p[2]);
+        var time = ParseTimeUSA(p[1] + " " + p[2]);
         return DTHelperGeneral.Combine(result, time);
         //return DateTime.Parse(s, CultureInfo.GetCultureInfo("en-us"));
     }
