@@ -1,5 +1,4 @@
 namespace SunamoDateTime.Data;
-using SunamoDateTime._public;
 
 public class FromToTDateTime<T> : FromToTDt<T> where T : struct
 {
@@ -16,7 +15,6 @@ public class FromToTDateTime<T> : FromToTDt<T> where T : struct
         }
         else if (ftUse == FromToUseDateTime.Unix)
         {
-
             var from2 = UnixDateConverter.From(fromL);
             var from3 = DTHelperMulti.DateTimeToString(from2, l, DTConstants.UnixFsStart);
             if (toL != 0)
@@ -37,6 +35,4 @@ public class FromToTDateTime<T> : FromToTDt<T> where T : struct
         }
         return string.Empty;
     }
-
-
 }
