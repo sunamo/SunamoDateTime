@@ -26,7 +26,6 @@ global using SunamoDateTime._public;
 global using SunamoDateTime._sunamo;
 global using SunamoDateTime._sunamo.SunamoData.Data;
 global using SunamoDateTime._sunamo.SunamoInterfaces.Interfaces;
-
 global using ILogger = Microsoft.Extensions.Logging.ILogger;
 global using Microsoft.Extensions.Logging;
 global using NullLogger = Microsoft.Extensions.Logging.Abstractions.NullLogger;

@@ -12,6 +12,16 @@ public class DTHelperGeneral
 
     }
 
+    public static int WeekOfYearFromDate(DateTime datum)
+    {
+        DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(datum);
+        if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
+        {
+            datum = datum.AddDays(3 - (int)day);
+        }
+        return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(datum, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+    }
+
     public static DateTime StartOfWeekMonday(DateTime dt, DayOfWeek? aowWhenCalculateAsStartNextWeek)
     {
         DayOfWeek startOfWeek = DayOfWeek.Monday;
