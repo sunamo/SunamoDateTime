@@ -12,6 +12,7 @@ public class DTHelperGeneral
 
     }
 
+
     public static int WeekOfYearFromDate(DateTime datum)
     {
         DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(datum);
