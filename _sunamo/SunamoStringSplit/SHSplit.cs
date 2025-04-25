@@ -10,7 +10,7 @@ internal class SHSplit
 
     internal static List<string> SplitToParts(string what, int parts, string deli)
     {
-        var s = what.Split(new string[] { deli }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.SplitMore(, deli);
+        var s = what.Split(new string[] { deli }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(, deli);
         if (s.Count < parts)
         {
             // Pokud je pocet ziskanych partu mensi, vlozim do zbytku prazdne retezce

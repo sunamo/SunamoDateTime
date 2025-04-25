@@ -45,7 +45,7 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         List<string> v = null;
         if (input.Contains("-"))
         {
-            v = input.Split('-').ToList(); //SHSplit.SplitCharMore(input, new Char[] { '-' });
+            v = input.Split('-').ToList(); //SHSplit.SplitChar(input, new Char[] { '-' });
         }
         else
         {

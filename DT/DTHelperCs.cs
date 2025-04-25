@@ -86,11 +86,11 @@ public class DTHelperCs
     public static DateTime ParseTimeCzech(string t)
     {
         var vr = DateTime.MinValue;
-        var parts = t.Split(':').ToList(); //SHSplit.SplitCharMore(t, new char[] { ':' });
+        var parts = t.Split(':').ToList(); //SHSplit.SplitChar(t, new char[] { ':' });
         if (parts.Count == 2)
         {
             t += ":00";
-            parts = t.Split(':').ToList(); //SHSplit.SplitCharMore(t, new char[] { ':' });
+            parts = t.Split(':').ToList(); //SHSplit.SplitChar(t, new char[] { ':' });
         }
         int hours = -1;
         int minutes = -1;
@@ -127,7 +127,7 @@ public class DTHelperCs
     public static DateTime ParseDateCzech(string input)
     {
         DateTime vr = DateTime.MinValue;
-        var parts = input.Split('.').ToList(); //SHSplit.SplitCharMore(input, new char[] { '.' });
+        var parts = input.Split('.').ToList(); //SHSplit.SplitChar(input, new char[] { '.' });
         var day = -1;
         var month = -1;
         var year = -1;

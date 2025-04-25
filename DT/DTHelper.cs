@@ -387,7 +387,7 @@ public class DTHelper
 
     public static DateTime ParseLl(string v, Func<string, int> ConvertMonthShortcutNumberFromShortcut)
     {
-        var p = v.Split(' '); //SHSplit.SplitMore(v, "");
+        var p = v.Split(' '); //SHSplit.Split(v, "");
 
 
         return new DateTime(DateTime.Today.Year, ConvertMonthShortcutNumberFromShortcut(p[0]), int.Parse(p[1]));

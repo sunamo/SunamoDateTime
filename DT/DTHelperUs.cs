@@ -166,7 +166,7 @@ public class DTHelperUs
     /// <param name="fnwoe"></param>
     public static DateTime? FileNameToDateTime(string fnwoe)
     {
-        var sp = fnwoe.Split(new String[] { "_" }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.SplitMore(fnwoe, "_");
+        var sp = fnwoe.Split(new String[] { "_" }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(fnwoe, "_");
         // Tady jsem to rozděloval na 6 ale pak mi to vracelo null. Úprava na 5
         var dd = CAToNumber.ToInt1(sp, 5);
         if (dd == null)
