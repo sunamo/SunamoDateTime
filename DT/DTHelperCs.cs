@@ -391,13 +391,66 @@ public class DTHelperCs
     #endregion
 
     #region Calculating
+    public static string ToTimeAgo(DateTime pastDate, DateTime currentDate)
+    {
+        TimeSpan timeSince = currentDate.Subtract(pastDate);
+
+        if (timeSince.TotalSeconds < 1)
+        {
+            return "právě teď";
+        }
+        if (timeSince.TotalSeconds < 60)
+        {
+            int seconds = (int)timeSince.TotalSeconds;
+            return seconds == 1 ? "před 1 sekundou" : $"před {seconds} sekundami";
+        }
+        if (timeSince.TotalMinutes < 60)
+        {
+            int minutes = (int)timeSince.TotalMinutes;
+            return minutes == 1 ? "před 1 minutou" : $"před {minutes} minutami";
+        }
+        if (timeSince.TotalHours < 24)
+        {
+            int hours = (int)timeSince.TotalHours;
+            return hours == 1 ? "před 1 hodinou" : $"před {hours} hodinami";
+        }
+        if (timeSince.TotalDays < 30) // Approximate month
+        {
+            int days = (int)timeSince.TotalDays;
+            if (days == 1) return "včera";
+            if (days < 5) return $"před {days} dny"; // For 2, 3, 4 days
+            return $"před {days} dny"; // For 5+ days (same skloňování as above for simplicity)
+        }
+        if (timeSince.TotalDays < 365) // Approximate year
+        {
+            int months = (int)(timeSince.TotalDays / 30.436875); // Average days in a month
+            if (months <= 1) return "před 1 měsícem"; // Handle 0 or 1 month as "před 1 měsícem"
+            if (months < 5) return $"před {months} měsíci";
+            return $"před {months} měsíci"; // For 5+ months (same skloňování)
+        }
+        else
+        {
+            int years = (int)(timeSince.TotalDays / 365.25); // Account for leap years
+            if (years <= 1) return "před 1 rokem";
+            if (years < 5) return $"před {years} lety";
+            return $"před {years} lety"; // For 5+ years (same skloňování)
+        }
+    }
+
+    public static string ToTimeAgo(DateTime pastDate)
+    {
+        return ToTimeAgo(pastDate, DateTime.Now);
+    }
+
     /// <summary>
     /// If !A2 and time will be lower than 1 day, I got day
-    /// A3 was be originally SqlServerHelper.DateTimeMinVal
+    /// A3 was be originally SqlServerHelper.DateTimeMinVal. Return empty string when A3 == A1
+    /// 
+    /// dtMinVal je skutečně nutné zadávat ručně, protože DateTime nemůže být deklarován jako Consts. Nejde ho ani zadat jako = new DateTime(1, 1, 1, 0, 0, 0). Jediná možnost je = new DateTime() která má stejné hodnoty propert jako MinValue.
     /// </summary>
     /// <param name="dateTime"></param>
     /// <param name="calculateTime"></param>
-    public static string CalculateAgeAndAddRightString(DateTime dateTime, bool calculateTime, DateTime dtMinVal)
+    public static string CalculateAgeAndAddRightString(DateTime dateTime, bool calculateTime, DateTime dtMinVal = new DateTime())
     {
         if (dateTime == dtMinVal)
         {

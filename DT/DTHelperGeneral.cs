@@ -4,12 +4,10 @@ public class DTHelperGeneral
 {
     public static List<DateTime> GetDatesBetween(DateTime startDate, DateTime endDate)
     {
-
         List<DateTime> allDates = new List<DateTime>();
         for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
             allDates.Add(date);
         return allDates;
-
     }
 
 
