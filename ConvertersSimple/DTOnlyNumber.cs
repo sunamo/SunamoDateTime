@@ -10,11 +10,5 @@ public class DTOnlyNumber
         return s2;
     }
 
-    public static DateTime From(string s)
-    {
-        ThrowEx.NotImplementedMethod();
-        return DateTime.MinValue;
-    }
-
 
 }

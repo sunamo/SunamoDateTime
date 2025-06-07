@@ -69,10 +69,10 @@ public class DTHelper
         return DTHelperMulti.DateTimeToString(d, l, dtMinVal);
     }
 
-    public static string DateTimeToStringWithoutDayOfWeek(DateTime actualMessageDt)
-    {
-        return null;
-    }
+    //public static string DateTimeToStringWithoutDayOfWeek(DateTime actualMessageDt)
+    //{
+    //    return null;
+    //}
     #endregion
 
     #region Other
@@ -84,11 +84,6 @@ public class DTHelper
     public static DateTime CalculateStartOfPeriod(string AddedAgo)
     {
         return DTHelperEn.CalculateStartOfPeriod(AddedAgo);
-    }
-
-    public static string AddRightStringToTimeSpan(TimeSpan ts, bool v)
-    {
-        return null;
     }
     #endregion
 
