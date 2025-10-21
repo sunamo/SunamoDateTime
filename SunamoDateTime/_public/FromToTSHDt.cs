@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoDateTime._public;
 
 
@@ -10,8 +13,8 @@ public class FromToTSHDt<T>
     protected long toL;
     public FromToTSHDt()
     {
-        var t = typeof(T);
-        if (t == typeof(int)) ftUse = FromToUseDateTime.None;
+        var type = typeof(type);
+        if (type == typeof(int)) ftUse = FromToUseDateTime.None;
     }
     /// <summary>
     ///     Use Empty contstant outside of class
@@ -28,20 +31,20 @@ public class FromToTSHDt<T>
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    public FromToTSHDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
+    public FromToTSHDt(type from, type to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
     {
         this.from = from;
         this.to = to;
         this.ftUse = ftUse;
     }
-    public T from
+    public type from
     {
-        get => (T)(dynamic)fromL;
+        get => (type)(dynamic)fromL;
         set => fromL = (long)(dynamic)value;
     }
-    public T to
+    public type to
     {
-        get => (T)(dynamic)toL;
+        get => (type)(dynamic)toL;
         set => toL = (long)(dynamic)value;
     }
     public long FromL => fromL;

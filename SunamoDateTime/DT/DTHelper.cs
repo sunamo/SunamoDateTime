@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoDateTime.DT;
 
 public class DTHelper
@@ -27,9 +30,9 @@ public class DTHelper
     /// 2018-08-10T11:33:19Z
     /// </summary>
     /// <param name="p"></param>
-    public static DateTime StringToDateTimeFormalizeDate(string p)
+    public static DateTime StringToDateTimeFormalizeDate(string parameter)
     {
-        return DTHelperFormalized.StringToDateTimeFormalizeDate(p);
+        return DTHelperFormalized.StringToDateTimeFormalizeDate(parameter);
     }
     #endregion
 
@@ -44,9 +47,9 @@ public class DTHelper
         return DTHelperCs.CalculateAgeAndAddRightStringKymCim(dateTime, calculateTime, l, dtMinVal);
     }
 
-    public static string MakeUpTo2NumbersToZero(int p)
+    public static string MakeUpTo2NumbersToZero(int parameter)
     {
-        return p.ToString("D2");// NH.MakeUpTo2NumbersToZero(p);
+        return parameter.ToString("D2");// NH.MakeUpTo2NumbersToZero(parameter);
     }
 
     public static string TimeToStringAngularTime(DateTime dt)
@@ -59,9 +62,9 @@ public class DTHelper
         return DTHelperCode.DateToStringAngularDate(dt);
     }
 
-    public static string DateToString(DateTime p, LangsDt l)
+    public static string DateToString(DateTime parameter, LangsDt l)
     {
-        return DTHelperMulti.DateToString(p, l);
+        return DTHelperMulti.DateToString(parameter, l);
     }
 
     public static string DateTimeToString(DateTime d, LangsDt l, DateTime dtMinVal)
@@ -76,9 +79,9 @@ public class DTHelper
     #endregion
 
     #region Other
-    public static DateTime OnlyDateProperties(DateTime p)
+    public static DateTime OnlyDateProperties(DateTime parameter)
     {
-        return new DateTime(p.Year, p.Month, p.Day);
+        return new DateTime(parameter.Year, parameter.Month, parameter.Day);
     }
 
     public static DateTime CalculateStartOfPeriod(string AddedAgo)
@@ -206,9 +209,9 @@ public class DTHelper
     /// <param name="p"></param>
     /// <param name="l"></param>
     /// <param name="dtMinVal"></param>
-    public static string DateToStringOrSE(DateTime p, LangsDt l, DateTime dtMinVal)
+    public static string DateToStringOrSE(DateTime parameter, LangsDt l, DateTime dtMinVal)
     {
-        return DTHelperMulti.DateToStringOrSE(p, l, dtMinVal);
+        return DTHelperMulti.DateToStringOrSE(parameter, l, dtMinVal);
     }
 
     /// <summary>
@@ -269,10 +272,10 @@ public class DTHelper
     /// mm/d/yyyy
     /// </summary>
     /// <param name="p"></param>
-    public static DateTime? ParseDateMonthDayYear(string p)
+    public static DateTime? ParseDateMonthDayYear(string parameter)
     {
         int? dayTo = -1;
-        return DTHelperMulti.ParseDateMonthDayYear(p, out dayTo);
+        return DTHelperMulti.ParseDateMonthDayYear(parameter, out dayTo);
     }
     #endregion
 
@@ -355,9 +358,9 @@ public class DTHelper
     }
 
 
-    public static string TimeInMsToSeconds(Stopwatch p)
+    public static string TimeInMsToSeconds(Stopwatch parameter)
     {
-        return DTHelperGeneral.TimeInMsToSeconds(p);
+        return DTHelperGeneral.TimeInMsToSeconds(parameter);
     }
 
     public static DateTime TodayPlusActualHour()
@@ -382,10 +385,10 @@ public class DTHelper
 
     public static DateTime ParseLl(string v, Func<string, int> ConvertMonthShortcutNumberFromShortcut)
     {
-        var p = v.Split(' '); //SHSplit.Split(v, "");
+        var parameter = v.Split(' '); //SHSplit.Split(v, "");
 
 
-        return new DateTime(DateTime.Today.Year, ConvertMonthShortcutNumberFromShortcut(p[0]), int.Parse(p[1]));
+        return new DateTime(DateTime.Today.Year, ConvertMonthShortcutNumberFromShortcut(parameter[0]), int.Parse(parameter[1]));
     }
     #endregion
 }

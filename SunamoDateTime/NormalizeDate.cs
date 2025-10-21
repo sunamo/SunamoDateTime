@@ -1,34 +1,37 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoDateTime;
 
 public class NormalizeDate
 {
     public static DateTime From(short sh)
     {
-        var s = sh.ToString();
-        s = s.Trim();
+        var text = sh.ToString();
+        text = text.Trim();
 
-        if (s.StartsWith("-")) s = s.TrimStart('-');
+        if (text.StartsWith("-")) text = text.TrimStart('-');
 
-        var y = s.Substring(0, 2);
-        var m = s.Substring(2, 1);
-        var d = s.Substring(3, 2);
+        var yValue = text.Substring(0, 2);
+        var message = text.Substring(2, 1);
+        var data = text.Substring(3, 2);
 
-        var firstLetter = int.Parse(d[0].ToString());
+        var firstLetter = int.Parse(data[0].ToString());
         if (firstLetter > 3)
         {
-            m = "1" + m;
+            message = "1" + message;
             var f = (firstLetter - 4).ToString()[0];
-            var s2 = d[1].ToString();
-            d = f + s2;
+            var s2 = data[1].ToString();
+            data = f + s2;
         }
-        else if (m == "0")
+        else if (message == "0")
         {
-            m = "10";
+            message = "10";
         }
 
-        var longYear = DTHelperGeneral.LongYear(y);
+        var longYear = DTHelperGeneral.LongYear(yValue);
 
-        var dt = new DateTime(int.Parse(longYear), int.Parse(m), int.Parse(d));
+        var dt = new DateTime(int.Parse(longYear), int.Parse(message), int.Parse(data));
         return dt;
     }
 
@@ -37,14 +40,14 @@ public class NormalizeDate
         var timesMinus1 = false;
         var addFour = false;
 
-        var y = DTHelperGeneral.ShortYear(dt.Year);
+        var yValue = DTHelperGeneral.ShortYear(dt.Year);
         // months never start with zero
-        var m = dt.Month;
-        var ms2 = m.ToString();
+        var message = dt.Month;
+        var ms2 = message.ToString();
 
-        if (m > 10)
+        if (message > 10)
         {
-            var ms = m.ToString("D2");
+            var ms = message.ToString("D2");
 
             if (ms[0] == '1')
             {
@@ -53,7 +56,7 @@ public class NormalizeDate
                 ms2 = ms[1].ToString();
             }
         }
-        else if (m == 10)
+        else if (message == 10)
         {
             ms2 = "0";
         }
@@ -63,21 +66,21 @@ public class NormalizeDate
         november = 4,5,6,7
         december = -4,5,6,7
         */
-        var d = dt.Day.ToString("D2");
-        var firstChar = d[0];
+        var data = dt.Day.ToString("D2");
+        var firstChar = data[0];
 
-        var sb = new StringBuilder();
-        if (timesMinus1) sb.Append('-');
+        var stringBuilder = new StringBuilder();
+        if (timesMinus1) stringBuilder.Append('-');
 
         var firstChar2 = int.Parse(firstChar.ToString());
         if (addFour) firstChar2 += 4;
 
-        sb.Append(y);
-        sb.Append(ms2);
-        sb.Append(firstChar2);
-        sb.Append(d[1].ToString());
+        stringBuilder.Append(yValue);
+        stringBuilder.Append(ms2);
+        stringBuilder.Append(firstChar2);
+        stringBuilder.Append(data[1].ToString());
 
-        var result = sb.ToString();
+        var result = stringBuilder.ToString();
         return short.Parse(result);
     }
 

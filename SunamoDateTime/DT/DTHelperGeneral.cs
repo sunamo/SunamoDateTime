@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoDateTime.DT;
 
 public class DTHelperGeneral
@@ -49,10 +52,10 @@ public class DTHelperGeneral
     /// <summary>
     /// Find four digit letter in any string
     /// </summary>
-    public static string ParseYear(string s)
+    public static string ParseYear(string text)
     {
-        var p = s.Split(new Char[] { '-', '/' });
-        foreach (var item in p)
+        var parameter = text.Split(new Char[] { '-', '/' });
+        foreach (var item in parameter)
         {
             if (item.Length == 4)
             {
@@ -182,9 +185,9 @@ public class DTHelperGeneral
 
     public static string ShortYear(int year)
     {
-        var s = year.ToString();
-        s = s.Substring(2, 2);
-        return s;
+        var text = year.ToString();
+        text = text.Substring(2, 2);
+        return text;
     }
 
     public static string LongYear(string y)
@@ -260,10 +263,10 @@ public class DTHelperGeneral
         return new DateTime(1, 1, 1, dt.Hour, dt.Minute, dt.Second);
     }
 
-    public static string TimeInMsToSeconds(Stopwatch p)
+    public static string TimeInMsToSeconds(Stopwatch parameter)
     {
-        var d2 = (double)p.ElapsedMilliseconds;
-        p.Reset();
+        var d2 = (double)parameter.ElapsedMilliseconds;
+        parameter.Reset();
         string d = (d2 / 1000).ToString();
         if (d.Length > 4)
         {

@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoDateTime._sunamo.SunamoStringSplit;
 
 //namespace SunamoDateTime;
@@ -10,18 +13,18 @@ internal class SHSplit
 
     internal static List<string> SplitToParts(string what, int parts, string deli)
     {
-        var s = what.Split(new string[] { deli }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(, deli);
-        if (s.Count < parts)
+        var text = what.Split(new string[] { deli }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(, deli);
+        if (text.Count < parts)
         {
             // Pokud je pocet ziskanych partu mensi, vlozim do zbytku prazdne retezce
-            if (s.Count > 0)
+            if (text.Count > 0)
             {
                 List<string> vr2 = new List<string>();
                 for (int i = 0; i < parts; i++)
                 {
-                    if (i < s.Count)
+                    if (i < text.Count)
                     {
-                        vr2.Add(s[i]);
+                        vr2.Add(text[i]);
                     }
                     else
                     {
@@ -29,39 +32,39 @@ internal class SHSplit
                     }
                 }
                 return vr2;
-                //return new string[] { s[0] };
+                //return new string[] { text[0] };
             }
             else
             {
                 return null;
             }
         }
-        else if (s.Count == parts)
+        else if (text.Count == parts)
         {
             // Pokud pocet ziskanych partu souhlasim presne, vratim jak je
-            return s;
+            return text;
         }
 
         // Pokud je pocet ziskanych partu vetsi nez kolik ma byt, pripojim ty co josu navic do zbytku
         parts--;
         List<string> vr = new List<string>();
-        for (int i = 0; i < s.Count; i++)
+        for (int i = 0; i < text.Count; i++)
         {
             if (i < parts)
             {
-                vr.Add(s[i]);
+                vr.Add(text[i]);
             }
             else if (i == parts)
             {
-                vr.Add(s[i] + deli);
+                vr.Add(text[i] + deli);
             }
-            else if (i != s.Count - 1)
+            else if (i != text.Count - 1)
             {
-                vr[parts] += s[i] + deli;
+                vr[parts] += text[i] + deli;
             }
             else
             {
-                vr[parts] += s[i];
+                vr[parts] += text[i];
             }
         }
         return vr;
@@ -76,7 +79,7 @@ internal class SHSplit
         SHSplit.SplitCustom(what, out chs, out bw, out delimitersIndexes, deli);
 
         List<string> vr = new List<string>(parts);
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = chs.Count - 1; i >= 0; i--)
         {
             if (!bw[i])
@@ -85,8 +88,8 @@ internal class SHSplit
                 {
                     i--;
                 }
-                string d = sb.ToString();
-                sb.Clear();
+                string d = stringBuilder.ToString();
+                stringBuilder.Clear();
                 if (d != "")
                 {
                     vr.Add(d);
@@ -94,12 +97,12 @@ internal class SHSplit
             }
             else
             {
-                sb.Insert(0, chs[i]);
-                //sb.Append(chs[i]);
+                stringBuilder.Insert(0, chs[i]);
+                //stringBuilder.Append(chs[i]);
             }
         }
-        string d2 = sb.ToString();
-        sb.Clear();
+        string d2 = stringBuilder.ToString();
+        stringBuilder.Clear();
         if (d2 != "")
         {
             vr.Add(d2);

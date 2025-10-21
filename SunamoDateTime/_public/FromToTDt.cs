@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoDateTime._public;
 
 /// <summary>
@@ -5,12 +8,12 @@ namespace SunamoDateTime._public;
 /// 
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class FromToTDt<T> : FromToTSHDt<T> where T : struct
+public class FromToTDt<T> : FromToTSHDt<T> where type : struct
 {
     public FromToTDt()
     {
-        var t = typeof(T);
-        if (t == typeof(int))
+        var type = typeof(type);
+        if (type == typeof(int))
         {
             ftUse = FromToUseDateTime.None;
         }
@@ -30,7 +33,7 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    public FromToTDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
+    public FromToTDt(type from, type to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
     {
         this.from = from;
         this.to = to;

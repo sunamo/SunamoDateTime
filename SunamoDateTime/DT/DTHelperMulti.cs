@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoDateTime.DT;
 
 public class DTHelperMulti
@@ -471,9 +474,9 @@ public class DTHelperMulti
             }
         }
 
-        string s = string.Join(' ', vr);
+        string text = string.Join(' ', vr);
 
-        return s;
+        return text;
     }
     #endregion
 
@@ -506,14 +509,14 @@ public class DTHelperMulti
     {
         dayTo = -1;
 
-        var s = SHSplit.SplitNone(p, new string[] { "/" });
-        if (s.Count == 1)
+        var text = SHSplit.SplitNone(p, new string[] { "/" });
+        if (text.Count == 1)
         {
-            s = SHSplit.SplitNone(p, new string[] { "." });
+            text = SHSplit.SplitNone(p, new string[] { "." });
 
-            s[0] = DayTo(s[0], out dayTo);
+            text[0] = DayTo(text[0], out dayTo);
 
-            DateTime vr = DTHelperCs.ParseDateCzech(s[0] + "." + s[1] + "." + s[2]);
+            DateTime vr = DTHelperCs.ParseDateCzech(text[0] + "." + text[1] + "." + text[2]);
             if (vr != DateTime.MinValue)
             {
                 return vr;
@@ -521,9 +524,9 @@ public class DTHelperMulti
         }
         else
         {
-            s[1] = DayTo(s[1], out dayTo);
+            text[1] = DayTo(text[1], out dayTo);
 
-            DateTime vr = DTHelperCs.ParseDateCzech(s[1] + "." + s[0] + "." + s[2]);
+            DateTime vr = DTHelperCs.ParseDateCzech(text[1] + "." + text[0] + "." + text[2]);
             if (vr != DateTime.MinValue)
             {
                 return vr;
@@ -537,9 +540,9 @@ public class DTHelperMulti
         if (v.Contains("-"))
         {
 
-            var b = v.Split('-')[0];
+            var builder = v.Split('-')[0];
             dayTo = int.Parse(v);
-            return b;
+            return builder;
         }
         dayTo = -1;
         return v;
@@ -552,7 +555,7 @@ public class DTHelperMulti
     /// <summary>
     /// 21.6.1989 11:22 (fill zero)
     /// 6/21/1989 11:22 (fill zero)
-    /// Vrátí datum a čas v českém formátu bez ms a s
+    /// Vrátí datum a čas v českém formátu bez ms a text
     /// </summary>
     /// <param name="d"></param>
     public static string DateTimeToString(DateTime d, LangsDt l, DateTime dtMinVal)

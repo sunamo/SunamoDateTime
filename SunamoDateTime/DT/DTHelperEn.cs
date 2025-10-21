@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoDateTime.DT;
 
 public class DTHelperEn
@@ -114,13 +117,13 @@ public class DTHelperEn
     /// hh:mm tt
     /// </summary>
     /// <param name="s"></param>
-    public static DateTime ParseDateTimeUSA(string s)
+    public static DateTime ParseDateTimeUSA(string text)
     {
-        var p = s.Split(' '); //SHSplit.Split(s, "");
-        DateTime result = ParseDateUSA(p[0]);
-        var time = ParseTimeUSA(p[1] + " " + p[2]);
+        var parameter = text.Split(' '); //SHSplit.Split(text, "");
+        DateTime result = ParseDateUSA(parameter[0]);
+        var time = ParseTimeUSA(parameter[1] + " " + parameter[2]);
         return DTHelperGeneral.Combine(result, time);
-        //return DateTime.Parse(s, CultureInfo.GetCultureInfo("en-us"));
+        //return DateTime.Parse(text, CultureInfo.GetCultureInfo("en-us"));
     }
     #endregion
     #endregion
