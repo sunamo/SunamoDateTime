@@ -8,11 +8,11 @@ namespace SunamoDateTime._public;
 /// 
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class FromToTDt<T> : FromToTSHDt<T> where type : struct
+public class FromToTDt<T> : FromToTSHDt<T> where T : struct
 {
     public FromToTDt()
     {
-        var type = typeof(type);
+        var type = typeof(T);
         if (type == typeof(int))
         {
             ftUse = FromToUseDateTime.None;
@@ -33,7 +33,7 @@ public class FromToTDt<T> : FromToTSHDt<T> where type : struct
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    public FromToTDt(type from, type to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
+    public FromToTDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
     {
         this.from = from;
         this.to = to;

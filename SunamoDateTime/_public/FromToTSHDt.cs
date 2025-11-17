@@ -13,7 +13,7 @@ public class FromToTSHDt<T>
     protected long toL;
     public FromToTSHDt()
     {
-        var type = typeof(type);
+        var type = typeof(T);
         if (type == typeof(int)) ftUse = FromToUseDateTime.None;
     }
     /// <summary>
@@ -31,20 +31,20 @@ public class FromToTSHDt<T>
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    public FromToTSHDt(type from, type to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
+    public FromToTSHDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
     {
         this.from = from;
         this.to = to;
         this.ftUse = ftUse;
     }
-    public type from
+    public T from
     {
-        get => (type)(dynamic)fromL;
+        get => (T)(dynamic)fromL;
         set => fromL = (long)(dynamic)value;
     }
-    public type to
+    public T to
     {
-        get => (type)(dynamic)toL;
+        get => (T)(dynamic)toL;
         set => toL = (long)(dynamic)value;
     }
     public long FromL => fromL;
