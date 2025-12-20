@@ -1,9 +1,7 @@
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-
 namespace SunamoDateTime.DT;
-
-public class DTHelperGeneral
+public partial class DTHelperGeneral
 {
     public static List<DateTime> GetDatesBetween(DateTime startDate, DateTime endDate)
     {
@@ -13,7 +11,6 @@ public class DTHelperGeneral
         return allDates;
     }
 
-
     public static int WeekOfYearFromDate(DateTime datum)
     {
         DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(datum);
@@ -21,6 +18,7 @@ public class DTHelperGeneral
         {
             datum = datum.AddDays(3 - (int)day);
         }
+
         return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(datum, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
     }
 
@@ -36,7 +34,6 @@ public class DTHelperGeneral
         var part = (7 + diff);
         int diff2 = part % 7;
         var addedDays = dt.AddDays(-1 * diff2);
-
         if (aowWhenCalculateAsStartNextWeek.HasValue)
         {
             if (dt.DayOfWeek > (aowWhenCalculateAsStartNextWeek - 1))
@@ -48,7 +45,6 @@ public class DTHelperGeneral
         return addedDays.Date;
     }
 
-    #region Parse special
     /// <summary>
     /// Find four digit letter in any string
     /// </summary>
@@ -65,14 +61,9 @@ public class DTHelperGeneral
                 }
             }
         }
+
         return string.Empty;
     }
-
-
-    #endregion
-
-    #region Set*
-
 
     public static DateTime SetMinute(DateTime d, int v)
     {
@@ -83,13 +74,11 @@ public class DTHelperGeneral
     {
         return new DateTime(d.Year, d.Month, d.Day, v, d.Minute, d.Second);
     }
-    #endregion
 
-    #region Other
     /// <summary>
     /// Check also for MinValue and MaxValue
     /// </summary>
-    /// <param name="dt"></param>
+    /// <param name = "dt"></param>
     public static bool HasNullableDateTimeValue(DateTime? dt)
     {
         if (dt.HasValue)
@@ -106,7 +95,7 @@ public class DTHelperGeneral
     /// <summary>
     /// Is counting only time, return as non-normalized int
     /// </summary>
-    /// <param name="t"></param>
+    /// <param name = "t"></param>
     public static long DateTimeToSecondsOnlyTime(DateTime t, long secondsInHour)
     {
         long vr = t.Hour * secondsInHour;
@@ -126,16 +115,14 @@ public class DTHelperGeneral
     /// <summary>
     /// Subtract A2 from A1
     /// </summary>
-    /// <param name="dt1"></param>
-    /// <param name="dt2"></param>
+    /// <param name = "dt1"></param>
+    /// <param name = "dt2"></param>
     public static TimeSpan Substract(DateTime dt1, DateTime dt2)
     {
         TimeSpan ts = dt1 - dt2;
         return ts;
     }
-    #endregion
 
-    #region Set*
     public static DateTime SetDateToMinValue(DateTime dt)
     {
         DateTime minVal = DateTime.MinValue;
@@ -147,9 +134,7 @@ public class DTHelperGeneral
         DateTime t = DateTime.Today;
         return new DateTime(t.Year, t.Month, t.Day, ugtFirstStep.Hour, ugtFirstStep.Minute, ugtFirstStep.Second);
     }
-    #endregion
 
-    #region Create*
     public static DateTime? Create(string y, string m, string d)
     {
         return Create(int.Parse(y), int.Parse(m), int.Parse(d));
@@ -181,7 +166,6 @@ public class DTHelperGeneral
         today = today.AddMinutes(double.Parse(minutes));
         return today;
     }
-    #endregion
 
     public static string ShortYear(int year)
     {
@@ -209,26 +193,28 @@ public class DTHelperGeneral
         return int.Parse("2" + bs);
     }
 
-    #region Helper
     /// <summary>
     /// A2 = SqlServerHelper.DateTimeMinVal
     /// if A1 = A2, return 255
     /// </summary>
-    /// <param name="bday"></param>
+    /// <param name = "bday"></param>
     public static byte CalculateAge(DateTime bday, DateTime dtMinVal)
     {
         if (bday == dtMinVal)
         {
             return 255;
         }
+
         DateTime today = DateTime.Today;
         int age = today.Year - bday.Year;
-        if (bday > today.AddYears(-age)) age--;
+        if (bday > today.AddYears(-age))
+            age--;
         byte vr = (byte)age;
         if (vr == 255)
         {
             return 0;
         }
+
         return vr;
     }
 
@@ -262,42 +248,4 @@ public class DTHelperGeneral
     {
         return new DateTime(1, 1, 1, dt.Hour, dt.Minute, dt.Second);
     }
-
-    public static string TimeInMsToSeconds(Stopwatch parameter)
-    {
-        var d2 = (double)parameter.ElapsedMilliseconds;
-        parameter.Reset();
-        string d = (d2 / 1000).ToString();
-        if (d.Length > 4)
-        {
-            d = d.Substring(0, 4);
-        }
-        return d + "s";
-    }
-
-    public static string CalculateAgeString(DateTime bday, DateTime dtMinVal)
-    {
-        byte b = CalculateAge(bday, dtMinVal);
-        if (b == 255)
-        {
-            return "";
-        }
-        return b.ToString();
-    }
-
-    public static DateTime TodayPlusActualHour()
-    {
-        DateTime dt = DateTime.Today;
-        return dt.AddHours(DateTime.Now.Hour);
-    }
-
-    public static DateTime Combine(DateTime result, DateTime time)
-    {
-        result.AddHours(time.Hour);
-        result.AddMinutes(time.Minute);
-        result.AddSeconds(time.Second);
-        result.AddMilliseconds(time.Millisecond);
-        return result;
-    }
-    #endregion
 }
