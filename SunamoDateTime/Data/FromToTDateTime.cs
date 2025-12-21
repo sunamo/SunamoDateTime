@@ -1,5 +1,3 @@
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoDateTime.Data;
 
 public class FromToTDateTime<T> : FromToTDt<T> where T : struct
