@@ -1,48 +1,88 @@
 namespace SunamoDateTime._public;
 
+/// <summary>
+/// Represents a time range with From and To values of type T.
+/// EN: Generic base class for time range with configurable usage type.
+/// CZ: Generická bázová třída pro časový rozsah s konfigurovatelným typem použití.
+/// </summary>
+/// <typeparam name="T">The type of the From and To values (typically long for Unix timestamps or int for other purposes)</typeparam>
 public class FromToTSHDt<T>
 {
+    public bool IsEmpty { get; set; }
+    protected long fromLong;
+    public FromToUseDateTime UseType { get; set; } = FromToUseDateTime.DateTime;
+    protected long toLong;
 
-    public bool empty;
-    protected long fromL;
-    public FromToUseDateTime ftUse = FromToUseDateTime.DateTime;
-    protected long toL;
+    /// <summary>
+    /// Initializes a new instance of the FromToTSHDt class.
+    /// EN: Sets default UseType based on generic type T.
+    /// CZ: Nastaví výchozí UseType podle generického typu T.
+    /// </summary>
     public FromToTSHDt()
     {
         var type = typeof(T);
-        if (type == typeof(int)) ftUse = FromToUseDateTime.None;
+        if (type == typeof(int)) UseType = FromToUseDateTime.None;
     }
+
     /// <summary>
-    ///     Use Empty contstant outside of class
+    /// Initializes an empty time range.
+    /// EN: Use Empty constant outside of class instead of calling this constructor.
+    /// CZ: Použijte konstantu Empty mimo třídu místo volání tohoto konstruktoru.
     /// </summary>
-    /// <param name="empty"></param>
-    private FromToTSHDt(bool empty) : this()
+    /// <param name="isEmpty">True to create an empty time range</param>
+    private FromToTSHDt(bool isEmpty) : this()
     {
-        this.empty = empty;
+        this.IsEmpty = isEmpty;
     }
+
     /// <summary>
-    ///     A3 true = DateTime
-    ///     A3 False = None
+    /// Initializes a time range with specified From and To values.
+    /// EN: Creates a time range with the given start and end values.
+    /// CZ: Vytvoří časový rozsah se zadanými počáteční a koncovou hodnotou.
     /// </summary>
-    /// <param name="from"></param>
-    /// <param name="to"></param>
-    /// <param name="ftUse"></param>
-    public FromToTSHDt(T from, T to, FromToUseDateTime ftUse = FromToUseDateTime.DateTime) : this()
+    /// <param name="from">The start value of the time range</param>
+    /// <param name="to">The end value of the time range</param>
+    /// <param name="useType">The type of time range usage (DateTime, Unix, etc.)</param>
+    public FromToTSHDt(T from, T to, FromToUseDateTime useType = FromToUseDateTime.DateTime) : this()
     {
-        this.from = from;
-        this.to = to;
-        this.ftUse = ftUse;
+        this.From = from;
+        this.To = to;
+        this.UseType = useType;
     }
-    public T from
+
+    /// <summary>
+    /// Gets or sets the start value of the time range.
+    /// EN: Start value converted from/to long backing field.
+    /// CZ: Počáteční hodnota konvertovaná z/na long backing field.
+    /// </summary>
+    public T From
     {
-        get => (T)(dynamic)fromL;
-        set => fromL = (long)(dynamic)value;
+        get => (T)(dynamic)fromLong;
+        set => fromLong = (long)(dynamic)value;
     }
-    public T to
+
+    /// <summary>
+    /// Gets or sets the end value of the time range.
+    /// EN: End value converted from/to long backing field.
+    /// CZ: Koncová hodnota konvertovaná z/na long backing field.
+    /// </summary>
+    public T To
     {
-        get => (T)(dynamic)toL;
-        set => toL = (long)(dynamic)value;
+        get => (T)(dynamic)toLong;
+        set => toLong = (long)(dynamic)value;
     }
-    public long FromL => fromL;
-    public long ToL => toL;
+
+    /// <summary>
+    /// Gets the start value as long.
+    /// EN: Returns the backing field value directly.
+    /// CZ: Vrací hodnotu backing fieldu přímo.
+    /// </summary>
+    public long FromL => fromLong;
+
+    /// <summary>
+    /// Gets the end value as long.
+    /// EN: Returns the backing field value directly.
+    /// CZ: Vrací hodnotu backing fieldu přímo.
+    /// </summary>
+    public long ToL => toLong;
 }

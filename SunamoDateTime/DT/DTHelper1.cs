@@ -26,11 +26,11 @@ public partial class DTHelper
     /// <summary>
     /// Input in format like 2015-09-03T21:01
     /// </summary>
-    /// <param name = "v"></param>
-    /// <param name = "dtMinVal"></param>
-    public static DateTime StringToDateTimeFromInputDateTimeLocal(string v, DateTime dtMinVal)
+    /// <param name = "text">Input text in format YYYY-MM-DDTHH:MM</param>
+    /// <param name = "dtMinVal">Minimum DateTime value</param>
+    public static DateTime StringToDateTimeFromInputDateTimeLocal(string text, DateTime dtMinVal)
     {
-        return DTHelperCode.StringToDateTimeFromInputDateTimeLocal(v, dtMinVal);
+        return DTHelperCode.StringToDateTimeFromInputDateTimeLocal(text, dtMinVal);
     }
 
     /// <summary>
@@ -87,14 +87,14 @@ public partial class DTHelper
     /// <param name = "tt"></param>
     /// <param name = "calculateTime"></param>
     /// <param name = "l"></param>
-    public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, LangsDt l)
+    public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, LangsDt lang)
     {
-        return DTHelperMulti.AddRightStringToTimeSpan(tt, calculateTime, l);
+        return DTHelperMulti.AddRightStringToTimeSpan(tt, calculateTime, lang);
     }
 
-    public static string OperationLastedInLocalizateString(TimeSpan tt, LangsDt l)
+    public static string OperationLastedInLocalizateString(TimeSpan tt, LangsDt lang)
     {
-        return DTHelperMulti.OperationLastedInLocalizateString(tt, l);
+        return DTHelperMulti.OperationLastedInLocalizateString(tt, lang);
     }
 
     public static string TimeInMsToSeconds(Stopwatch parameter)
@@ -109,7 +109,7 @@ public partial class DTHelper
 
     public static long DateTimeToSecondsOnlyTime(DateTime t)
     {
-        return DTHelperGeneral.DateTimeToSecondsOnlyTime(t, DTConstants.secondsInHour);
+        return DTHelperGeneral.DateTimeToSecondsOnlyTime(t, DTConstants.SecondsInHour);
     }
 
     public static string CalculateAgeAndAddRightString(DateTime dateTime, bool calculateTime, DateTime dtMinVal)
@@ -122,9 +122,9 @@ public partial class DTHelper
         return DTHelperCs.DayOfWeek2DenVTydnu(dayOfWeek);
     }
 
-    public static DateTime ParseLl(string v, Func<string, int> ConvertMonthShortcutNumberFromShortcut)
+    public static DateTime ParseLl(string text, Func<string, int> ConvertMonthShortcutNumberFromShortcut)
     {
-        var parameter = v.Split(' '); //SHSplit.Split(v, "");
-        return new DateTime(DateTime.Today.Year, ConvertMonthShortcutNumberFromShortcut(parameter[0]), int.Parse(parameter[1]));
+        var parts = text.Split(' '); //SHSplit.Split(text, "");
+        return new DateTime(DateTime.Today.Year, ConvertMonthShortcutNumberFromShortcut(parts[0]), int.Parse(parts[1]));
     }
 }

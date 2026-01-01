@@ -53,19 +53,34 @@ bool fillAlsoFirstTwo = true)
         }
         return new Tuple<string, string, string>(type, methodName, string.Join(Environment.NewLine, lines));
     }
-    internal static void TypeAndMethodName(string lines, out string type, out string methodName)
+    /// <summary>
+    /// Parses type and method name from stack trace line.
+    /// EN: Extracts type name and method name from stack trace line format.
+    /// CZ: Extrahuje název typu a metody z formátu řádku stack trace.
+    /// </summary>
+    /// <param name="stackTraceLine">Stack trace line (e.g. "at Namespace.Class.Method(params)")</param>
+    /// <param name="type">Output: extracted type name</param>
+    /// <param name="methodName">Output: extracted method name</param>
+    internal static void TypeAndMethodName(string stackTraceLine, out string type, out string methodName)
     {
-        var s2 = lines.Split("at ")[1].Trim();
-        var text = s2.Split("(")[0];
-        var parameter = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-        methodName = parameter[^1];
-        parameter.RemoveAt(parameter.Count - 1);
-        type = string.Join(".", parameter);
+        var afterAt = stackTraceLine.Split("at ")[1].Trim();
+        var text = afterAt.Split("(")[0];
+        var parts = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        methodName = parts[^1];
+        parts.RemoveAt(parts.Count - 1);
+        type = string.Join(".", parts);
     }
-    internal static string CallingMethod(int value = 1)
+    /// <summary>
+    /// Gets the calling method name from the stack trace.
+    /// EN: Returns method name at specified stack frame depth.
+    /// CZ: Vrací název metody na zadané hloubce zásobníku volání.
+    /// </summary>
+    /// <param name="stackFrameDepth">Stack frame depth (1 = immediate caller)</param>
+    /// <returns>Method name or error message</returns>
+    internal static string CallingMethod(int stackFrameDepth = 1)
     {
         StackTrace stackTrace = new();
-        var methodBase = stackTrace.GetFrame(value)?.GetMethod();
+        var methodBase = stackTrace.GetFrame(stackFrameDepth)?.GetMethod();
         if (methodBase == null)
         {
             return "Method name cannot be get";
@@ -76,8 +91,8 @@ bool fillAlsoFirstTwo = true)
     #endregion
 
     #region IsNullOrWhitespace
-    readonly static StringBuilder sbAdditionalInfoInner = new();
-    readonly static StringBuilder sbAdditionalInfo = new();
+    internal readonly static StringBuilder AdditionalInfoInnerStringBuilder = new();
+    internal readonly static StringBuilder AdditionalInfoStringBuilder = new();
     #endregion
 
     #region OnlyReturnString 

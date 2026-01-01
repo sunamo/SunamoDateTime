@@ -1,26 +1,39 @@
 namespace SunamoDateTime.Converters;
 
+/// <summary>
+/// Converts DateTime to filename with postfix.
+/// EN: Formats DateTime as filename with custom postfix appended.
+/// CZ: Formátuje DateTime jako název souboru s připojeným vlastním postfixem.
+/// </summary>
 public class ConvertDateTimeToFileNamePostfix
 {
     private static char s_delimiter = '_';
 
     /// <summary>
-    /// Convert from date to filename without ext
-    /// If A1 will contains delimiter (now _), it won't be replaced by space. If its on end, its succifient while parsing use SHSplit.SplitToParts
+    /// Converts DateTime to filename format with postfix.
+    /// EN: Creates filename in format: [DateTime]_[postfix]. If postfix contains delimiter (_), it won't be replaced.
+    /// CZ: Vytvoří název souboru ve formátu: [DateTime]_[postfix]. Pokud postfix obsahuje delimiter (_), nebude nahrazen.
     /// </summary>
-    public static string ToConvention(string postfix, DateTime dt, bool time)
+    /// <param name="postfix">The postfix to append after DateTime</param>
+    /// <param name="dateTime">The DateTime to convert</param>
+    /// <param name="includeTime">True to include time component in filename</param>
+    /// <returns>Formatted filename string</returns>
+    public static string ToConvention(string postfix, DateTime dateTime, bool includeTime)
     {
-        //postfix = SHReplace.ReplaceAll(postfix, "", "_");
-        return DTHelper.DateTimeToFileName(dt, time) + s_delimiter + postfix;
+        return DTHelper.DateTimeToFileName(dateTime, includeTime) + s_delimiter + postfix;
     }
 
     /// <summary>
-    /// It's used if you don't want to get postfix, if yes, use DTHelper.FileNameToDateTimePostfix
+    /// Parses DateTime from filename, ignoring the postfix.
+    /// EN: Use DTHelper.FileNameToDateTimePostfix if you need to extract the postfix too.
+    /// CZ: Použijte DTHelper.FileNameToDateTimePostfix pokud potřebujete také extrahovat postfix.
     /// </summary>
-    /// <param name="fnwoe"></param>
-    public static DateTime? FromConvention(string fnwoe, bool time)
+    /// <param name="fileNameWithoutExtension">Filename without extension to parse</param>
+    /// <param name="includeTime">True if filename includes time component</param>
+    /// <returns>Parsed DateTime or null if parsing fails</returns>
+    public static DateTime? FromConvention(string fileNameWithoutExtension, bool includeTime)
     {
         string postfix = "";
-        return DTHelper.FileNameToDateTimePostfix(fnwoe, time, out postfix);
+        return DTHelper.FileNameToDateTimePostfix(fileNameWithoutExtension, includeTime, out postfix);
     }
 }

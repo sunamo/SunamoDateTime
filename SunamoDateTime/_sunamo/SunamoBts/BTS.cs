@@ -1,41 +1,66 @@
 namespace SunamoDateTime._sunamo.SunamoBts;
 
-//namespace SunamoDateTime;
+/// <summary>
+/// Base Type System parsing utilities.
+/// EN: Provides safe parsing methods for basic types with default values.
+/// CZ: Poskytuje bezpečné parsovací metody pro základní typy s výchozími hodnotami.
+/// </summary>
 internal static class BTS
 {
-    //    internal static Func<string, int?, int?> ParseInt;
-    //    internal static Func<bool, bool, string> BoolToStringEn;
-    //    internal static Func<bool, string> BoolToString;
-
-    internal static int? ParseInt(string entry, int? _default)
+    /// <summary>
+    /// Parses a string to nullable int with default value fallback.
+    /// EN: Returns parsed int or default value if parsing fails.
+    /// CZ: Vrací naparsovaný int nebo výchozí hodnotu pokud parsing selže.
+    /// </summary>
+    /// <param name="text">The text to parse</param>
+    /// <param name="defaultValue">The default value to return if parsing fails</param>
+    /// <returns>Parsed int or default value</returns>
+    internal static int? ParseInt(string text, int? defaultValue)
     {
-        int lastInt2 = 0;
-        if (int.TryParse(entry, out lastInt2))
+        int parsedValue = 0;
+        if (int.TryParse(text, out parsedValue))
         {
-            return lastInt2;
+            return parsedValue;
         }
-        return _default;
+        return defaultValue;
     }
 
-    internal static int TryParseInt(string entry, int def)
+    /// <summary>
+    /// Tries to parse a string to int with default value fallback.
+    /// EN: Returns parsed int or default value if parsing fails, without throwing exception.
+    /// CZ: Vrací naparsovaný int nebo výchozí hodnotu pokud parsing selže, bez vyhození výjimky.
+    /// </summary>
+    /// <param name="text">The text to parse</param>
+    /// <param name="defaultValue">The default value to return if parsing fails</param>
+    /// <returns>Parsed int or default value</returns>
+    internal static int TryParseInt(string text, int defaultValue)
     {
-        return TryParseInt(entry, def, false);
+        return TryParseInt(text, defaultValue, false);
     }
 
-    internal static int TryParseInt(string entry, int def, bool throwEx)
+    /// <summary>
+    /// Tries to parse a string to int with optional exception throwing.
+    /// EN: Returns parsed int or default value. Optionally throws exception on parse failure.
+    /// CZ: Vrací naparsovaný int nebo výchozí hodnotu. Volitelně vyhodí výjimku při selhání parsingu.
+    /// </summary>
+    /// <param name="text">The text to parse</param>
+    /// <param name="defaultValue">The default value to return if parsing fails</param>
+    /// <param name="throwException">True to throw exception on parse failure</param>
+    /// <returns>Parsed int or default value</returns>
+    internal static int TryParseInt(string text, int defaultValue, bool throwException)
     {
-        int lastInt = 0;
-        if (int.TryParse(entry, out lastInt))
+        int parsedValue = 0;
+        if (int.TryParse(text, out parsedValue))
         {
-            return lastInt;
+            return parsedValue;
         }
         else
         {
-            if (throwEx)
+            if (throwException)
             {
-                ThrowEx.NotInt(entry, null);
+                ThrowEx.NotInt(text, null);
             }
         }
-        return def;
+        return defaultValue;
     }
 }

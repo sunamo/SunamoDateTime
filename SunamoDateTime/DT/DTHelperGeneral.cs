@@ -12,15 +12,15 @@ public partial class DTHelperGeneral
         return allDates;
     }
 
-    public static int WeekOfYearFromDate(DateTime datum)
+    public static int WeekOfYearFromDate(DateTime dateTime)
     {
-        DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(datum);
+        DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(dateTime);
         if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
         {
-            datum = datum.AddDays(3 - (int)day);
+            dateTime = dateTime.AddDays(3 - (int)day);
         }
 
-        return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(datum, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+        return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(dateTime, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
     }
 
     public static DateTime StartOfWeekMonday(DateTime dt, DayOfWeek? aowWhenCalculateAsStartNextWeek)
@@ -51,8 +51,8 @@ public partial class DTHelperGeneral
     /// </summary>
     public static string ParseYear(string text)
     {
-        var parameter = text.Split(new Char[] { '-', '/' });
-        foreach (var item in parameter)
+        var parts = text.Split(new Char[] { '-', '/' });
+        foreach (var item in parts)
         {
             if (item.Length == 4)
             {
@@ -66,14 +66,14 @@ public partial class DTHelperGeneral
         return string.Empty;
     }
 
-    public static DateTime SetMinute(DateTime d, int v)
+    public static DateTime SetMinute(DateTime dateTime, int minute)
     {
-        return new DateTime(d.Year, d.Month, d.Day, d.Hour, v, d.Second);
+        return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, minute, dateTime.Second);
     }
 
-    public static DateTime SetHour(DateTime d, int v)
+    public static DateTime SetHour(DateTime dateTime, int hour)
     {
-        return new DateTime(d.Year, d.Month, d.Day, v, d.Minute, d.Second);
+        return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, hour, dateTime.Minute, dateTime.Second);
     }
 
     /// <summary>
@@ -96,15 +96,16 @@ public partial class DTHelperGeneral
     /// <summary>
     /// Is counting only time, return as non-normalized int
     /// </summary>
-    /// <param name = "t"></param>
-    public static long DateTimeToSecondsOnlyTime(DateTime t, long secondsInHour)
+    /// <param name = "dateTime">DateTime to convert</param>
+    /// <param name = "secondsInHour">Seconds in one hour</param>
+    public static long DateTimeToSecondsOnlyTime(DateTime dateTime, long secondsInHour)
     {
-        long vr = t.Hour * secondsInHour;
-        vr += t.Minute * DTConstants.secondsInMinute;
-        vr += t.Second;
-        vr *= TimeSpan.TicksPerSecond;
-        //vr += SqlServerHelper.DateTimeMinVal
-        return vr;
+        long result = dateTime.Hour * secondsInHour;
+        result += dateTime.Minute * DTConstants.SecondsInMinute;
+        result += dateTime.Second;
+        result *= TimeSpan.TicksPerSecond;
+        //result += SqlServerHelper.DateTimeMinVal
+        return result;
     }
 
     public static DateTime AddDays(ref DateTime dt, double day)
@@ -175,16 +176,16 @@ public partial class DTHelperGeneral
         return text;
     }
 
-    public static string LongYear(string y)
+    public static string LongYear(string yearText)
     {
-        var i = int.Parse(y);
-        if (i <= 79)
+        var year = int.Parse(yearText);
+        if (year <= 79)
         {
-            return "20" + i;
+            return "20" + year;
         }
         else
         {
-            return "19" + i;
+            return "19" + year;
         }
     }
 
@@ -198,46 +199,47 @@ public partial class DTHelperGeneral
     /// A2 = SqlServerHelper.DateTimeMinVal
     /// if A1 = A2, return 255
     /// </summary>
-    /// <param name = "bday"></param>
-    public static byte CalculateAge(DateTime bday, DateTime dtMinVal)
+    /// <param name = "birthDate">Birth date</param>
+    /// <param name = "dtMinVal">Minimum DateTime value</param>
+    public static byte CalculateAge(DateTime birthDate, DateTime dtMinVal)
     {
-        if (bday == dtMinVal)
+        if (birthDate == dtMinVal)
         {
             return 255;
         }
 
         DateTime today = DateTime.Today;
-        int age = today.Year - bday.Year;
-        if (bday > today.AddYears(-age))
+        int age = today.Year - birthDate.Year;
+        if (birthDate > today.AddYears(-age))
             age--;
-        byte vr = (byte)age;
-        if (vr == 255)
+        byte result = (byte)age;
+        if (result == 255)
         {
             return 0;
         }
 
-        return vr;
+        return result;
     }
 
     public static long SecondsInMonth(DateTime dt)
     {
-        return DTConstants.secondsInDay * DateTime.DaysInMonth(dt.Year, dt.Month);
+        return DTConstants.SecondsInDay * DateTime.DaysInMonth(dt.Year, dt.Month);
     }
 
     public static long SecondsInYear(int year)
     {
-        long mal = 365;
+        long daysInYear = 365;
         if (DateTime.IsLeapYear(year))
         {
-            mal = 366;
+            daysInYear = 366;
         }
 
-        return mal * DTConstants.secondsInDay;
+        return daysInYear * DTConstants.SecondsInDay;
     }
 
     public static DateTimeOrShort ShortToday()
     {
-        return DateTimeOrShort.Sh(NormalizeDate.To(DateTime.Today));
+        return DateTimeOrShort.FromShort(NormalizeDate.To(DateTime.Today));
     }
 
     public static DateTime WithoutTime(DateTime time)

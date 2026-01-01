@@ -2,13 +2,14 @@ namespace SunamoDateTime.ConvertersSimple;
 
 public class DTOnlyNumber
 {
-    static Type type = typeof(DTOnlyNumber);
-
-    public static string To(DateTime s)
+    /// <summary>
+    /// Converts DateTime to string with only numbers in format YYMMDD
+    /// </summary>
+    /// <param name="dateTime">The DateTime to convert</param>
+    /// <returns>String with short year, month and day as YYMMDD</returns>
+    public static string To(DateTime dateTime)
     {
-        var s2 = DTHelperGeneral.ShortYear(s.Year) + s.Month.ToString("D2") + s.Day.ToString("D2");
-        return s2;
+        var result = DTHelperGeneral.ShortYear(dateTime.Year) + dateTime.Month.ToString("D2") + dateTime.Day.ToString("D2");
+        return result;
     }
-
-
 }

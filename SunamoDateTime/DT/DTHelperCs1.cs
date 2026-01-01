@@ -8,11 +8,11 @@ public partial class DTHelperCs
     /// </summary>
     /// <param name = "dateTime"></param>
     /// <param name = "calculateTime"></param>
-    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt l, DateTime dtMinVal)
+    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt lang, DateTime dtMinVal)
     {
-        if (l != LangsDt.cs)
+        if (lang != LangsDt.cs)
         {
-            ThrowEx.NotImplementedCase(l);
+            ThrowEx.NotImplementedCase(lang);
         }
 
         if (dateTime == dtMinVal)
@@ -142,9 +142,9 @@ public partial class DTHelperCs
         }
     }
 
-    public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, LangsDt l, DateTime dtMinVal)
+    public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, LangsDt lang, DateTime dtMinVal)
     {
-        return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + "-" + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
+        return DTHelperMulti.DateTimeToString(oDTStart, lang, dtMinVal) + "-" + DTHelperMulti.DateTimeToString(oDTEnd, lang, dtMinVal);
     }
 
     /// <param name = "dayOfWeek"></param>
@@ -185,10 +185,10 @@ public partial class DTHelperCs
     /// <summary>
     /// 21.6.1989
     /// </summary>
-    /// <param name = "d"></param>
-    public static string ToShortDate(DateTime d)
+    /// <param name = "dateTime">DateTime to convert</param>
+    public static string ToShortDate(DateTime dateTime)
     {
-        return string.Join(".", d.Day, d.Month, d.Year);
+        return string.Join(".", dateTime.Day, dateTime.Month, dateTime.Year);
     }
 
     /// <summary>
@@ -201,10 +201,10 @@ public partial class DTHelperCs
         return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year + " " + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2");
     }
 
-    public static DateTime ParseDateTimeCzech(string s)
+    public static DateTime ParseDateTimeCzech(string text)
     {
-        var dt = DateTime.Parse(s, CultureInfos.cz);
-        return dt;
+        var dateTime = DateTime.Parse(text, CultureInfos.Cz);
+        return dateTime;
     }
 
     public static string ToTimeAgo(DateTime pastDate, DateTime currentDate)

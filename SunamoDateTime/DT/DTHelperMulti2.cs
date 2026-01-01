@@ -4,18 +4,18 @@ namespace SunamoDateTime.DT;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperMulti
 {
-    public static string xNoKnownPeriod = "NoKnownPeriod";
+    public static string XNoKnownPeriod = "NoKnownPeriod";
     /// <summary>
     /// If A1 could be lower than 1d, return 1d
     /// </summary>
     /// <param name = "dateTime"></param>
     /// <param name = "calculateTime"></param>
-    public static string OperationLastedInLocalizateString(TimeSpan tt, LangsDt l)
+    public static string OperationLastedInLocalizateString(TimeSpan tt, LangsDt lang)
     {
         List<string> vr = new List<string>();
         if (tt.Hours == 1)
         {
-            if (l == LangsDt.cs)
+            if (lang == LangsDt.cs)
             {
                 vr.Add(tt.Hours + " hodinu");
             }
@@ -26,7 +26,7 @@ public partial class DTHelperMulti
         }
         else if (tt.Hours > 1 && tt.Hours < 5)
         {
-            if (l == LangsDt.cs)
+            if (lang == LangsDt.cs)
             {
                 vr.Add(tt.Hours + " hodiny");
             }
@@ -37,7 +37,7 @@ public partial class DTHelperMulti
         }
         else if (tt.Hours > 4)
         {
-            if (l == LangsDt.cs)
+            if (lang == LangsDt.cs)
             {
                 vr.Add(tt.Hours + " hodin");
             }
@@ -51,7 +51,7 @@ public partial class DTHelperMulti
             // Hodin je méně než 1
             if (tt.Minutes == 1)
             {
-                if (l == LangsDt.cs)
+                if (lang == LangsDt.cs)
                 {
                     vr.Add(tt.Minutes + " minutu");
                 }
@@ -62,7 +62,7 @@ public partial class DTHelperMulti
             }
             else if (tt.Minutes > 1 && tt.Minutes < 5)
             {
-                if (l == LangsDt.cs)
+                if (lang == LangsDt.cs)
                 {
                     vr.Add(tt.Minutes + " minuty");
                 }
@@ -73,7 +73,7 @@ public partial class DTHelperMulti
             }
             else if (tt.Minutes > 4)
             {
-                if (l == LangsDt.cs)
+                if (lang == LangsDt.cs)
                 {
                     vr.Add(tt.Minutes + " minut");
                 }
@@ -86,7 +86,7 @@ public partial class DTHelperMulti
             {
                 if (tt.Seconds == 1)
                 {
-                    if (l == LangsDt.cs)
+                    if (lang == LangsDt.cs)
                     {
                         vr.Add(tt.Seconds + " sekundu");
                     }
@@ -97,7 +97,7 @@ public partial class DTHelperMulti
                 }
                 else if (tt.Seconds > 1 && tt.Seconds < 5)
                 {
-                    if (l == LangsDt.cs)
+                    if (lang == LangsDt.cs)
                     {
                         vr.Add(tt.Seconds + " sekundy");
                     }
@@ -108,7 +108,7 @@ public partial class DTHelperMulti
                 }
                 else if (tt.Seconds > 4)
                 {
-                    if (l == LangsDt.cs)
+                    if (lang == LangsDt.cs)
                     {
                         vr.Add(tt.Seconds + " sekund");
                     }
@@ -121,7 +121,7 @@ public partial class DTHelperMulti
                 {
                     if (tt.Seconds == 1)
                     {
-                        if (l == LangsDt.cs)
+                        if (lang == LangsDt.cs)
                         {
                             vr.Add(tt.Milliseconds + " milisekundu");
                         }
@@ -132,7 +132,7 @@ public partial class DTHelperMulti
                     }
                     else if (tt.Seconds > 1 && tt.Seconds < 5)
                     {
-                        if (l == LangsDt.cs)
+                        if (lang == LangsDt.cs)
                         {
                             vr.Add(tt.Milliseconds + " milisekundy");
                         }
@@ -143,7 +143,7 @@ public partial class DTHelperMulti
                     }
                     else if (tt.Seconds > 4)
                     {
-                        if (l == LangsDt.cs)
+                        if (lang == LangsDt.cs)
                         {
                             vr.Add(tt.Milliseconds + " milisekund");
                         }
@@ -154,7 +154,7 @@ public partial class DTHelperMulti
                     }
                     else
                     {
-                        if (l == LangsDt.cs)
+                        if (lang == LangsDt.cs)
                         {
                             vr.Add(tt.Milliseconds + " milisekund");
                         }
@@ -177,14 +177,14 @@ public partial class DTHelperMulti
     /// <param name = "p"></param>
     /// <param name = "l"></param>
     /// <param name = "dtMinVal"></param>
-    public static string DateToStringOrSE(DateTime p, LangsDt l, DateTime dtMinVal)
+    public static string DateToStringOrSE(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
-        if (p == dtMinVal)
+        if (dateTime == dtMinVal)
         {
             return "";
         }
 
-        return DTHelperMulti.DateToString(p, l);
+        return DTHelperMulti.DateToString(dateTime, lang);
     }
 
     /// <summary>
@@ -238,31 +238,29 @@ public partial class DTHelperMulti
     /// Vrátí datum a čas v českém formátu bez ms a text
     /// </summary>
     /// <param name = "d"></param>
-    public static string DateTimeToString(DateTime d, LangsDt l, DateTime dtMinVal)
+    public static string DateTimeToString(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
-        if (d == dtMinVal)
+        if (dateTime == dtMinVal)
         {
-            if (l == LangsDt.cs)
+            if (lang == LangsDt.cs)
             {
-                return xItWasNotMentioned;
+                return XItWasNotMentioned;
             }
             else
             {
-                return xNotIndicated;
+                return XNotIndicated;
             }
         }
 
-        if (l == LangsDt.cs)
+        if (lang == LangsDt.cs)
         {
             // 21.6.1989 11:22 (fill zero)
-            return d.Day + "." + d.Month + "." + d.Year + " " + d.Hour.ToString("D2") + ":" + d.Hour.ToString("D2");
+            return dateTime.Day + "." + dateTime.Month + "." + dateTime.Year + " " + dateTime.Hour.ToString("D2") + ":" + dateTime.Hour.ToString("D2");
         }
         else
         {
             // 6/21/1989 11:22 (fill zero)
-            return d.Month + "/" + d.Day + "/" + d.Year + " " + d.Hour.ToString("D2") + ":" + d.Minute.ToString("D2");
+            return dateTime.Month + "/" + dateTime.Day + "/" + dateTime.Year + " " + dateTime.Hour.ToString("D2") + ":" + dateTime.Minute.ToString("D2");
         }
     }
-
-    public static string xItWasNotMentioned = "ItWasNotMentioned";
 }

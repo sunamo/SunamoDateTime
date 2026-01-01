@@ -1,6 +1,10 @@
 namespace SunamoDateTime._sunamo;
 
-//namespace SunamoDateTime._sunamo.SunamoExceptions._AddedToAllCsproj;
+/// <summary>
+/// File System helper class.
+/// EN: Placeholder for shared file system utilities.
+/// CZ: Placeholder pro sdílené souborové systém utility.
+/// </summary>
 internal class FS
 {
 }

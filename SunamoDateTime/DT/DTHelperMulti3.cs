@@ -4,30 +4,30 @@ namespace SunamoDateTime.DT;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperMulti
 {
-    public static string xNotIndicated = "NotIndicated";
-    public static string TimeToString(DateTime d, LangsDt l, DateTime dtMinVal)
+    public static string XNotIndicated = "NotIndicated";
+    public static string TimeToString(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
-        if (d == dtMinVal)
+        if (dateTime == dtMinVal)
         {
-            if (l == LangsDt.cs)
+            if (lang == LangsDt.cs)
             {
-                return xItWasNotMentioned;
+                return XItWasNotMentioned;
             }
             else
             {
-                return xNotIndicated;
+                return XNotIndicated;
             }
         }
 
-        if (l == LangsDt.cs)
+        if (lang == LangsDt.cs)
         {
             // 21.6.1989 11:22 (fill zero)
-            return d.Hour.ToString("D2") + ":" + d.Minute.ToString("D2");
+            return dateTime.Hour.ToString("D2") + ":" + dateTime.Minute.ToString("D2");
         }
         else
         {
             // 6/21/1989 11:22 (fill zero)
-            return d.Hour.ToString("D2") + ":" + d.Minute.ToString("D2");
+            return dateTime.Hour.ToString("D2") + ":" + dateTime.Minute.ToString("D2");
         }
     }
 
@@ -35,8 +35,8 @@ public partial class DTHelperMulti
     /// 21.6.1989 (středa) / 6/21/1989 (wednesday)
     /// </summary>
     /// <param name = "dateTime"></param>
-    /// <param name = "l"></param>
-    public static string DateWithDayOfWeek(DateTime dateTime, LangsDt l)
+    /// <param name = "lang"></param>
+    public static string DateWithDayOfWeek(DateTime dateTime, LangsDt lang)
     {
         int day = (int)dateTime.DayOfWeek;
         if (day == 0)
@@ -48,28 +48,28 @@ public partial class DTHelperMulti
             day--;
         }
 
-        string dayOfWeek = DTConstants.daysInWeekEN[day];
-        if (l == LangsDt.cs)
+        string dayOfWeek = DTConstants.DaysInWeekEN[day];
+        if (lang == LangsDt.cs)
         {
-            dayOfWeek = DTConstants.daysInWeekCS[day];
+            dayOfWeek = DTConstants.DaysInWeekCS[day];
         }
 
-        return DateToString(dateTime, l) + " (" + dayOfWeek + ")";
+        return DateToString(dateTime, lang) + " (" + dayOfWeek + ")";
     }
 
-    public static string DateToStringWithDayOfWeek(DateTime dt, LangsDt l)
+    public static string DateToStringWithDayOfWeek(DateTime dt, LangsDt lang)
     {
-        if (l == LangsDt.en)
+        if (lang == LangsDt.en)
         {
             return DTHelperEn.DateToStringWithDayOfWeekEN(dt);
         }
-        else if (l == LangsDt.cs)
+        else if (lang == LangsDt.cs)
         {
             return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
         }
         else
         {
-            ThrowEx.NotImplementedCase(l);
+            ThrowEx.NotImplementedCase(lang);
             return null;
         }
     }
@@ -77,21 +77,21 @@ public partial class DTHelperMulti
     /// <summary>
     /// Return whether can be parse with DTHelperCs.ParseDateCzech or DTHelperEn.ParseDateUSA
     /// </summary>
-    /// <param name = "r"></param>
-    public static DateTime IsValidDateText(string r)
+    /// <param name = "text"></param>
+    public static DateTime IsValidDateText(string text)
     {
         DateTime dt = DateTime.MinValue;
-        r = r.Trim();
-        if (r != "")
+        text = text.Trim();
+        if (text != "")
         {
-            var indexTecky = r.IndexOf('.');
-            if (indexTecky != -1)
+            var dotIndex = text.IndexOf('.');
+            if (dotIndex != -1)
             {
-                dt = DTHelperCs.ParseDateCzech(r);
+                dt = DTHelperCs.ParseDateCzech(text);
             }
             else
             {
-                dt = DTHelperEn.ParseDateUSA(r);
+                dt = DTHelperEn.ParseDateUSA(text);
             }
         }
 
@@ -102,58 +102,58 @@ public partial class DTHelperMulti
     /// A1 can be in en or cs
     /// parse time after first space
     /// </summary>
-    /// <param name = "datum"></param>
-    public static DateTime IsValidDateTimeText(string datum)
+    /// <param name = "text"></param>
+    public static DateTime IsValidDateTimeText(string text)
     {
-        DateTime vr = DateTime.MinValue;
-        int indexMezery = datum.IndexOf(' ');
-        if (indexMezery != -1)
+        DateTime result = DateTime.MinValue;
+        int spaceIndex = text.IndexOf(' ');
+        if (spaceIndex != -1)
         {
-            var datum2 = DateTime.Today;
-            var cas2 = DateTime.Today;
-            var datum3 = datum.Substring(0, indexMezery);
-            var cas3 = datum.Substring(indexMezery + 1);
-            if (datum3.IndexOf('.') != -1)
+            var parsedDate = DateTime.Today;
+            var parsedTime = DateTime.Today;
+            var dateText = text.Substring(0, spaceIndex);
+            var timeText = text.Substring(spaceIndex + 1);
+            if (dateText.IndexOf('.') != -1)
             {
-                datum2 = DTHelperCs.ParseDateCzech(datum3);
+                parsedDate = DTHelperCs.ParseDateCzech(dateText);
             }
             else
             {
-                datum2 = DTHelperEn.ParseDateUSA(datum3);
+                parsedDate = DTHelperEn.ParseDateUSA(dateText);
             }
 
-            if (cas3.IndexOf(' ') == -1)
+            if (timeText.IndexOf(' ') == -1)
             {
-                cas2 = DTHelperCs.ParseTimeCzech(cas3);
+                parsedTime = DTHelperCs.ParseTimeCzech(timeText);
             }
             else
             {
-                cas2 = DTHelperEn.ParseTimeUSA(cas3);
+                parsedTime = DTHelperEn.ParseTimeUSA(timeText);
             }
 
-            if (datum2 != DateTime.MinValue && cas2 != DateTime.MinValue)
+            if (parsedDate != DateTime.MinValue && parsedTime != DateTime.MinValue)
             {
-                vr = new DateTime(datum2.Year, datum2.Month, datum2.Day, cas2.Hour, cas2.Minute, cas2.Second);
+                result = new DateTime(parsedDate.Year, parsedDate.Month, parsedDate.Day, parsedTime.Hour, parsedTime.Minute, parsedTime.Second);
             }
         }
 
-        return vr;
+        return result;
     }
 
-    public static DateTime IsValidTimeText(string r)
+    public static DateTime IsValidTimeText(string text)
     {
         DateTime dt = DateTime.MinValue;
-        r = r.Trim();
-        if (r != "")
+        text = text.Trim();
+        if (text != "")
         {
-            var indexMezery = r.IndexOf(' ');
-            if (indexMezery == -1)
+            var spaceIndex = text.IndexOf(' ');
+            if (spaceIndex == -1)
             {
-                dt = DTHelperCs.ParseTimeCzech(r);
+                dt = DTHelperCs.ParseTimeCzech(text);
             }
             else
             {
-                dt = DTHelperEn.ParseTimeUSA(r);
+                dt = DTHelperEn.ParseTimeUSA(text);
             }
         }
 
@@ -163,27 +163,28 @@ public partial class DTHelperMulti
     /// <summary>
     /// 21.6.1989 / 6/21/1989
     /// </summary>
-    /// <param name = "p"></param>
-    public static string DateToString(DateTime p, LangsDt l)
+    /// <param name = "dateTime"></param>
+    /// <param name = "lang"></param>
+    public static string DateToString(DateTime dateTime, LangsDt lang)
     {
-        if (l == LangsDt.cs)
+        if (lang == LangsDt.cs)
         {
-            return p.Day + "." + p.Month + "." + p.Year;
+            return dateTime.Day + "." + dateTime.Month + "." + dateTime.Year;
         }
 
-        return p.Month + "/" + p.Day + "/" + p.Year;
+        return dateTime.Month + "/" + dateTime.Day + "/" + dateTime.Year;
     }
 
-    public static string FilesFounded(int c, LangsDt l)
+    public static string FilesFounded(int count, LangsDt lang)
     {
-        if (l == LangsDt.cs)
+        if (lang == LangsDt.cs)
         {
-            if (c < 2)
+            if (count < 2)
             {
                 return "soubor nalezen";
             }
 
-            if (c < 5)
+            if (count < 5)
             {
                 return "soubory nalezeny";
             }
@@ -191,8 +192,9 @@ public partial class DTHelperMulti
             return "souborů nalezeno";
         }
 
-        return xfilesFounded;
+        return XFilesFounded;
     }
 
-    public static string xfilesFounded = "filesFounded";
+    public static string XFilesFounded = "filesFounded";
+    public static string XItWasNotMentioned = "ItWasNotMentioned";
 }

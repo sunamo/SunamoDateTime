@@ -1,37 +1,50 @@
 namespace SunamoDateTime.Data;
 
+/// <summary>
+/// Represents a time range with DateTime formatting capabilities.
+/// EN: Extends FromToTDt with DateTime string conversion methods.
+/// CZ: Rozšiřuje FromToTDt o metody pro konverzi DateTime na string.
+/// </summary>
+/// <typeparam name="T">The type of the From and To values (must be a struct)</typeparam>
 public class FromToTDateTime<T> : FromToTDt<T> where T : struct
 {
-    protected override string ToStringDateTime(LangsDt l)
+    /// <summary>
+    /// Converts the time range to DateTime string representation.
+    /// EN: Formats the time range based on UseType (DateTime, Unix, or UnixJustTime).
+    /// CZ: Formátuje časový rozsah podle UseType (DateTime, Unix, nebo UnixJustTime).
+    /// </summary>
+    /// <param name="lang">Language for formatting</param>
+    /// <returns>Formatted DateTime string</returns>
+    protected override string ToStringDateTime(LangsDt lang)
     {
-        if (ftUse == FromToUseDateTime.DateTime)
+        if (UseType == FromToUseDateTime.DateTime)
         {
-            var from2 = DTHelperCs.ToShortTimeFromSeconds(fromL);
-            if (toL != 0)
+            var fromTime = DTHelperCs.ToShortTimeFromSeconds(fromLong);
+            if (toLong != 0)
             {
-                return $"{from2}-{DTHelperCs.ToShortTimeFromSeconds(toL)}";
+                return $"{fromTime}-{DTHelperCs.ToShortTimeFromSeconds(toLong)}";
             }
-            return $"{from2}";
+            return $"{fromTime}";
         }
-        else if (ftUse == FromToUseDateTime.Unix)
+        else if (UseType == FromToUseDateTime.Unix)
         {
-            var from2 = UnixDateConverter.From(fromL);
-            var from3 = DTHelperMulti.DateTimeToString(from2, l, DTConstants.UnixFsStart);
-            if (toL != 0)
+            var fromDateTime = UnixDateConverter.From(fromLong);
+            var fromFormatted = DTHelperMulti.DateTimeToString(fromDateTime, lang, DTConstants.UnixFsStart);
+            if (toLong != 0)
             {
-                return $"{from3}-{DTHelperMulti.DateTimeToString(UnixDateConverter.From(toL), l, DTConstants.UnixFsStart)}";
+                return $"{fromFormatted}-{DTHelperMulti.DateTimeToString(UnixDateConverter.From(toLong), lang, DTConstants.UnixFsStart)}";
             }
-            return $"{from3}";
+            return $"{fromFormatted}";
         }
-        else if (ftUse == FromToUseDateTime.UnixJustTime)
+        else if (UseType == FromToUseDateTime.UnixJustTime)
         {
-            var from2 = UnixDateConverter.From(fromL);
-            var from3 = DTHelperMulti.TimeToString(from2, l, DTConstants.UnixFsStart);
-            if (toL != 0)
+            var fromDateTime = UnixDateConverter.From(fromLong);
+            var fromTime = DTHelperMulti.TimeToString(fromDateTime, lang, DTConstants.UnixFsStart);
+            if (toLong != 0)
             {
-                return $"{from3}-{DTHelperMulti.TimeToString(UnixDateConverter.From(toL), l, DTConstants.UnixFsStart)}";
+                return $"{fromTime}-{DTHelperMulti.TimeToString(UnixDateConverter.From(toLong), lang, DTConstants.UnixFsStart)}";
             }
-            return $"{from3}";
+            return $"{fromTime}";
         }
         return string.Empty;
     }

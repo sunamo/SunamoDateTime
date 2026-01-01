@@ -76,18 +76,18 @@ public class DTHelperCode
     /// <summary>
     /// Input in format like 2015-09-03T21:01
     /// </summary>
-    /// <param name="v"></param>
-    /// <param name="dtMinVal"></param>
-    public static DateTime StringToDateTimeFromInputDateTimeLocal(string v, DateTime dtMinVal)
+    /// <param name="text">Input text in format YYYY-MM-DDTHH:MM</param>
+    /// <param name="dtMinVal">Minimum DateTime value to return if parsing fails</param>
+    public static DateTime StringToDateTimeFromInputDateTimeLocal(string text, DateTime dtMinVal)
     {
-        if (!v.Contains("-"))
+        if (!text.Contains("-"))
         {
             return dtMinVal;
         }
         //2015-09-03T21:01
-        var sp = v.Split(new Char[] { '-', 'T', ':' }).ToList();
-        var dd = CAToNumber.ToInt0(sp);
-        return new DateTime(dd[0], dd[1], dd[2], dd[3], dd[4], 0);
+        var parts = text.Split(new Char[] { '-', 'T', ':' }).ToList();
+        var numbers = CAToNumber.ToInt0(parts);
+        return new DateTime(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4], 0);
     }
     #endregion
     #endregion

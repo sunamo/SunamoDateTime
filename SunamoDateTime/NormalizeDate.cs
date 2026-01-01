@@ -2,60 +2,60 @@ namespace SunamoDateTime;
 
 public class NormalizeDate
 {
-    public static DateTime From(short sh)
+    public static DateTime From(short shortDate)
     {
-        var text = sh.ToString();
+        var text = shortDate.ToString();
         text = text.Trim();
 
         if (text.StartsWith("-")) text = text.TrimStart('-');
 
-        var yValue = text.Substring(0, 2);
-        var message = text.Substring(2, 1);
-        var data = text.Substring(3, 2);
+        var yearValue = text.Substring(0, 2);
+        var monthValue = text.Substring(2, 1);
+        var dayValue = text.Substring(3, 2);
 
-        var firstLetter = int.Parse(data[0].ToString());
-        if (firstLetter > 3)
+        var firstDigit = int.Parse(dayValue[0].ToString());
+        if (firstDigit > 3)
         {
-            message = "1" + message;
-            var f = (firstLetter - 4).ToString()[0];
-            var s2 = data[1].ToString();
-            data = f + s2;
+            monthValue = "1" + monthValue;
+            var firstChar = (firstDigit - 4).ToString()[0];
+            var secondChar = dayValue[1].ToString();
+            dayValue = firstChar + secondChar;
         }
-        else if (message == "0")
+        else if (monthValue == "0")
         {
-            message = "10";
+            monthValue = "10";
         }
 
-        var longYear = DTHelperGeneral.LongYear(yValue);
+        var longYear = DTHelperGeneral.LongYear(yearValue);
 
-        var dt = new DateTime(int.Parse(longYear), int.Parse(message), int.Parse(data));
-        return dt;
+        var dateTime = new DateTime(int.Parse(longYear), int.Parse(monthValue), int.Parse(dayValue));
+        return dateTime;
     }
 
-    public static short To(DateTime dt)
+    public static short To(DateTime dateTime)
     {
-        var timesMinus1 = false;
+        var isNegative = false;
         var addFour = false;
 
-        var yValue = DTHelperGeneral.ShortYear(dt.Year);
+        var yearValue = DTHelperGeneral.ShortYear(dateTime.Year);
         // months never start with zero
-        var message = dt.Month;
-        var ms2 = message.ToString();
+        var month = dateTime.Month;
+        var monthString = month.ToString();
 
-        if (message > 10)
+        if (month > 10)
         {
-            var ms = message.ToString("D2");
+            var monthFormatted = month.ToString("D2");
 
-            if (ms[0] == '1')
+            if (monthFormatted[0] == '1')
             {
-                if (ms[0] == '2') timesMinus1 = true;
+                if (monthFormatted[0] == '2') isNegative = true;
                 addFour = true;
-                ms2 = ms[1].ToString();
+                monthString = monthFormatted[1].ToString();
             }
         }
-        else if (message == 10)
+        else if (month == 10)
         {
-            ms2 = "0";
+            monthString = "0";
         }
 
         /*
@@ -63,28 +63,28 @@ public class NormalizeDate
         november = 4,5,6,7
         december = -4,5,6,7
         */
-        var data = dt.Day.ToString("D2");
-        var firstChar = data[0];
+        var dayValue = dateTime.Day.ToString("D2");
+        var firstChar = dayValue[0];
 
         var stringBuilder = new StringBuilder();
-        if (timesMinus1) stringBuilder.Append('-');
+        if (isNegative) stringBuilder.Append('-');
 
-        var firstChar2 = int.Parse(firstChar.ToString());
-        if (addFour) firstChar2 += 4;
+        var firstDigit = int.Parse(firstChar.ToString());
+        if (addFour) firstDigit += 4;
 
-        stringBuilder.Append(yValue);
-        stringBuilder.Append(ms2);
-        stringBuilder.Append(firstChar2);
-        stringBuilder.Append(data[1].ToString());
+        stringBuilder.Append(yearValue);
+        stringBuilder.Append(monthString);
+        stringBuilder.Append(firstDigit);
+        stringBuilder.Append(dayValue[1].ToString());
 
         var result = stringBuilder.ToString();
         return short.Parse(result);
     }
 
-    public static short AddMonths(short ntda, int v)
+    public static short AddMonths(short normalizedDate, int monthsToAdd)
     {
-        var dt = From(ntda);
-        dt = dt.AddMonths(v);
-        return To(dt);
+        var dateTime = From(normalizedDate);
+        dateTime = dateTime.AddMonths(monthsToAdd);
+        return To(dateTime);
     }
 }

@@ -39,15 +39,15 @@ public class DTHelperFormalized
     /// 2018-08-10T11:33:19Z
     ///
     /// </summary>
-    /// <param name="p"></param>
-    public static DateTime StringToDateTimeFormalizeDate(string p)
+    /// <param name="text">DateTime string in formalized format</param>
+    public static DateTime StringToDateTimeFormalizeDate(string text)
     {
-        if (string.IsNullOrEmpty(p))
+        if (string.IsNullOrEmpty(text))
         {
             return DateTime.MinValue;
         }
 
-        if (DateTime.TryParse(p, null, out var result/*, System.Globalization.DateTimeStyles.None*/))
+        if (DateTime.TryParse(text, null, out var result/*, System.Globalization.DateTimeStyles.None*/))
         {
             return result;
         }
@@ -61,9 +61,9 @@ public class DTHelperFormalized
         return DateTimeToStringFormalizeDate(dt);
     }
 
-    public static bool IsFormalizedDate(string v)
+    public static bool IsFormalizedDate(string text)
     {
-        var dt = DTHelperFormalized.StringToDateTimeFormalizeDate(v);
-        return dt != DateTime.MinValue;
+        var dateTime = DTHelperFormalized.StringToDateTimeFormalizeDate(text);
+        return dateTime != DateTime.MinValue;
     }
 }

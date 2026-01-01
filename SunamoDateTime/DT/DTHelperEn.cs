@@ -12,7 +12,7 @@ public class DTHelperEn
     /// <param name="input"></param>
     public static DateTime ParseDateUSA(string input)
     {
-        DateTime vr = DateTime.MinValue;
+        DateTime result = DateTime.MinValue;
         var parts = input.Split('/'); //SHSplit.SplitChar(input, new Char[] { '/' });
         var day = -1;
         var month = -1;
@@ -21,16 +21,16 @@ public class DTHelperEn
         TryParse.Integer tpi = new TryParse.Integer();
         if (tpi.TryParseInt(parts[0]))
         {
-            month = tpi.lastInt;
+            month = tpi.LastInt;
             if (tpi.TryParseInt(parts[1]))
             {
-                day = tpi.lastInt;
+                day = tpi.LastInt;
                 if (tpi.TryParseInt(parts[2]))
                 {
-                    year = tpi.lastInt;
+                    year = tpi.LastInt;
                     try
                     {
-                        vr = new DateTime(year, month, day, 0, 0, 0);
+                        result = new DateTime(year, month, day, 0, 0, 0);
                     }
                     catch (Exception ex)
                     {
@@ -39,7 +39,7 @@ public class DTHelperEn
                 }
             }
         }
-        return vr;
+        return result;
     }
     #endregion
 
@@ -49,27 +49,27 @@ public class DTHelperEn
     /// hh:mm tt
     /// </summary>
     /// <param name="t"></param>
-    public static DateTime ParseTimeUSA(string t)
+    public static DateTime ParseTimeUSA(string text)
     {
-        var vr = DateTime.MinValue;
-        var parts2 = t.Split(' ').ToList(); //SHSplit.SplitChar(t, new Char[] { ' ' });
-        if (parts2.Count == 2)
+        var result = DateTime.MinValue;
+        var mainParts = text.Split(' ').ToList(); //SHSplit.SplitChar(text, new Char[] { ' ' });
+        if (mainParts.Count == 2)
         {
-            var pm = false;
-            var amorpm = parts2[1].ToLower();
+            var isPm = false;
+            var amOrPm = mainParts[1].ToLower();
 
-            if (amorpm == "pm" || amorpm == "am")
+            if (amOrPm == "pm" || amOrPm == "am")
             {
-                if (amorpm == "pm")
+                if (amOrPm == "pm")
                 {
-                    pm = true;
+                    isPm = true;
                 }
-                var t2 = parts2[0];
-                var parts = t2.Split(':').ToList(); //SH.SplitChar(t2, new Char[] { ':' });
+                var timeText = mainParts[0];
+                var parts = timeText.Split(':').ToList(); //SH.SplitChar(timeText, new Char[] { ':' });
                 if (parts.Count == 2)
                 {
-                    t += ":00";
-                    parts = t.Split(':').ToList(); //SHSplit.SplitChar(t, new Char[] { ':' });
+                    text += ":00";
+                    parts = text.Split(':').ToList(); //SHSplit.SplitChar(text, new Char[] { ':' });
                 }
                 int hours = -1;
                 int minutes = -1;
@@ -79,32 +79,32 @@ public class DTHelperEn
                     TryParse.Integer itp = new TryParse.Integer();
                     if (itp.TryParseInt(parts[0]))
                     {
-                        hours = itp.lastInt;
+                        hours = itp.LastInt;
                         if (itp.TryParseInt(parts[1]))
                         {
-                            minutes = itp.lastInt;
+                            minutes = itp.LastInt;
                             if (itp.TryParseInt(parts[2]))
                             {
-                                seconds = itp.lastInt;
-                                vr = DateTime.Today;
-                                if (!pm && hours == 12)
+                                seconds = itp.LastInt;
+                                result = DateTime.Today;
+                                if (!isPm && hours == 12)
                                 {
                                     hours = 0;
                                 }
-                                else if (pm)
+                                else if (isPm)
                                 {
                                     hours += 12;
                                 }
-                                vr = vr.AddHours(hours);
-                                vr = vr.AddMinutes(minutes);
-                                vr = vr.AddSeconds(seconds);
+                                result = result.AddHours(hours);
+                                result = result.AddMinutes(minutes);
+                                result = result.AddSeconds(seconds);
                             }
                         }
                     }
                 }
             }
         }
-        return vr;
+        return result;
     }
     #endregion
 
@@ -116,10 +116,10 @@ public class DTHelperEn
     /// <param name="s"></param>
     public static DateTime ParseDateTimeUSA(string text)
     {
-        var parameter = text.Split(' '); //SHSplit.Split(text, "");
-        DateTime result = ParseDateUSA(parameter[0]);
-        var time = ParseTimeUSA(parameter[1] + " " + parameter[2]);
-        return DTHelperGeneral.Combine(result, time);
+        var parts = text.Split(' '); //SHSplit.Split(text, "");
+        DateTime date = ParseDateUSA(parts[0]);
+        var time = ParseTimeUSA(parts[1] + " " + parts[2]);
+        return DTHelperGeneral.Combine(date, time);
         //return DateTime.Parse(text, CultureInfo.GetCultureInfo("en-us"));
     }
     #endregion
@@ -133,25 +133,25 @@ public class DTHelperEn
     /// Get date shortened about A1
     /// </summary>
     /// <param name="AddedAgo"></param>
-    public static DateTime CalculateStartOfPeriod(string AddedAgo)
+    public static DateTime CalculateStartOfPeriod(string periodText)
     {
         int days = -1;
         int number = -1;
 
-        var arg = AddedAgo.Split('_').ToList(); //SHSplit.SplitNone(AddedAgo, new String[] { "_" });
-        if (arg.Count == 2)
+        var parts = periodText.Split('_').ToList(); //SHSplit.SplitNone(periodText, new String[] { "_" });
+        if (parts.Count == 2)
         {
-            TryParse.Integer dt = new TryParse.Integer();
-            if (dt.TryParseInt(arg[0].ToString()))
+            TryParse.Integer intParser = new TryParse.Integer();
+            if (intParser.TryParseInt(parts[0].ToString()))
             {
-                number = dt.lastInt;
+                number = intParser.LastInt;
             }
             else
             {
                 number = 1;
             }
 
-            switch (arg[1])
+            switch (parts[1])
             {
                 case "days":
                     days = number;
@@ -205,12 +205,12 @@ public class DTHelperEn
     /// <summary>
     /// 21.6.1989 / 6/21/1989
     /// </summary>
-    /// <param name="today"></param>
-    /// <param name="_def"></param>
-    /// <param name="returnWhenA1isA2"></param>
-    public static string ToShortDateString(DateTime today, DateTime _def, string returnWhenA1isA2)
+    /// <param name="today">DateTime to convert</param>
+    /// <param name="defaultValue">Default DateTime value</param>
+    /// <param name="returnWhenA1isA2">String to return when today equals defaultValue</param>
+    public static string ToShortDateString(DateTime today, DateTime defaultValue, string returnWhenA1isA2)
     {
-        if (today == _def)
+        if (today == defaultValue)
         {
             return returnWhenA1isA2;
         }

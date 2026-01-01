@@ -38,9 +38,9 @@ public partial class DTHelper
         return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
     }
 
-    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt l, DateTime dtMinVal)
+    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt lang, DateTime dtMinVal)
     {
-        return DTHelperCs.CalculateAgeAndAddRightStringKymCim(dateTime, calculateTime, l, dtMinVal);
+        return DTHelperCs.CalculateAgeAndAddRightStringKymCim(dateTime, calculateTime, lang, dtMinVal);
     }
 
     public static string MakeUpTo2NumbersToZero(int parameter)
@@ -58,14 +58,14 @@ public partial class DTHelper
         return DTHelperCode.DateToStringAngularDate(dt);
     }
 
-    public static string DateToString(DateTime parameter, LangsDt l)
+    public static string DateToString(DateTime parameter, LangsDt lang)
     {
-        return DTHelperMulti.DateToString(parameter, l);
+        return DTHelperMulti.DateToString(parameter, lang);
     }
 
-    public static string DateTimeToString(DateTime d, LangsDt l, DateTime dtMinVal)
+    public static string DateTimeToString(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
-        return DTHelperMulti.DateTimeToString(d, l, dtMinVal);
+        return DTHelperMulti.DateTimeToString(dateTime, lang, dtMinVal);
     }
 
     //public static string DateTimeToStringWithoutDayOfWeek(DateTime actualMessageDt)
@@ -200,9 +200,9 @@ public partial class DTHelper
     /// <param name = "p"></param>
     /// <param name = "l"></param>
     /// <param name = "dtMinVal"></param>
-    public static string DateToStringOrSE(DateTime parameter, LangsDt l, DateTime dtMinVal)
+    public static string DateToStringOrSE(DateTime parameter, LangsDt lang, DateTime dtMinVal)
     {
-        return DTHelperMulti.DateToStringOrSE(parameter, l, dtMinVal);
+        return DTHelperMulti.DateToStringOrSE(parameter, lang, dtMinVal);
     }
 
     /// <summary>
@@ -210,9 +210,9 @@ public partial class DTHelper
     /// </summary>
     /// <param name = "dateTime"></param>
     /// <param name = "l"></param>
-    public static string DateWithDayOfWeek(DateTime dateTime, LangsDt l)
+    public static string DateWithDayOfWeek(DateTime dateTime, LangsDt lang)
     {
-        return DTHelperMulti.DateWithDayOfWeek(dateTime, l);
+        return DTHelperMulti.DateWithDayOfWeek(dateTime, lang);
     }
 
     /// <summary>

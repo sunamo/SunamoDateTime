@@ -26,12 +26,12 @@ public class DTHelperUs
         string dDate = "_";
         string dSpace = "_";
         string dTime = "_";
-        string vr = dt.Year + dDate + dt.Month.ToString("D2") + dDate + dt.Day.ToString("D2");
+        string result = dt.Year + dDate + dt.Month.ToString("D2") + dDate + dt.Day.ToString("D2");
         if (time)
         {
-            vr += dSpace + dt.Hour.ToString("D2") + dTime + dt.Minute.ToString("D2");
+            result += dSpace + dt.Hour.ToString("D2") + dTime + dt.Minute.ToString("D2");
         }
-        return vr;
+        return result;
     }
     #endregion
 
@@ -43,11 +43,11 @@ public class DTHelperUs
     /// <param name="fnwoe"></param>
     public static DateTime? FileNameToDateTimePrefix(string fnwoe, bool time, out string prefix)
     {
-        List<string> sp = SHSplit.SplitToPartsFromEnd(fnwoe, time ? 6 : 4, new Char[] { "_"[0] });
+        List<string> parts = SHSplit.SplitToPartsFromEnd(fnwoe, time ? 6 : 4, new Char[] { "_"[0] });
         if (time)
         {
-            prefix = sp[0];
-            var dd = CAToNumber.ToInt2(sp, 5, 1);
+            prefix = parts[0];
+            var dd = CAToNumber.ToInt2(parts, 5, 1);
             if (dd == null)
             {
                 return null;
@@ -56,8 +56,8 @@ public class DTHelperUs
         }
         else
         {
-            prefix = sp[0];
-            var dd = CAToNumber.ToInt2(sp, 3, 1);
+            prefix = parts[0];
+            var dd = CAToNumber.ToInt2(parts, 3, 1);
             if (dd == null)
             {
                 return null;
@@ -74,12 +74,12 @@ public class DTHelperUs
     /// </summary>
     public static DateTime? FileNameToDateTimePostfix(string fnwoe, bool time, out string postfix)
     {
-        var sp = SHSplit.SplitToParts(fnwoe, time ? 6 : 4, "_");
+        var parts = SHSplit.SplitToParts(fnwoe, time ? 6 : 4, "_");
         if (time)
         {
-            if (sp.Count > 5)
+            if (parts.Count > 5)
             {
-                postfix = sp[5];
+                postfix = parts[5];
             }
             else
             {
@@ -87,13 +87,13 @@ public class DTHelperUs
                 return null;
             }
 
-            var date = CAToNumber.ToInt2(sp, 3, 0);
+            var date = CAToNumber.ToInt2(parts, 3, 0);
             if (date == null)
             {
                 return null;
             }
 
-            var time2 = CAToNumber.ToInt2(sp, 2, 3);
+            var time2 = CAToNumber.ToInt2(parts, 2, 3);
             if (time2 == null)
             {
                 return null;
@@ -103,9 +103,9 @@ public class DTHelperUs
         }
         else
         {
-            if (sp.Count > 3)
+            if (parts.Count > 3)
             {
-                postfix = sp[3];
+                postfix = parts[3];
             }
             else
             {
@@ -113,7 +113,7 @@ public class DTHelperUs
                 return null;
             }
 
-            var dd = CAToNumber.ToInt2(sp, 3, 0);
+            var dd = CAToNumber.ToInt2(parts, 3, 0);
             if (dd == null)
             {
                 return null;
@@ -132,11 +132,11 @@ public class DTHelperUs
         postfix = "";
         serie = null;
 
-        var sp = SHSplit.SplitToParts(fnwoe, 6, "_");
+        var parts = SHSplit.SplitToParts(fnwoe, 6, "_");
 
-        if (sp.Count > 5)
+        if (parts.Count > 5)
         {
-            postfix = sp[5];
+            postfix = parts[5];
         }
         else
         {
@@ -144,16 +144,16 @@ public class DTHelperUs
             return null;
         }
 
-        var date = CAToNumber.ToInt2(sp, 3, 0);
+        var date = CAToNumber.ToInt2(parts, 3, 0);
         if (date == null)
         {
             return null;
         }
-        if (sp[3] != "S")
+        if (parts[3] != "S")
         {
             return null;
         }
-        serie = BTS.ParseInt(sp[4], null);
+        serie = BTS.ParseInt(parts[4], null);
 
 
         return new DateTime(date[0], date[1], date[2]);
@@ -166,9 +166,9 @@ public class DTHelperUs
     /// <param name="fnwoe"></param>
     public static DateTime? FileNameToDateTime(string fnwoe)
     {
-        var sp = fnwoe.Split(new String[] { "_" }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(fnwoe, "_");
+        var parts = fnwoe.Split(new String[] { "_" }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(fnwoe, "_");
         // Tady jsem to rozděloval na 6 ale pak mi to vracelo null. Úprava na 5
-        var dd = CAToNumber.ToInt1(sp, 5);
+        var dd = CAToNumber.ToInt1(parts, 5);
         if (dd == null)
         {
             return null;

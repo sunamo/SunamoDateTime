@@ -95,13 +95,13 @@ public partial class DTHelperCs
             TryParse.Integer itp = new TryParse.Integer();
             if (itp.TryParseInt(parts[0]))
             {
-                hours = itp.lastInt;
+                hours = itp.LastInt;
                 if (itp.TryParseInt(parts[1]))
                 {
-                    minutes = itp.lastInt;
+                    minutes = itp.LastInt;
                     if (itp.TryParseInt(parts[2]))
                     {
-                        seconds = itp.lastInt;
+                        seconds = itp.LastInt;
                         vr = DateTime.Today;
                         vr = vr.AddHours(hours);
                         vr = vr.AddMinutes(minutes);
@@ -129,17 +129,17 @@ public partial class DTHelperCs
         TryParse.Integer tpi = new TryParse.Integer();
         if (tpi.TryParseInt(parts[0]))
         {
-            day = tpi.lastInt;
+            day = tpi.LastInt;
             if (parts.Count > 1)
             {
                 if (tpi.TryParseInt(parts[1]))
                 {
-                    month = tpi.lastInt;
+                    month = tpi.LastInt;
                     if (parts.Count > 2)
                     {
                         if (tpi.TryParseInt(parts[2]))
                         {
-                            year = tpi.lastInt;
+                            year = tpi.LastInt;
                             try
                             {
                                 vr = new DateTime(year, month, day, 0, 0, 0);
