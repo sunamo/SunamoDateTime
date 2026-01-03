@@ -10,164 +10,164 @@ public partial class DTHelperMulti
     /// </summary>
     /// <param name = "dateTime"></param>
     /// <param name = "calculateTime"></param>
-    public static string OperationLastedInLocalizateString(TimeSpan tt, LangsDt lang)
+    public static string OperationLastedInLocalizateString(TimeSpan timeSpan, LangsDt lang)
     {
-        List<string> vr = new List<string>();
-        if (tt.Hours == 1)
+        List<string> timeParts = new List<string>();
+        if (timeSpan.Hours == 1)
         {
             if (lang == LangsDt.cs)
             {
-                vr.Add(tt.Hours + " hodinu");
+                timeParts.Add(timeSpan.Hours + " hodinu");
             }
             else
             {
-                vr.Add(tt.Hours + " hour");
+                timeParts.Add(timeSpan.Hours + " hour");
             }
         }
-        else if (tt.Hours > 1 && tt.Hours < 5)
+        else if (timeSpan.Hours > 1 && timeSpan.Hours < 5)
         {
             if (lang == LangsDt.cs)
             {
-                vr.Add(tt.Hours + " hodiny");
+                timeParts.Add(timeSpan.Hours + " hodiny");
             }
             else
             {
-                vr.Add(tt.Hours + " hours");
+                timeParts.Add(timeSpan.Hours + " hours");
             }
         }
-        else if (tt.Hours > 4)
+        else if (timeSpan.Hours > 4)
         {
             if (lang == LangsDt.cs)
             {
-                vr.Add(tt.Hours + " hodin");
+                timeParts.Add(timeSpan.Hours + " hodin");
             }
             else
             {
-                vr.Add(tt.Hours + " hours");
+                timeParts.Add(timeSpan.Hours + " hours");
             }
         }
         else
         {
             // Hodin je méně než 1
-            if (tt.Minutes == 1)
+            if (timeSpan.Minutes == 1)
             {
                 if (lang == LangsDt.cs)
                 {
-                    vr.Add(tt.Minutes + " minutu");
+                    timeParts.Add(timeSpan.Minutes + " minutu");
                 }
                 else
                 {
-                    vr.Add(tt.Minutes + " minute");
+                    timeParts.Add(timeSpan.Minutes + " minute");
                 }
             }
-            else if (tt.Minutes > 1 && tt.Minutes < 5)
+            else if (timeSpan.Minutes > 1 && timeSpan.Minutes < 5)
             {
                 if (lang == LangsDt.cs)
                 {
-                    vr.Add(tt.Minutes + " minuty");
+                    timeParts.Add(timeSpan.Minutes + " minuty");
                 }
                 else
                 {
-                    vr.Add(tt.Minutes + " minutes");
+                    timeParts.Add(timeSpan.Minutes + " minutes");
                 }
             }
-            else if (tt.Minutes > 4)
+            else if (timeSpan.Minutes > 4)
             {
                 if (lang == LangsDt.cs)
                 {
-                    vr.Add(tt.Minutes + " minut");
+                    timeParts.Add(timeSpan.Minutes + " minut");
                 }
                 else
                 {
-                    vr.Add(tt.Minutes + " minutes");
+                    timeParts.Add(timeSpan.Minutes + " minutes");
                 }
             }
             else //if (tt.Minutes == 0)
             {
-                if (tt.Seconds == 1)
+                if (timeSpan.Seconds == 1)
                 {
                     if (lang == LangsDt.cs)
                     {
-                        vr.Add(tt.Seconds + " sekundu");
+                        timeParts.Add(timeSpan.Seconds + " sekundu");
                     }
                     else
                     {
-                        vr.Add(tt.Seconds + " second");
+                        timeParts.Add(timeSpan.Seconds + " second");
                     }
                 }
-                else if (tt.Seconds > 1 && tt.Seconds < 5)
+                else if (timeSpan.Seconds > 1 && timeSpan.Seconds < 5)
                 {
                     if (lang == LangsDt.cs)
                     {
-                        vr.Add(tt.Seconds + " sekundy");
+                        timeParts.Add(timeSpan.Seconds + " sekundy");
                     }
                     else
                     {
-                        vr.Add(tt.Seconds + " seconds");
+                        timeParts.Add(timeSpan.Seconds + " seconds");
                     }
                 }
-                else if (tt.Seconds > 4)
+                else if (timeSpan.Seconds > 4)
                 {
                     if (lang == LangsDt.cs)
                     {
-                        vr.Add(tt.Seconds + " sekund");
+                        timeParts.Add(timeSpan.Seconds + " sekund");
                     }
                     else
                     {
-                        vr.Add(tt.Seconds + " seconds");
+                        timeParts.Add(timeSpan.Seconds + " seconds");
                     }
                 }
                 else
                 {
-                    if (tt.Seconds == 1)
+                    if (timeSpan.Milliseconds == 1)
                     {
                         if (lang == LangsDt.cs)
                         {
-                            vr.Add(tt.Milliseconds + " milisekundu");
+                            timeParts.Add(timeSpan.Milliseconds + " milisekundu");
                         }
                         else
                         {
-                            vr.Add(tt.Milliseconds + " millisecond");
+                            timeParts.Add(timeSpan.Milliseconds + " millisecond");
                         }
                     }
-                    else if (tt.Seconds > 1 && tt.Seconds < 5)
+                    else if (timeSpan.Milliseconds > 1 && timeSpan.Milliseconds < 5)
                     {
                         if (lang == LangsDt.cs)
                         {
-                            vr.Add(tt.Milliseconds + " milisekundy");
+                            timeParts.Add(timeSpan.Milliseconds + " milisekundy");
                         }
                         else
                         {
-                            vr.Add(tt.Milliseconds + " milliseconds");
+                            timeParts.Add(timeSpan.Milliseconds + " milliseconds");
                         }
                     }
-                    else if (tt.Seconds > 4)
+                    else if (timeSpan.Milliseconds > 4)
                     {
                         if (lang == LangsDt.cs)
                         {
-                            vr.Add(tt.Milliseconds + " milisekund");
+                            timeParts.Add(timeSpan.Milliseconds + " milisekund");
                         }
                         else
                         {
-                            vr.Add(tt.Milliseconds + " milliseconds");
+                            timeParts.Add(timeSpan.Milliseconds + " milliseconds");
                         }
                     }
                     else
                     {
                         if (lang == LangsDt.cs)
                         {
-                            vr.Add(tt.Milliseconds + " milisekund");
+                            timeParts.Add(timeSpan.Milliseconds + " milisekund");
                         }
                         else
                         {
-                            vr.Add(tt.Milliseconds + " milliseconds");
+                            timeParts.Add(timeSpan.Milliseconds + " milliseconds");
                         }
                     }
                 }
             }
         }
 
-        string text = string.Join(' ', vr);
+        string text = string.Join(' ', timeParts);
         return text;
     }
 
@@ -190,45 +190,45 @@ public partial class DTHelperMulti
     /// <summary>
     /// m/d/yyyy / d/m/yyyy
     /// </summary>
-    /// <param name = "p"></param>
-    public static DateTime? ParseDateMonthDayYear(string p, out int? dayTo)
+    /// <param name = "dateText"></param>
+    public static DateTime? ParseDateMonthDayYear(string dateText, out int? dayTo)
     {
         dayTo = -1;
-        var text = SHSplit.SplitNone(p, new string[] { "/" });
+        var text = SHSplit.SplitNone(dateText, new string[] { "/" });
         if (text.Count == 1)
         {
-            text = SHSplit.SplitNone(p, new string[] { "." });
+            text = SHSplit.SplitNone(dateText, new string[] { "." });
             text[0] = DayTo(text[0], out dayTo);
-            DateTime vr = DTHelperCs.ParseDateCzech(text[0] + "." + text[1] + "." + text[2]);
-            if (vr != DateTime.MinValue)
+            DateTime parsedDate = DTHelperCs.ParseDateCzech(text[0] + "." + text[1] + "." + text[2]);
+            if (parsedDate != DateTime.MinValue)
             {
-                return vr;
+                return parsedDate;
             }
         }
         else
         {
             text[1] = DayTo(text[1], out dayTo);
-            DateTime vr = DTHelperCs.ParseDateCzech(text[1] + "." + text[0] + "." + text[2]);
-            if (vr != DateTime.MinValue)
+            DateTime parsedDate = DTHelperCs.ParseDateCzech(text[1] + "." + text[0] + "." + text[2]);
+            if (parsedDate != DateTime.MinValue)
             {
-                return vr;
+                return parsedDate;
             }
         }
 
         return null;
     }
 
-    private static string DayTo(string v, out int? dayTo)
+    private static string DayTo(string dayText, out int? dayTo)
     {
-        if (v.Contains("-"))
+        if (dayText.Contains("-"))
         {
-            var builder = v.Split('-')[0];
-            dayTo = int.Parse(v);
+            var builder = dayText.Split('-')[0];
+            dayTo = int.Parse(dayText);
             return builder;
         }
 
         dayTo = -1;
-        return v;
+        return dayText;
     }
 
     static Type type = typeof(DTHelperMulti);

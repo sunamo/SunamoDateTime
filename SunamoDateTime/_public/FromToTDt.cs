@@ -56,7 +56,7 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
     /// <param name="text">Time range string (e.g. "12:30-14:00" or "12-14")</param>
     public void Parse(string text)
     {
-        List<string> parts = null;
+        List<string> parts;
         if (text.Contains("-"))
         {
             parts = text.Split('-').ToList();

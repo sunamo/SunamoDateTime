@@ -4,38 +4,38 @@ namespace SunamoDateTime.DT;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelper
 {
-    public static DateTime IsValidTimeText(string r)
+    public static DateTime IsValidTimeText(string text)
     {
-        return DTHelperMulti.IsValidTimeText(r);
+        return DTHelperMulti.IsValidTimeText(text);
     }
 
-    public static DateTime IsValidDateTimeText(string datum)
+    public static DateTime IsValidDateTimeText(string text)
     {
-        return DTHelperMulti.IsValidDateTimeText(datum);
+        return DTHelperMulti.IsValidDateTimeText(text);
     }
 
-    public static DateTime IsValidDateText(string r)
+    public static DateTime IsValidDateText(string text)
     {
-        return DTHelperMulti.IsValidDateText(r);
+        return DTHelperMulti.IsValidDateText(text);
     }
 
-    public static DateTime ParseDateUSA(string input)
+    public static DateTime ParseDateUSA(string text)
     {
-        return DTHelperEn.ParseDateUSA(input);
+        return DTHelperEn.ParseDateUSA(text);
     }
 
     /// <summary>
     /// 2018-08-10T11:33:19Z
     /// </summary>
     /// <param name = "p"></param>
-    public static DateTime StringToDateTimeFormalizeDate(string parameter)
+    public static DateTime StringToDateTimeFormalizeDate(string text)
     {
-        return DTHelperFormalized.StringToDateTimeFormalizeDate(parameter);
+        return DTHelperFormalized.StringToDateTimeFormalizeDate(text);
     }
 
-    public static string DateToStringWithDayOfWeekCS(DateTime dt)
+    public static string DateToStringWithDayOfWeekCS(DateTime dateTime)
     {
-        return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
+        return DTHelperCs.DateToStringWithDayOfWeekCS(dateTime);
     }
 
     public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt lang, DateTime dtMinVal)
@@ -43,19 +43,19 @@ public partial class DTHelper
         return DTHelperCs.CalculateAgeAndAddRightStringKymCim(dateTime, calculateTime, lang, dtMinVal);
     }
 
-    public static string MakeUpTo2NumbersToZero(int parameter)
+    public static string MakeUpTo2NumbersToZero(int text)
     {
-        return parameter.ToString("D2"); // NH.MakeUpTo2NumbersToZero(parameter);
+        return text.ToString("D2"); // NH.MakeUpTo2NumbersToZero(parameter);
     }
 
-    public static string TimeToStringAngularTime(DateTime dt)
+    public static string TimeToStringAngularTime(DateTime dateTime)
     {
-        return DTHelperCode.TimeToStringAngularTime(dt);
+        return DTHelperCode.TimeToStringAngularTime(dateTime);
     }
 
-    public static string DateToStringAngularDate(DateTime dt)
+    public static string DateToStringAngularDate(DateTime dateTime)
     {
-        return DTHelperCode.DateToStringAngularDate(dt);
+        return DTHelperCode.DateToStringAngularDate(dateTime);
     }
 
     public static string DateToString(DateTime parameter, LangsDt lang)
@@ -85,29 +85,29 @@ public partial class DTHelper
     /// <summary>
     /// mm/dd/yyyy
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateToStringjQueryDatePicker(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateToStringjQueryDatePicker(DateTime dateTime)
     {
-        return DTHelperCode.DateToStringjQueryDatePicker(dt);
+        return DTHelperCode.DateToStringjQueryDatePicker(dateTime);
     }
 
     /// <summary>
     /// 19890621T11:22:00
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateAndTimeToStringAngularDateTime(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateAndTimeToStringAngularDateTime(DateTime dateTime)
     {
-        return DTHelperCode.DateAndTimeToStringAngularDateTime(dt);
+        return DTHelperCode.DateAndTimeToStringAngularDateTime(dateTime);
     }
 
     /// <summary>
     /// 1989-06-21T11:22
     /// </summary>
-    /// <param name = "dt"></param>
+    /// <param name = "dateTime"></param>
     /// <param name = "dtMinVal"></param>
-    public static string DateTimeToStringToInputDateTimeLocal(DateTime dt, DateTime dtMinVal)
+    public static string DateTimeToStringToInputDateTimeLocal(DateTime dateTime, DateTime dtMinVal)
     {
-        return DTHelperCode.DateTimeToStringToInputDateTimeLocal(dt, dtMinVal);
+        return DTHelperCode.DateTimeToStringToInputDateTimeLocal(dateTime, dtMinVal);
     }
 
     /// <summary>
@@ -122,76 +122,76 @@ public partial class DTHelper
     /// <summary>
     /// Wednesday, 21.6.1989 11:22 (dont fill with zero)
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateTimeToStringWithDayOfWeekCS(DateTime dateTime)
     {
-        return DTHelperCs.DateTimeToStringWithDayOfWeekCS(dt);
+        return DTHelperCs.DateTimeToStringWithDayOfWeekCS(dateTime);
     }
 
     /// <summary>
     /// 1989-06-21
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateTimeToStringFormalizeDate(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateTimeToStringFormalizeDate(DateTime dateTime)
     {
-        return DTHelperFormalized.DateTimeToStringFormalizeDate(dt);
+        return DTHelperFormalized.DateTimeToStringFormalizeDate(dateTime);
     }
 
     /// <summary>
     /// 2011-10-18 10:30
     /// </summary>
-    /// <param name = "dt"></param>
+    /// <param name = "dateTime"></param>
     /// <param name = "fullCalendar"></param>
-    public static string FormatDateTime(DateTime dt, DateTimeFormatStyles fullCalendar)
+    public static string FormatDateTime(DateTime dateTime, DateTimeFormatStyles fullCalendar)
     {
-        return DTHelperFormalized.FormatDateTime(dt, fullCalendar);
+        return DTHelperFormalized.FormatDateTime(dateTime, fullCalendar);
     }
 
     /// <summary>
     /// yyyy-mm-ddT00:00:00
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateTimeToStringFormalizeDateEmptyTime(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateTimeToStringFormalizeDateEmptyTime(DateTime dateTime)
     {
-        return DTHelperFormalizedWithT.DateTimeToStringFormalizeDateEmptyTime(dt);
+        return DTHelperFormalizedWithT.DateTimeToStringFormalizeDateEmptyTime(dateTime);
     }
 
     /// <summary>
     /// 1989-06-21T00:00:00.000Z
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateTimeToStringStringifyDateEmptyTime(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateTimeToStringStringifyDateEmptyTime(DateTime dateTime)
     {
-        return DTHelperFormalizedWithT.DateTimeToStringStringifyDateEmptyTime(dt);
+        return DTHelperFormalizedWithT.DateTimeToStringStringifyDateEmptyTime(dateTime);
     }
 
     /// <summary>
     /// 1989-06-21Thh:mm:ss.000Z
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateTimeToStringStringifyDateTime(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateTimeToStringStringifyDateTime(DateTime dateTime)
     {
-        return DTHelperFormalizedWithT.DateTimeToStringStringifyDateTime(dt);
+        return DTHelperFormalizedWithT.DateTimeToStringStringifyDateTime(dateTime);
     }
 
     /// <summary>
     /// 1989-06-21T11:22:00
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateAndTimeToStringFormalizeDate(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateAndTimeToStringFormalizeDate(DateTime dateTime)
     {
-        return DTHelperFormalizedWithT.DateAndTimeToStringFormalizeDate(dt);
+        return DTHelperFormalizedWithT.DateAndTimeToStringFormalizeDate(dateTime);
     }
 
     /// <summary>
     /// yyyy_mm_dd
     /// With A2 append hh_mm
     /// </summary>
-    /// <param name = "dt"></param>
+    /// <param name = "dateTime"></param>
     /// <param name = "time"></param>
-    public static string DateTimeToFileName(DateTime dt, bool time)
+    public static string DateTimeToFileName(DateTime dateTime, bool time)
     {
-        return DTHelperUs.DateTimeToFileName(dt, time);
+        return DTHelperUs.DateTimeToFileName(dateTime, time);
     }
 
     /// <summary>
@@ -218,10 +218,10 @@ public partial class DTHelper
     /// <summary>
     /// yyyy_mm_dd
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateTimeToFileName(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateTimeToFileName(DateTime dateTime)
     {
-        return DTHelperUs.DateTimeToFileName(dt);
+        return DTHelperUs.DateTimeToFileName(dateTime);
     }
 
     /// <summary>
@@ -229,19 +229,19 @@ public partial class DTHelper
     /// If fail, return DT.MinValue
     /// Seconds can be omit
     /// </summary>
-    /// <param name = "t"></param>
-    public static DateTime ParseTimeCzech(string t)
+    /// <param name = "text"></param>
+    public static DateTime ParseTimeCzech(string text)
     {
-        return DTHelperCs.ParseTimeCzech(t);
+        return DTHelperCs.ParseTimeCzech(text);
     }
 
     /// <summary>
     /// Seconds can be omit
     /// hh:mm tt
     /// </summary>
-    /// <param name = "t"></param>
-    public static DateTime ParseTimeUSA(string t)
+    /// <param name = "text"></param>
+    public static DateTime ParseTimeUSA(string text)
     {
-        return DTHelperEn.ParseTimeUSA(t);
+        return DTHelperEn.ParseTimeUSA(text);
     }
 }

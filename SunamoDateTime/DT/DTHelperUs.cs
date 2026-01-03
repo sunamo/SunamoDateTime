@@ -40,10 +40,10 @@ public class DTHelperUs
     /// 1989_06_21_11_22 or 1989_06_21 if !A2
     /// Return null if A1 wont have right format
     /// </summary>
-    /// <param name="fnwoe"></param>
-    public static DateTime? FileNameToDateTimePrefix(string fnwoe, bool time, out string prefix)
+    /// <param name="filenameWithoutExtension"></param>
+    public static DateTime? FileNameToDateTimePrefix(string filenameWithoutExtension, bool time, out string prefix)
     {
-        List<string> parts = SHSplit.SplitToPartsFromEnd(fnwoe, time ? 6 : 4, new Char[] { "_"[0] });
+        List<string> parts = SHSplit.SplitToPartsFromEnd(filenameWithoutExtension, time ? 6 : 4, new Char[] { "_"[0] });
         if (time)
         {
             prefix = parts[0];
@@ -72,9 +72,9 @@ public class DTHelperUs
     /// if !A2, A1 must have format ????_??_??
     /// In any case what is after A2 is not important
     /// </summary>
-    public static DateTime? FileNameToDateTimePostfix(string fnwoe, bool time, out string postfix)
+    public static DateTime? FileNameToDateTimePostfix(string filenameWithoutExtension, bool time, out string postfix)
     {
-        var parts = SHSplit.SplitToParts(fnwoe, time ? 6 : 4, "_");
+        var parts = SHSplit.SplitToParts(filenameWithoutExtension, time ? 6 : 4, "_");
         if (time)
         {
             if (parts.Count > 5)
@@ -127,12 +127,12 @@ public class DTHelperUs
     /// If A2, A1 must have format ????_??_??_S_?*
     ///
     /// </summary>
-    public static DateTime? FileNameToDateWithSeriePostfix(string fnwoe, out int? serie, out string postfix)
+    public static DateTime? FileNameToDateWithSeriePostfix(string filenameWithoutExtension, out int? serie, out string postfix)
     {
         postfix = "";
         serie = null;
 
-        var parts = SHSplit.SplitToParts(fnwoe, 6, "_");
+        var parts = SHSplit.SplitToParts(filenameWithoutExtension, 6, "_");
 
         if (parts.Count > 5)
         {
@@ -163,10 +163,10 @@ public class DTHelperUs
     /// 1989_06_21_11_22
     /// Return null if wont have right format
     /// </summary>
-    /// <param name="fnwoe"></param>
-    public static DateTime? FileNameToDateTime(string fnwoe)
+    /// <param name="filenameWithoutExtension"></param>
+    public static DateTime? FileNameToDateTime(string filenameWithoutExtension)
     {
-        var parts = fnwoe.Split(new String[] { "_" }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(fnwoe, "_");
+        var parts = filenameWithoutExtension.Split(new String[] { "_" }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(filenameWithoutExtension, "_");
         // Tady jsem to rozděloval na 6 ale pak mi to vracelo null. Úprava na 5
         var dd = CAToNumber.ToInt1(parts, 5);
         if (dd == null)

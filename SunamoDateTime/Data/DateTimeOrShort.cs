@@ -48,11 +48,11 @@ public class DateTimeOrShort
     /// EN: Converts DateTime to short using NormalizeDate.To.
     /// CZ: Převede DateTime na short pomocí NormalizeDate.To.
     /// </summary>
-    /// <param name="value">The DateTime value to convert</param>
+    /// <param name="dateTIme">The DateTime value to convert</param>
     /// <returns>DateTimeOrShort instance with short value</returns>
-    public static DateTimeOrShort FromShort(DateTime value)
+    public static DateTimeOrShort FromShort(DateTime dateTIme)
     {
-        return FromShort(NormalizeDate.To(value));
+        return FromShort(NormalizeDate.To(dateTIme));
     }
 
     /// <summary>

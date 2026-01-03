@@ -8,10 +8,10 @@ public partial class DTHelperCs
     /// <summary>
     /// Středa, 21.6.1989
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateToStringWithDayOfWeekCS(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateToStringWithDayOfWeekCS(DateTime dateTime)
     {
-        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year;
+        return DayOfWeek2DenVTydnu(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year;
     }
 
     /// <summary>
@@ -29,16 +29,16 @@ public partial class DTHelperCs
     /// With seconds
     /// 11:22:00 (depends on A2)
     /// </summary>
-    /// <param name = "value"></param>
+    /// <param name = "dateTime"></param>
     /// <param name = "fillUpByZeros"></param>
-    public static string ToShortTimeWithSecond(DateTime value, bool fillUpByZeros = false)
+    public static string ToShortTimeWithSecond(DateTime dateTime, bool fillUpByZeros = false)
     {
         // Must be array due to params []
         var parts = new int[]
         {
-            value.Hour,
-            value.Minute,
-            value.Second
+            dateTime.Hour,
+            dateTime.Minute,
+            dateTime.Second
         };
         return ToShortTimeWorker(parts, fillUpByZeros);
     }
@@ -62,12 +62,12 @@ public partial class DTHelperCs
     /// 11:22
     /// Without seconds
     /// </summary>
-    /// <param name = "value"></param>
+    /// <param name = "dateTime"></param>
     /// <param name = "fillUpByZeros"></param>
-    public static string ToShortTime(DateTime value, bool fillUpByZeros = false)
+    public static string ToShortTime(DateTime dateTime, bool fillUpByZeros = false)
     {
         // Must be array due to params []
-        var parts = new List<int>([value.Hour, value.Minute]).ToArray(); //CAG.ToArrayT();
+        var parts = new List<int>([dateTime.Hour, dateTime.Minute]).ToArray(); //CAG.ToArrayT();
         return ToShortTimeWorker(parts, fillUpByZeros);
     }
 
@@ -76,15 +76,15 @@ public partial class DTHelperCs
     /// If fail, return DT.MinValue
     /// Seconds can be omit
     /// </summary>
-    /// <param name = "t"></param>
-    public static DateTime ParseTimeCzech(string t)
+    /// <param name = "text"></param>
+    public static DateTime ParseTimeCzech(string text)
     {
         var vr = DateTime.MinValue;
-        var parts = t.Split(':').ToList(); //SHSplit.SplitChar(t, new char[] { ':' });
+        var parts = text.Split(':').ToList(); //SHSplit.SplitChar(t, new char[] { ':' });
         if (parts.Count == 2)
         {
-            t += ":00";
-            parts = t.Split(':').ToList(); //SHSplit.SplitChar(t, new char[] { ':' });
+            text += ":00";
+            parts = text.Split(':').ToList(); //SHSplit.SplitChar(t, new char[] { ':' });
         }
 
         int hours = -1;
@@ -117,11 +117,11 @@ public partial class DTHelperCs
     /// <summary>
     /// 21.6.1989. DateTime.MinValue when cannot be parsed
     /// </summary>
-    /// <param name = "input"></param>
-    public static DateTime ParseDateCzech(string input)
+    /// <param name = "text"></param>
+    public static DateTime ParseDateCzech(string text)
     {
         DateTime vr = DateTime.MinValue;
-        var parts = input.Split('.').ToList(); //SHSplit.SplitChar(input, new char[] { '.' });
+        var parts = text.Split('.').ToList(); //SHSplit.SplitChar(input, new char[] { '.' });
         var day = -1;
         var month = -1;
         var year = -1;

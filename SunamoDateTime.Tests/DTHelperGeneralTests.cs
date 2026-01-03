@@ -1,4 +1,5 @@
-﻿using SunamoDateTime.DT;
+// variables names: ok
+using SunamoDateTime.DT;
 
 namespace SunamoDateTime.Tests;
 public class DTHelperGeneralTests

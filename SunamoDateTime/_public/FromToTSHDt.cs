@@ -57,8 +57,8 @@ public class FromToTSHDt<T>
     /// </summary>
     public T From
     {
-        get => (T)(dynamic)fromLong;
-        set => fromLong = (long)(dynamic)value;
+        get => (T)(dynamic)fromLong!;
+        set => fromLong = (long)(dynamic)value!;
     }
 
     /// <summary>
@@ -68,8 +68,8 @@ public class FromToTSHDt<T>
     /// </summary>
     public T To
     {
-        get => (T)(dynamic)toLong;
-        set => toLong = (long)(dynamic)value;
+        get => (T)(dynamic)toLong!;
+        set => toLong = (long)(dynamic)value!;
     }
 
     /// <summary>

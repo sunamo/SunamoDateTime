@@ -9,11 +9,11 @@ public class DTHelperEn
     /// <summary>
     /// return MinValue when fail
     /// </summary>
-    /// <param name="input"></param>
-    public static DateTime ParseDateUSA(string input)
+    /// <param name="text"></param>
+    public static DateTime ParseDateUSA(string text)
     {
         DateTime result = DateTime.MinValue;
-        var parts = input.Split('/'); //SHSplit.SplitChar(input, new Char[] { '/' });
+        var parts = text.Split('/'); //SHSplit.SplitChar(input, new Char[] { '/' });
         var day = -1;
         var month = -1;
         var year = -1;

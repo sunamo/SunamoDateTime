@@ -57,20 +57,19 @@ public partial class DTHelperMulti
         return DateToString(dateTime, lang) + " (" + dayOfWeek + ")";
     }
 
-    public static string DateToStringWithDayOfWeek(DateTime dt, LangsDt lang)
+    public static string DateToStringWithDayOfWeek(DateTime dateTime, LangsDt lang)
     {
         if (lang == LangsDt.en)
         {
-            return DTHelperEn.DateToStringWithDayOfWeekEN(dt);
+            return DTHelperEn.DateToStringWithDayOfWeekEN(dateTime);
         }
         else if (lang == LangsDt.cs)
         {
-            return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
+            return DTHelperCs.DateToStringWithDayOfWeekCS(dateTime);
         }
         else
         {
-            ThrowEx.NotImplementedCase(lang);
-            return null;
+            throw new NotImplementedException($"Language {lang} is not supported");
         }
     }
 
@@ -80,22 +79,22 @@ public partial class DTHelperMulti
     /// <param name = "text"></param>
     public static DateTime IsValidDateText(string text)
     {
-        DateTime dt = DateTime.MinValue;
+        DateTime result = DateTime.MinValue;
         text = text.Trim();
         if (text != "")
         {
             var dotIndex = text.IndexOf('.');
             if (dotIndex != -1)
             {
-                dt = DTHelperCs.ParseDateCzech(text);
+                result = DTHelperCs.ParseDateCzech(text);
             }
             else
             {
-                dt = DTHelperEn.ParseDateUSA(text);
+                result = DTHelperEn.ParseDateUSA(text);
             }
         }
 
-        return dt;
+        return result;
     }
 
     /// <summary>
@@ -142,22 +141,22 @@ public partial class DTHelperMulti
 
     public static DateTime IsValidTimeText(string text)
     {
-        DateTime dt = DateTime.MinValue;
+        DateTime result = DateTime.MinValue;
         text = text.Trim();
         if (text != "")
         {
             var spaceIndex = text.IndexOf(' ');
             if (spaceIndex == -1)
             {
-                dt = DTHelperCs.ParseTimeCzech(text);
+                result = DTHelperCs.ParseTimeCzech(text);
             }
             else
             {
-                dt = DTHelperEn.ParseTimeUSA(text);
+                result = DTHelperEn.ParseTimeUSA(text);
             }
         }
 
-        return dt;
+        return result;
     }
 
     /// <summary>

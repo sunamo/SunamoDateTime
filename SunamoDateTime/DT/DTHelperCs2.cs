@@ -27,69 +27,69 @@ public partial class DTHelperCs
             int months = (Date2.Year - Date1.Year) * 12 + Date2.Month - Date1.Month;
             if (months < 3)
             {
-                TimeSpan tt = Date2 - Date1;
-                int totalWeeks = tt.Days / 7;
+                TimeSpan timeElapsed = Date2 - Date1;
+                int totalWeeks = timeElapsed.Days / 7;
                 if (totalWeeks == 0)
                 {
-                    if (tt.Days == 1)
+                    if (timeElapsed.Days == 1)
                     {
                         return "  den";
                     }
-                    else if (tt.Days < 5 && tt.Days > 1)
+                    else if (timeElapsed.Days < 5 && timeElapsed.Days > 1)
                     {
-                        return tt.Days + " dny";
+                        return timeElapsed.Days + " dny";
                     }
                     else
                     {
                         if (calculateTime)
                         {
-                            if (tt.Hours == 1)
+                            if (timeElapsed.Hours == 1)
                             {
-                                return tt.Hours + " hodina";
+                                return timeElapsed.Hours + " hodina";
                             }
-                            else if (tt.Hours > 1 && tt.Hours < 5)
+                            else if (timeElapsed.Hours > 1 && timeElapsed.Hours < 5)
                             {
-                                return tt.Hours + " hodiny";
+                                return timeElapsed.Hours + " hodiny";
                             }
-                            else if (tt.Hours > 4)
+                            else if (timeElapsed.Hours > 4)
                             {
-                                return tt.Hours + " hodin";
+                                return timeElapsed.Hours + " hodin";
                             }
                             else
                             {
                                 // Hodin je méně než 1
-                                if (tt.Minutes == 1)
+                                if (timeElapsed.Minutes == 1)
                                 {
-                                    return tt.Minutes + " minuta";
+                                    return timeElapsed.Minutes + " minuta";
                                 }
-                                else if (tt.Minutes > 1 && tt.Minutes < 5)
+                                else if (timeElapsed.Minutes > 1 && timeElapsed.Minutes < 5)
                                 {
-                                    return tt.Minutes + " minuty";
+                                    return timeElapsed.Minutes + " minuty";
                                 }
-                                else if (tt.Minutes > 4)
+                                else if (timeElapsed.Minutes > 4)
                                 {
-                                    return tt.Minutes + " minut";
+                                    return timeElapsed.Minutes + " minut";
                                 }
-                                else //if (tt.Minutes == 0)
+                                else //if (timeElapsed.Minutes == 0)
                                 {
-                                    if (tt.Seconds == 1)
+                                    if (timeElapsed.Seconds == 1)
                                     {
-                                        return tt.Seconds + " sekunda";
+                                        return timeElapsed.Seconds + " sekunda";
                                     }
-                                    else if (tt.Seconds > 1 && tt.Seconds < 5)
+                                    else if (timeElapsed.Seconds > 1 && timeElapsed.Seconds < 5)
                                     {
-                                        return tt.Seconds + " sekundy";
+                                        return timeElapsed.Seconds + " sekundy";
                                     }
-                                    else //if (tt.Seconds > 4)
+                                    else //if (timeElapsed.Seconds > 4)
                                     {
-                                        return tt.Seconds + " sekund";
+                                        return timeElapsed.Seconds + " sekund";
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            return tt.Days + " dn\u016F";
+                            return timeElapsed.Days + " dn\u016F";
                         }
                     }
                 }

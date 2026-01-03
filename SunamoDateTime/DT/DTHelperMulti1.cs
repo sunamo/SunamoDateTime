@@ -7,147 +7,147 @@ public partial class DTHelperMulti
     /// <summary>
     /// If A1 could be lower than 1d, return 1d
     /// </summary>
-    /// <param name = "ts"></param>
+    /// <param name = "timeSpan"></param>
     /// <param name = "calculateTime"></param>
-    public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, LangsDt lang)
+    public static string AddRightStringToTimeSpan(TimeSpan timeSpan, bool calculateTime, LangsDt lang)
     {
-        int age = tt.TotalYears();
-        if (tt.TotalMilliseconds == 0)
+        int age = timeSpan.TotalYears();
+        if (timeSpan.TotalMilliseconds == 0)
         {
-            int months = tt.TotalMonths();
+            int months = timeSpan.TotalMonths();
             if (months < 3)
             {
-                int totalWeeks = tt.Days / 7;
+                int totalWeeks = timeSpan.Days / 7;
                 if (totalWeeks == 0)
                 {
-                    if (tt.Days == 1)
+                    if (timeSpan.Days == 1)
                     {
                         if (lang == LangsDt.cs)
                         {
-                            return tt.Days + " den";
+                            return timeSpan.Days + " den";
                         }
                         else
                         {
-                            return tt.Days + " day";
+                            return timeSpan.Days + " day";
                         }
                     }
-                    else if (tt.Days < 5 && tt.Days > 1)
+                    else if (timeSpan.Days < 5 && timeSpan.Days > 1)
                     {
                         if (lang == LangsDt.cs)
                         {
-                            return tt.Days + " dn\u00ED";
+                            return timeSpan.Days + " dn\u00ED";
                         }
                         else
                         {
-                            return tt.Days + " days";
+                            return timeSpan.Days + " days";
                         }
                     }
                     else
                     {
                         if (calculateTime)
                         {
-                            if (tt.Hours == 1)
+                            if (timeSpan.Hours == 1)
                             {
                                 if (lang == LangsDt.cs)
                                 {
-                                    return tt.Hours + " hodinu";
+                                    return timeSpan.Hours + " hodinu";
                                 }
                                 else
                                 {
-                                    return tt.Hours + " hour";
+                                    return timeSpan.Hours + " hour";
                                 }
                             }
-                            else if (tt.Hours > 1 && tt.Hours < 5)
+                            else if (timeSpan.Hours > 1 && timeSpan.Hours < 5)
                             {
                                 if (lang == LangsDt.cs)
                                 {
-                                    return tt.Hours + " hodiny";
+                                    return timeSpan.Hours + " hodiny";
                                 }
                                 else
                                 {
-                                    return tt.Hours + " hours";
+                                    return timeSpan.Hours + " hours";
                                 }
                             }
-                            else if (tt.Hours > 4)
+                            else if (timeSpan.Hours > 4)
                             {
                                 if (lang == LangsDt.cs)
                                 {
-                                    return tt.Hours + " hodin";
+                                    return timeSpan.Hours + " hodin";
                                 }
                                 else
                                 {
-                                    return tt.Hours + " hours";
+                                    return timeSpan.Hours + " hours";
                                 }
                             }
                             else
                             {
                                 // Hodin je méně než 1
-                                if (tt.Minutes == 1)
+                                if (timeSpan.Minutes == 1)
                                 {
                                     if (lang == LangsDt.cs)
                                     {
-                                        return tt.Minutes + " minutu";
+                                        return timeSpan.Minutes + " minutu";
                                     }
                                     else
                                     {
-                                        return tt.Minutes + " minute";
+                                        return timeSpan.Minutes + " minute";
                                     }
                                 }
-                                else if (tt.Minutes > 1 && tt.Minutes < 5)
+                                else if (timeSpan.Minutes > 1 && timeSpan.Minutes < 5)
                                 {
                                     if (lang == LangsDt.cs)
                                     {
-                                        return tt.Minutes + " minuty";
+                                        return timeSpan.Minutes + " minuty";
                                     }
                                     else
                                     {
-                                        return tt.Minutes + " minutes";
+                                        return timeSpan.Minutes + " minutes";
                                     }
                                 }
-                                else if (tt.Minutes > 4)
+                                else if (timeSpan.Minutes > 4)
                                 {
                                     if (lang == LangsDt.cs)
                                     {
-                                        return tt.Minutes + " minut";
+                                        return timeSpan.Minutes + " minut";
                                     }
                                     else
                                     {
-                                        return tt.Minutes + " minutes";
+                                        return timeSpan.Minutes + " minutes";
                                     }
                                 }
-                                else //if (tt.Minutes == 0)
+                                else //if (timeSpan.Minutes == 0)
                                 {
-                                    if (tt.Seconds == 1)
+                                    if (timeSpan.Seconds == 1)
                                     {
                                         if (lang == LangsDt.cs)
                                         {
-                                            return tt.Seconds + " sekundu";
+                                            return timeSpan.Seconds + " sekundu";
                                         }
                                         else
                                         {
-                                            return tt.Seconds + " second";
+                                            return timeSpan.Seconds + " second";
                                         }
                                     }
-                                    else if (tt.Seconds > 1 && tt.Seconds < 5)
+                                    else if (timeSpan.Seconds > 1 && timeSpan.Seconds < 5)
                                     {
                                         if (lang == LangsDt.cs)
                                         {
-                                            return tt.Seconds + " sekundy";
+                                            return timeSpan.Seconds + " sekundy";
                                         }
                                         else
                                         {
-                                            return tt.Seconds + " seconds";
+                                            return timeSpan.Seconds + " seconds";
                                         }
                                     }
-                                    else //if (tt.Seconds > 4)
+                                    else //if (timeSpan.Seconds > 4)
                                     {
                                         if (lang == LangsDt.cs)
                                         {
-                                            return tt.Seconds + " sekund";
+                                            return timeSpan.Seconds + " sekund";
                                         }
                                         else
                                         {
-                                            return tt.Seconds + " seconds";
+                                            return timeSpan.Seconds + " seconds";
                                         }
                                     }
                                 }

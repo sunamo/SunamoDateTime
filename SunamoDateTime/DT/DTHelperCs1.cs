@@ -142,9 +142,9 @@ public partial class DTHelperCs
         }
     }
 
-    public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, LangsDt lang, DateTime dtMinVal)
+    public static string IntervalToString(DateTime startDateTime, DateTime endDateTime, LangsDt lang, DateTime dtMinVal)
     {
-        return DTHelperMulti.DateTimeToString(oDTStart, lang, dtMinVal) + "-" + DTHelperMulti.DateTimeToString(oDTEnd, lang, dtMinVal);
+        return DTHelperMulti.DateTimeToString(startDateTime, lang, dtMinVal) + "-" + DTHelperMulti.DateTimeToString(endDateTime, lang, dtMinVal);
     }
 
     /// <param name = "dayOfWeek"></param>
@@ -169,17 +169,16 @@ public partial class DTHelperCs
         }
 
         throw new Exception("Nezn\u00E1m\u00FD den v t\u00FDdnu");
-        return null;
     }
 
     /// <summary>
     /// Return actual time(for example 12:00:00:000) and after that A1 postfix
     /// </summary>
-    /// <param name = "defin"></param>
-    public static string AppendToFrontOnlyTime(string defin)
+    /// <param name = "postfix"></param>
+    public static string AppendToFrontOnlyTime(string postfix)
     {
         DateTime dt = DateTime.Now;
-        return dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2") + ":" + dt.Millisecond.ToString("D3") + "" + defin;
+        return dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2") + ":" + dt.Millisecond.ToString("D3") + "" + postfix;
     }
 
     /// <summary>
@@ -195,10 +194,10 @@ public partial class DTHelperCs
     ///
     /// Wednesday, 21.6.1989 11:22 (dont fill with zero)
     /// </summary>
-    /// <param name = "dt"></param>
-    public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
+    /// <param name = "dateTime"></param>
+    public static string DateTimeToStringWithDayOfWeekCS(DateTime dateTime)
     {
-        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year + " " + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2");
+        return DayOfWeek2DenVTydnu(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year + " " + dateTime.Hour.ToString("D2") + ":" + dateTime.Minute.ToString("D2");
     }
 
     public static DateTime ParseDateTimeCzech(string text)

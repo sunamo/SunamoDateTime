@@ -1,3 +1,4 @@
+// variables names: ok
 namespace sunamo.Tests.Helpers.DT;
 
 using SunamoDateTime.DT;

@@ -23,21 +23,37 @@ public partial class DTHelperGeneral
         return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(dateTime, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
     }
 
-    public static DateTime StartOfWeekMonday(DateTime dt, DayOfWeek? aowWhenCalculateAsStartNextWeek)
+    /// <summary>
+    /// EN: Gets the start of the week (Monday) for the specified date.
+    /// CZ: Získá začátek týdne (pondělí) pro zadané datum.
+    /// </summary>
+    /// <param name="dateTime">
+    /// EN: The date to get the start of the week for.
+    /// CZ: Datum pro které se má získat začátek týdne.
+    /// </param>
+    /// <param name="rolloverDayOfWeek">
+    /// EN: Optional day of week threshold. If the current day is >= this day, returns the start of NEXT week instead of current week.
+    /// CZ: Volitelný den v týdnu jako práh. Pokud je aktuální den >= tento den, vrátí začátek PŘÍŠTÍHO týdne místo aktuálního týdne.
+    /// </param>
+    /// <returns>
+    /// EN: The Monday of the week (current or next based on threshold).
+    /// CZ: Pondělí daného týdne (aktuálního nebo příštího podle prahu).
+    /// </returns>
+    public static DateTime StartOfWeekMonday(DateTime dateTime, DayOfWeek? rolloverDayOfWeek)
     {
         DayOfWeek startOfWeek = DayOfWeek.Monday;
-        if (dt.DayOfWeek == startOfWeek)
+        if (dateTime.DayOfWeek == startOfWeek)
         {
-            return dt;
+            return dateTime;
         }
 
-        var diff = (dt.DayOfWeek - startOfWeek);
+        var diff = (dateTime.DayOfWeek - startOfWeek);
         var part = (7 + diff);
         int diff2 = part % 7;
-        var addedDays = dt.AddDays(-1 * diff2);
-        if (aowWhenCalculateAsStartNextWeek.HasValue)
+        var addedDays = dateTime.AddDays(-1 * diff2);
+        if (rolloverDayOfWeek.HasValue)
         {
-            if (dt.DayOfWeek > (aowWhenCalculateAsStartNextWeek - 1))
+            if (dateTime.DayOfWeek > (rolloverDayOfWeek - 1))
             {
                 addedDays = addedDays.AddDays(7);
             }
@@ -79,12 +95,12 @@ public partial class DTHelperGeneral
     /// <summary>
     /// Check also for MinValue and MaxValue
     /// </summary>
-    /// <param name = "dt"></param>
-    public static bool HasNullableDateTimeValue(DateTime? dt)
+    /// <param name = "dateTime"></param>
+    public static bool HasNullableDateTimeValue(DateTime? dateTime)
     {
-        if (dt.HasValue)
+        if (dateTime.HasValue)
         {
-            if (dt.Value != DateTime.MinValue && dt.Value != DateTime.MaxValue)
+            if (dateTime.Value != DateTime.MinValue && dateTime.Value != DateTime.MaxValue)
             {
                 return true;
             }
@@ -108,45 +124,45 @@ public partial class DTHelperGeneral
         return result;
     }
 
-    public static DateTime AddDays(ref DateTime dt, double day)
+    public static DateTime AddDays(ref DateTime dateTime, double days)
     {
-        dt = dt.AddDays(day);
-        return dt;
+        dateTime = dateTime.AddDays(days);
+        return dateTime;
     }
 
     /// <summary>
     /// Subtract A2 from A1
     /// </summary>
-    /// <param name = "dt1"></param>
-    /// <param name = "dt2"></param>
-    public static TimeSpan Substract(DateTime dt1, DateTime dt2)
+    /// <param name = "firstDateTime"></param>
+    /// <param name = "secondDateTime"></param>
+    public static TimeSpan Substract(DateTime firstDateTime, DateTime secondDateTime)
     {
-        TimeSpan ts = dt1 - dt2;
-        return ts;
+        TimeSpan timeSpan = firstDateTime - secondDateTime;
+        return timeSpan;
     }
 
-    public static DateTime SetDateToMinValue(DateTime dt)
+    public static DateTime SetDateToMinValue(DateTime dateTime)
     {
         DateTime minVal = DateTime.MinValue;
-        return new DateTime(minVal.Year, minVal.Month, minVal.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+        return new DateTime(minVal.Year, minVal.Month, minVal.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, dateTime.Millisecond);
     }
 
     public static DateTime SetToday(DateTime ugtFirstStep)
     {
-        DateTime t = DateTime.Today;
-        return new DateTime(t.Year, t.Month, t.Day, ugtFirstStep.Hour, ugtFirstStep.Minute, ugtFirstStep.Second);
+        DateTime today = DateTime.Today;
+        return new DateTime(today.Year, today.Month, today.Day, ugtFirstStep.Hour, ugtFirstStep.Minute, ugtFirstStep.Second);
     }
 
-    public static DateTime? Create(string y, string m, string d)
+    public static DateTime? Create(string year, string month, string day)
     {
-        return Create(int.Parse(y), int.Parse(m), int.Parse(d));
+        return Create(int.Parse(year), int.Parse(month), int.Parse(day));
     }
 
-    public static DateTime? Create(int y, int m, int d)
+    public static DateTime? Create(int year, int month, int day)
     {
         try
         {
-            return new DateTime(y, m, d);
+            return new DateTime(year, month, day);
         }
         catch (ArgumentOutOfRangeException ex)
         {
@@ -189,10 +205,10 @@ public partial class DTHelperGeneral
         }
     }
 
-    public static int FullYear(byte b)
+    public static int FullYear(byte yearByte)
     {
-        var bs = b.ToString().PadLeft(3, '0');
-        return int.Parse("2" + bs);
+        var yearString = yearByte.ToString().PadLeft(3, '0');
+        return int.Parse("2" + yearString);
     }
 
     /// <summary>
@@ -221,9 +237,9 @@ public partial class DTHelperGeneral
         return result;
     }
 
-    public static long SecondsInMonth(DateTime dt)
+    public static long SecondsInMonth(DateTime dateTime)
     {
-        return DTConstants.SecondsInDay * DateTime.DaysInMonth(dt.Year, dt.Month);
+        return DTConstants.SecondsInDay * DateTime.DaysInMonth(dateTime.Year, dateTime.Month);
     }
 
     public static long SecondsInYear(int year)
@@ -242,13 +258,13 @@ public partial class DTHelperGeneral
         return DateTimeOrShort.FromShort(NormalizeDate.To(DateTime.Today));
     }
 
-    public static DateTime WithoutTime(DateTime time)
+    public static DateTime WithoutTime(DateTime dateTime)
     {
-        return new DateTime(time.Year, time.Month, time.Day);
+        return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day);
     }
 
-    public static DateTime WithoutDate(DateTime dt)
+    public static DateTime WithoutDate(DateTime dateTime)
     {
-        return new DateTime(1, 1, 1, dt.Hour, dt.Minute, dt.Second);
+        return new DateTime(1, 1, 1, dateTime.Hour, dateTime.Minute, dateTime.Second);
     }
 }

@@ -1,3 +1,4 @@
+// variables names: ok
 using SunamoDateTime.Tests.DT;
 
 namespace RunnerDateTime;
