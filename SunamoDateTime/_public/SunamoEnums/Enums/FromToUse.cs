@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoDateTime._public.SunamoEnums.Enums;
 
 public enum FromToUseDateTime

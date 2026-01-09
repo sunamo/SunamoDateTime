@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoDateTime.DT;
 
 public class DTHelperCode

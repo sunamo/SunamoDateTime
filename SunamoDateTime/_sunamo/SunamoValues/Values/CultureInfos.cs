@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoDateTime._sunamo.SunamoValues.Values;
 
 internal class CultureInfos
