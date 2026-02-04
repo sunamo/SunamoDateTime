@@ -1,4 +1,3 @@
-// variables names: ok
 namespace SunamoDateTime._sunamo.SunamoParsing;
 
 /// <summary>

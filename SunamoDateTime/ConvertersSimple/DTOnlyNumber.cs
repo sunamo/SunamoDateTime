@@ -1,4 +1,3 @@
-// variables names: ok
 namespace SunamoDateTime.ConvertersSimple;
 
 public class DTOnlyNumber

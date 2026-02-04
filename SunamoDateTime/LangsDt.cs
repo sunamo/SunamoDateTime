@@ -1,4 +1,3 @@
-// variables names: ok
 namespace SunamoDateTime;
 
 // Musí být ve SunamoEnums protože je sdílen např. i ve SunamoDateTime
