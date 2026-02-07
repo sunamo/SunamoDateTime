@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SunamoDateTime.Tests\\SunamoDateTime.Tests.csproj" />
+  <Project Path="RunnerDateTime\\RunnerDateTime.csproj" />
+  <Project Path="SunamoDateTime\SunamoDateTime.csproj" />
+</Solution>
