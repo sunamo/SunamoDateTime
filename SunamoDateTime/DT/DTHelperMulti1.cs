@@ -5,10 +5,11 @@ namespace SunamoDateTime.DT;
 public partial class DTHelperMulti
 {
     /// <summary>
-    /// If A1 could be lower than 1d, return 1d
+    /// Appends the appropriate localized time unit string to a TimeSpan value. Returns "~1 day" if the span is less than 1 day and calculateTime is false.
     /// </summary>
-    /// <param name = "timeSpan"></param>
-    /// <param name = "calculateTime"></param>
+    /// <param name="timeSpan">The time span to describe</param>
+    /// <param name="calculateTime">Whether to include sub-day time units</param>
+    /// <param name="lang">The language for localization</param>
     public static string AddRightStringToTimeSpan(TimeSpan timeSpan, bool calculateTime, LangsDt lang)
     {
         int age = timeSpan.TotalYears();

@@ -5,13 +5,12 @@ namespace SunamoDateTime.DT;
 public partial class DTHelperCs
 {
     /// <summary>
-    /// If !A2 and time will be lower than 1 day, I got day
-    /// A3 was be originally SqlServerHelper.DateTimeMinVal. Return empty string when A3 == A1
-    /// 
-    /// dtMinVal je skutečně nutné zadávat ručně, protože DateTime nemůže být deklarován jako Consts. Nejde ho ani zadat jako = new DateTime(1, 1, 1, 0, 0, 0). Jediná možnost je = new DateTime() která má stejné hodnoty propert jako MinValue.
+    /// Calculates age from a date and returns it as a Czech localized string with nominative case.
+    /// Returns empty string when dateTime equals dtMinVal.
     /// </summary>
-    /// <param name = "dateTime"></param>
-    /// <param name = "calculateTime"></param>
+    /// <param name="dateTime">The birth/start date</param>
+    /// <param name="calculateTime">Whether to include time units (hours, minutes, seconds) when age is less than 1 day</param>
+    /// <param name="dtMinVal">The minimum DateTime value representing an unset date</param>
     public static string CalculateAgeAndAddRightString(DateTime dateTime, bool calculateTime, DateTime dtMinVal = new DateTime())
     {
         if (dateTime == dtMinVal)

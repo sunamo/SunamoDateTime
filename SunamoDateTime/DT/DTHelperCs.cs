@@ -2,6 +2,9 @@ namespace SunamoDateTime.DT;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Provides Czech-localized DateTime formatting, parsing and age calculation methods.
+/// </summary>
 public partial class DTHelperCs
 {
     static Type type = typeof(DTHelperCs);

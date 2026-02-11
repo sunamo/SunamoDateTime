@@ -2,8 +2,17 @@ namespace SunamoDateTime.DT;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Provides general-purpose DateTime utility methods for date manipulation, creation, and conversion.
+/// </summary>
 public partial class DTHelperGeneral
 {
+    /// <summary>
+    /// Returns a list of all dates between the start and end dates, inclusive.
+    /// </summary>
+    /// <param name="startDate">The start date (inclusive)</param>
+    /// <param name="endDate">The end date (inclusive)</param>
+    /// <returns>List of all dates in the range</returns>
     public static List<DateTime> GetDatesBetween(DateTime startDate, DateTime endDate)
     {
         List<DateTime> allDates = new List<DateTime>();
@@ -12,6 +21,11 @@ public partial class DTHelperGeneral
         return allDates;
     }
 
+    /// <summary>
+    /// Calculates the ISO 8601 week number for the specified date.
+    /// </summary>
+    /// <param name="dateTime">The date to get the week number for</param>
+    /// <returns>ISO 8601 week number (1-53)</returns>
     public static int WeekOfYearFromDate(DateTime dateTime)
     {
         DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(dateTime);
@@ -82,11 +96,23 @@ public partial class DTHelperGeneral
         return string.Empty;
     }
 
+    /// <summary>
+    /// Returns a new DateTime with the minute component replaced by the specified value.
+    /// </summary>
+    /// <param name="dateTime">The original DateTime</param>
+    /// <param name="minute">The new minute value</param>
+    /// <returns>DateTime with the minute replaced</returns>
     public static DateTime SetMinute(DateTime dateTime, int minute)
     {
         return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, minute, dateTime.Second);
     }
 
+    /// <summary>
+    /// Returns a new DateTime with the hour component replaced by the specified value.
+    /// </summary>
+    /// <param name="dateTime">The original DateTime</param>
+    /// <param name="hour">The new hour value</param>
+    /// <returns>DateTime with the hour replaced</returns>
     public static DateTime SetHour(DateTime dateTime, int hour)
     {
         return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, hour, dateTime.Minute, dateTime.Second);
@@ -124,6 +150,12 @@ public partial class DTHelperGeneral
         return result;
     }
 
+    /// <summary>
+    /// Adds the specified number of days to the DateTime reference and returns the result.
+    /// </summary>
+    /// <param name="dateTime">The DateTime to modify (passed by reference)</param>
+    /// <param name="days">The number of days to add (can be negative)</param>
+    /// <returns>The modified DateTime</returns>
     public static DateTime AddDays(ref DateTime dateTime, double days)
     {
         dateTime = dateTime.AddDays(days);
@@ -141,23 +173,47 @@ public partial class DTHelperGeneral
         return timeSpan;
     }
 
+    /// <summary>
+    /// Returns a new DateTime preserving the time component but setting the date to DateTime.MinValue.
+    /// </summary>
+    /// <param name="dateTime">The DateTime whose time to preserve</param>
+    /// <returns>DateTime with MinValue date and original time</returns>
     public static DateTime SetDateToMinValue(DateTime dateTime)
     {
         DateTime minVal = DateTime.MinValue;
         return new DateTime(minVal.Year, minVal.Month, minVal.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, dateTime.Millisecond);
     }
 
+    /// <summary>
+    /// Returns a new DateTime with today's date and the time from the specified DateTime.
+    /// </summary>
+    /// <param name="ugtFirstStep">The DateTime whose time component to use</param>
+    /// <returns>Today's date with the specified time</returns>
     public static DateTime SetToday(DateTime ugtFirstStep)
     {
         DateTime today = DateTime.Today;
         return new DateTime(today.Year, today.Month, today.Day, ugtFirstStep.Hour, ugtFirstStep.Minute, ugtFirstStep.Second);
     }
 
+    /// <summary>
+    /// Creates a DateTime from year, month and day strings. Returns null if creation fails.
+    /// </summary>
+    /// <param name="year">The year as string</param>
+    /// <param name="month">The month as string</param>
+    /// <param name="day">The day as string</param>
+    /// <returns>Created DateTime or null if arguments are out of range</returns>
     public static DateTime? Create(string year, string month, string day)
     {
         return Create(int.Parse(year), int.Parse(month), int.Parse(day));
     }
 
+    /// <summary>
+    /// Creates a DateTime from year, month and day integers. Returns null if creation fails.
+    /// </summary>
+    /// <param name="year">The year</param>
+    /// <param name="month">The month (1-12)</param>
+    /// <param name="day">The day (1-31)</param>
+    /// <returns>Created DateTime or null if arguments are out of range</returns>
     public static DateTime? Create(int year, int month, int day)
     {
         try
@@ -172,11 +228,25 @@ public partial class DTHelperGeneral
         }
     }
 
+    /// <summary>
+    /// Creates a DateTime with year 1 from day, month, hour and minute strings.
+    /// </summary>
+    /// <param name="day">The day as string</param>
+    /// <param name="month">The month as string</param>
+    /// <param name="hour">The hour as string</param>
+    /// <param name="minute">The minute as string</param>
+    /// <returns>Created DateTime with year 1</returns>
     public static DateTime Create(string day, string month, string hour, string minute)
     {
         return new DateTime(1, int.Parse(month), int.Parse(day), int.Parse(hour), int.Parse(minute), 0);
     }
 
+    /// <summary>
+    /// Creates a DateTime at MinValue date with the specified hour and minutes.
+    /// </summary>
+    /// <param name="hour">The hour as string</param>
+    /// <param name="minutes">The minutes as string</param>
+    /// <returns>DateTime.MinValue with added hours and minutes</returns>
     public static DateTime CreateTime(string hour, string minutes)
     {
         DateTime today = DateTime.MinValue;
@@ -185,6 +255,11 @@ public partial class DTHelperGeneral
         return today;
     }
 
+    /// <summary>
+    /// Returns the last two digits of a year (e.g. 2024 becomes "24").
+    /// </summary>
+    /// <param name="year">The four-digit year</param>
+    /// <returns>Two-digit year string</returns>
     public static string ShortYear(int year)
     {
         var text = year.ToString();
@@ -192,6 +267,11 @@ public partial class DTHelperGeneral
         return text;
     }
 
+    /// <summary>
+    /// Converts a two-digit year string to a four-digit year string. Years 0-79 map to 2000-2079, 80-99 map to 1980-1999.
+    /// </summary>
+    /// <param name="yearText">The two-digit year string</param>
+    /// <returns>Four-digit year string</returns>
     public static string LongYear(string yearText)
     {
         var year = int.Parse(yearText);
@@ -205,6 +285,11 @@ public partial class DTHelperGeneral
         }
     }
 
+    /// <summary>
+    /// Converts a byte value to a four-digit year by prepending "2" (e.g. 24 becomes 2024).
+    /// </summary>
+    /// <param name="yearByte">The year as a byte value</param>
+    /// <returns>Four-digit year as integer</returns>
     public static int FullYear(byte yearByte)
     {
         var yearString = yearByte.ToString().PadLeft(3, '0');
@@ -237,11 +322,21 @@ public partial class DTHelperGeneral
         return result;
     }
 
+    /// <summary>
+    /// Calculates the total number of seconds in the month of the specified DateTime.
+    /// </summary>
+    /// <param name="dateTime">The DateTime whose month to calculate seconds for</param>
+    /// <returns>Total seconds in the month</returns>
     public static long SecondsInMonth(DateTime dateTime)
     {
         return DTConstants.SecondsInDay * DateTime.DaysInMonth(dateTime.Year, dateTime.Month);
     }
 
+    /// <summary>
+    /// Calculates the total number of seconds in the specified year, accounting for leap years.
+    /// </summary>
+    /// <param name="year">The year to calculate seconds for</param>
+    /// <returns>Total seconds in the year</returns>
     public static long SecondsInYear(int year)
     {
         long daysInYear = 365;
@@ -253,16 +348,30 @@ public partial class DTHelperGeneral
         return daysInYear * DTConstants.SecondsInDay;
     }
 
+    /// <summary>
+    /// Returns today's date as a DateTimeOrShort using the compact short representation.
+    /// </summary>
+    /// <returns>Today's date as DateTimeOrShort</returns>
     public static DateTimeOrShort ShortToday()
     {
         return DateTimeOrShort.FromShort(NormalizeDate.To(DateTime.Today));
     }
 
+    /// <summary>
+    /// Returns a new DateTime with only the date component, zeroing the time part.
+    /// </summary>
+    /// <param name="dateTime">The DateTime to strip time from</param>
+    /// <returns>DateTime with time set to 00:00:00</returns>
     public static DateTime WithoutTime(DateTime dateTime)
     {
         return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day);
     }
 
+    /// <summary>
+    /// Returns a new DateTime with only the time component, setting the date to year 1, January 1.
+    /// </summary>
+    /// <param name="dateTime">The DateTime to strip date from</param>
+    /// <returns>DateTime with date set to 0001-01-01</returns>
     public static DateTime WithoutDate(DateTime dateTime)
     {
         return new DateTime(1, 1, 1, dateTime.Hour, dateTime.Minute, dateTime.Second);

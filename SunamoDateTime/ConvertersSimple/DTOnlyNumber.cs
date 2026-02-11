@@ -1,5 +1,8 @@
 namespace SunamoDateTime.ConvertersSimple;
 
+/// <summary>
+/// Converts DateTime values to number-only string representations without separators.
+/// </summary>
 public class DTOnlyNumber
 {
     /// <summary>

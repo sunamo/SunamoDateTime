@@ -5,8 +5,14 @@
 using SunamoDateTime.DT;
 
 namespace SunamoDateTime.Tests.DT;
+/// <summary>
+/// Tests for Czech-localized DateTime helper methods.
+/// </summary>
 public class DTHelperCsTests
 {
+    /// <summary>
+    /// Tests the ToTimeAgo method with various date offsets.
+    /// </summary>
     [Fact]
     public void ToTimeAgoTest()
     {
@@ -17,6 +23,9 @@ public class DTHelperCsTests
 
     }
 
+    /// <summary>
+    /// Tests the CalculateAgeAndAddRightString method with a date 7 days in the past.
+    /// </summary>
     [Fact]
     public void CalculateAgeAndAddRightStringTest()
     {

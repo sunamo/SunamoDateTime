@@ -37,10 +37,12 @@ public class DTHelperUs
 
     #region Parse - FileNameToDateTime
     /// <summary>
-    /// 1989_06_21_11_22 or 1989_06_21 if !A2
-    /// Return null if A1 wont have right format
+    /// Parses a DateTime from a filename with date parts after a prefix (e.g. "prefix_1989_06_21_11_22").
+    /// Returns null if the format is invalid.
     /// </summary>
-    /// <param name="filenameWithoutExtension"></param>
+    /// <param name="filenameWithoutExtension">The filename without extension</param>
+    /// <param name="time">Whether the filename includes time parts (hour, minute)</param>
+    /// <param name="prefix">Output: the prefix text before the date parts</param>
     public static DateTime? FileNameToDateTimePrefix(string filenameWithoutExtension, bool time, out string prefix)
     {
         List<string> parts = SHSplit.SplitToPartsFromEnd(filenameWithoutExtension, time ? 6 : 4, new Char[] { "_"[0] });

@@ -16,7 +16,7 @@ internal class CAToNumber
     /// <param name="requiredLength">The required result length</param>
     /// <param name="startFrom">The index to start parsing from</param>
     /// <returns>List of parsed ints or null if validation fails</returns>
-    internal static List<int> ToInt2(IList list, int requiredLength, int startFrom)
+    internal static List<int>? ToInt2(IList list, int requiredLength, int startFrom)
     {
         return ToNumber<int>(BTS.TryParseInt, list, requiredLength, startFrom);
     }
@@ -30,7 +30,7 @@ internal class CAToNumber
     /// <param name="list">The source list to convert</param>
     /// <param name="requiredLength">The required exact length</param>
     /// <returns>List of parsed ints or null if validation fails</returns>
-    internal static List<int> ToInt1(IList list, int requiredLength)
+    internal static List<int>? ToInt1(IList list, int requiredLength)
     {
         return ToNumber<int>(BTS.TryParseInt, list, requiredLength);
     }
@@ -45,7 +45,7 @@ internal class CAToNumber
     /// <param name="list">The source list to convert</param>
     /// <param name="requiredLength">The required exact length</param>
     /// <returns>List of parsed values or null if validation fails</returns>
-    internal static List<T> ToNumber<T>(Func<string, T, T> tryParse, IList list, int requiredLength)
+    internal static List<T>? ToNumber<T>(Func<string, T, T> tryParse, IList list, int requiredLength)
     {
         int listCount = list.Count;
         if (listCount != requiredLength)
@@ -54,10 +54,10 @@ internal class CAToNumber
         }
 
         List<T> result = new List<T>();
-        T defaultValue = default(T);
+        T defaultValue = default(T)!;
         foreach (var item in list)
         {
-            var parsedValue = tryParse.Invoke(item.ToString(), defaultValue);
+            var parsedValue = tryParse.Invoke(item!.ToString()!, defaultValue);
             if (!EqualityComparer<T>.Default.Equals(parsedValue, defaultValue))
             {
                 result.Add(parsedValue);
@@ -82,9 +82,9 @@ internal class CAToNumber
     /// <param name="requiredLength">The required minimum result length</param>
     /// <param name="startFrom">The index to start parsing from</param>
     /// <returns>List of parsed values or null if validation fails</returns>
-    internal static List<T> ToNumber<T>(Func<string, T, T> tryParse, IList list, int requiredLength, T startFrom) where T : IComparable
+    internal static List<T>? ToNumber<T>(Func<string, T, T> tryParse, IList list, int requiredLength, T startFrom) where T : IComparable
     {
-        int finalLength = list.Count - int.Parse(startFrom.ToString());
+        int finalLength = list.Count - int.Parse(startFrom!.ToString()!);
         if (finalLength < requiredLength)
         {
             return null;
@@ -93,16 +93,16 @@ internal class CAToNumber
 
         // EN: WARNING - currentIndex is never incremented, this loop logic is broken!
         // CZ: VAROVÁNÍ - currentIndex se nikdy neinkrementuje, logika této smyčky je rozbita!
-        T currentIndex = default(T);
+        T currentIndex = default(T)!;
         foreach (var item in list)
         {
-            if (currentIndex.CompareTo(startFrom) != 0)
+            if (currentIndex!.CompareTo(startFrom) != 0)
             {
                 continue;
             }
 
-            T defaultValue = default(T);
-            var parsedValue = tryParse.Invoke(item.ToString(), defaultValue);
+            T defaultValue = default(T)!;
+            var parsedValue = tryParse.Invoke(item!.ToString()!, defaultValue);
             if (!EqualityComparer<T>.Default.Equals(parsedValue, defaultValue))
             {
                 result.Add(parsedValue);
@@ -150,14 +150,14 @@ internal class CAToNumber
         List<T> result = new List<T>();
         foreach (var item in list)
         {
-            if (item.ToString() == "NA")
+            if (item!.ToString() == "NA")
             {
                 continue;
             }
 
             if (double.TryParse(item.ToString(), out var _))
             {
-                var number = parse.Invoke(item.ToString());
+                var number = parse.Invoke(item.ToString()!);
                 result.Add(number);
             }
         }

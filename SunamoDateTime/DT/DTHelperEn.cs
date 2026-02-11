@@ -1,5 +1,8 @@
 namespace SunamoDateTime.DT;
 
+/// <summary>
+/// Provides English/US-localized DateTime formatting and parsing methods.
+/// </summary>
 public class DTHelperEn
 {
     static Type type = typeof(DTHelperEn);
@@ -45,10 +48,9 @@ public class DTHelperEn
 
     #region Only time
     /// <summary>
-    /// Seconds can be omit
-    /// hh:mm tt
+    /// Parses a US time string (hh:mm tt). Seconds can be omitted.
     /// </summary>
-    /// <param name="t"></param>
+    /// <param name="text">The time text to parse (e.g. "09:30 AM")</param>
     public static DateTime ParseTimeUSA(string text)
     {
         var result = DateTime.MinValue;
@@ -110,10 +112,9 @@ public class DTHelperEn
 
     #region Date and time
     /// <summary>
-    /// Seconds can be omit
-    /// hh:mm tt
+    /// Parses a US date-time string (mm/dd/yyyy hh:mm tt). Seconds can be omitted.
     /// </summary>
-    /// <param name="s"></param>
+    /// <param name="text">The date-time text to parse (e.g. "5/19/2021 09:59 AM")</param>
     public static DateTime ParseDateTimeUSA(string text)
     {
         var parts = text.Split(' '); //SHSplit.Split(text, "");
@@ -129,10 +130,10 @@ public class DTHelperEn
 
     #region Helper
     /// <summary>
-    /// Insert {number}_{days,weeks,years nebo months}
-    /// Get date shortened about A1
+    /// Calculates a past date by subtracting the specified period from today.
+    /// Input format: "{number}_{days|weeks|years|months}" (e.g. "7_days", "2_weeks").
     /// </summary>
-    /// <param name="AddedAgo"></param>
+    /// <param name="periodText">The period string in format "number_unit"</param>
     public static DateTime CalculateStartOfPeriod(string periodText)
     {
         int days = -1;
@@ -174,6 +175,11 @@ public class DTHelperEn
         return DateTime.Today.AddDays(days);
     }
 
+    /// <summary>
+    /// Formats a DateTime as an English date string with day of week prefix (e.g. "Wednesday, 6/21/1989").
+    /// </summary>
+    /// <param name="dt">The DateTime to format</param>
+    /// <returns>English-formatted date string with day of week</returns>
     public static string DateToStringWithDayOfWeekEN(DateTime dt)
     {
         return dt.DayOfWeek.ToString() + ", " + ToShortDateString(dt);

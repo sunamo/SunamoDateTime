@@ -46,7 +46,7 @@ internal class SHSplit
             }
             else
             {
-                return null;
+                return null!;
             }
         }
         else if (splitParts.Count == parts)
@@ -85,9 +85,9 @@ internal class SHSplit
     #region SplitToPartsFromEnd
     internal static List<string> SplitToPartsFromEnd(string text, int parts, params char[] delimiters)
     {
-        List<char> characters = null;
-        List<bool> isNotDelimiterFlags = null;
-        List<int> delimitersIndexes = null;
+        List<char> characters = null!;
+        List<bool> isNotDelimiterFlags = null!;
+        List<int> delimitersIndexes = null!;
         SHSplit.SplitCustom(text, out characters, out isNotDelimiterFlags, out delimitersIndexes, delimiters);
 
         List<string> result = new List<string>(parts);

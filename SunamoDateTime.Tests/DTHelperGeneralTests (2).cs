@@ -3,8 +3,14 @@ namespace sunamo.Tests.Helpers.DT;
 
 using SunamoDateTime.DT;
 
+/// <summary>
+/// Tests for DTHelperGeneral start-of-week calculation methods.
+/// </summary>
 public class DTHelperGeneralTests
 {
+    /// <summary>
+    /// Tests the StartOfWeekMonday method with various dates and rollover day configurations.
+    /// </summary>
     [Fact]
     public void StartOfWeekTest()
     {

@@ -1,5 +1,8 @@
 namespace SunamoDateTime.DT;
 
+/// <summary>
+/// Provides DateTime formatting and parsing methods for code-oriented formats (Angular, jQuery, input datetime-local).
+/// </summary>
 public class DTHelperCode
 {
     #region ToString

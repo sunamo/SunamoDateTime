@@ -8,9 +8,21 @@ namespace SunamoDateTime._public;
 /// <typeparam name="T">The type of the From and To values (typically long for Unix timestamps or int for other purposes)</typeparam>
 public class FromToTSHDt<T>
 {
+    /// <summary>
+    /// Gets or sets whether this time range is empty (contains no meaningful data).
+    /// </summary>
     public bool IsEmpty { get; set; }
+    /// <summary>
+    /// Backing field storing the From value as a long.
+    /// </summary>
     protected long fromLong;
+    /// <summary>
+    /// Gets or sets how the time range values should be interpreted.
+    /// </summary>
     public FromToUseDateTime UseType { get; set; } = FromToUseDateTime.DateTime;
+    /// <summary>
+    /// Backing field storing the To value as a long.
+    /// </summary>
     protected long toLong;
 
     /// <summary>

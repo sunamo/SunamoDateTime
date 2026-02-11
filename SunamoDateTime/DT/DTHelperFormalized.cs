@@ -1,5 +1,8 @@
 namespace SunamoDateTime.DT;
 
+/// <summary>
+/// Provides methods for formatting and parsing DateTime values in formalized ISO-like formats (yyyy-MM-dd).
+/// </summary>
 public class DTHelperFormalized
 {
     #region ToString
@@ -56,11 +59,21 @@ public class DTHelperFormalized
     }
     #endregion
 
+    /// <summary>
+    /// Formats a DateTime as a dashed date string (yyyy-MM-dd). Alias for DateTimeToStringFormalizeDate.
+    /// </summary>
+    /// <param name="dt">The DateTime to format</param>
+    /// <returns>Dashed date string</returns>
     public static string DateTimeToStringDashed(DateTime dt)
     {
         return DateTimeToStringFormalizeDate(dt);
     }
 
+    /// <summary>
+    /// Checks whether the text can be parsed as a formalized date.
+    /// </summary>
+    /// <param name="text">The text to check</param>
+    /// <returns>True if the text is a valid formalized date, false otherwise</returns>
     public static bool IsFormalizedDate(string text)
     {
         var dateTime = DTHelperFormalized.StringToDateTimeFormalizeDate(text);

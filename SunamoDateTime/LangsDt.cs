@@ -11,7 +11,13 @@ public enum LangsDt
 {
     #region For easy copying to other files
 
+    /// <summary>
+    /// Czech language.
+    /// </summary>
     cs = 0,
+    /// <summary>
+    /// English language.
+    /// </summary>
     en = 1
 
     #endregion

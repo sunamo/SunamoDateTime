@@ -1,5 +1,8 @@
 namespace SunamoDateTime.DT;
 
+/// <summary>
+/// Provides methods for formatting DateTime values in formalized ISO formats with T separator (e.g. yyyy-MM-ddTHH:mm:ss).
+/// </summary>
 public class DTHelperFormalizedWithT
 {
     #region ToString
