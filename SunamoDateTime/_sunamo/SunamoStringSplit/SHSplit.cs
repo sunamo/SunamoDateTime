@@ -1,20 +1,7 @@
 namespace SunamoDateTime._sunamo.SunamoStringSplit;
 
-/// <summary>
-/// String Helper Split utilities.
-/// EN: Provides advanced string splitting operations.
-/// CZ: Poskytuje pokročilé operace pro rozdělení řetězců.
-/// </summary>
 internal class SHSplit
 {
-    /// <summary>
-    /// Splits text by delimiters without removing empty entries.
-    /// EN: Returns all parts including empty strings.
-    /// CZ: Vrací všechny části včetně prázdných řetězců.
-    /// </summary>
-    /// <param name="text">Text to split</param>
-    /// <param name="delimiters">Delimiter strings</param>
-    /// <returns>List of all split parts</returns>
     internal static List<string> SplitNone(string text, params string[] delimiters)
     {
         return text.Split(delimiters, StringSplitOptions.None).ToList();

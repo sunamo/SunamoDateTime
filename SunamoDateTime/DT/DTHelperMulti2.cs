@@ -4,15 +4,8 @@ namespace SunamoDateTime.DT;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperMulti
 {
-    /// <summary>
-    /// Localization string for unknown time period.
-    /// </summary>
     public static string XNoKnownPeriod = "NoKnownPeriod";
-    /// <summary>
-    /// Returns a localized string describing how long an operation lasted, from hours down to milliseconds.
-    /// </summary>
-    /// <param name="timeSpan">The duration of the operation</param>
-    /// <param name="lang">The language for localization</param>
+
     public static string OperationLastedInLocalizateString(TimeSpan timeSpan, LangsDt lang)
     {
         List<string> timeParts = new List<string>();
@@ -170,16 +163,10 @@ public partial class DTHelperMulti
             }
         }
 
-        string text = string.Join(' ', timeParts);
+        string text = string.Join(" ", timeParts);
         return text;
     }
 
-    /// <summary>
-    /// Formats a DateTime as a localized date string (21.6.1989 / 6/21/1989), or returns empty string if equal to minimum value.
-    /// </summary>
-    /// <param name="dateTime">The DateTime to format</param>
-    /// <param name="lang">The language determining the format</param>
-    /// <param name="dtMinVal">The minimum DateTime value representing an unset date</param>
     public static string DateToStringOrSE(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
         if (dateTime == dtMinVal)
@@ -190,11 +177,6 @@ public partial class DTHelperMulti
         return DTHelperMulti.DateToString(dateTime, lang);
     }
 
-    /// <summary>
-    /// Parses a date in month/day/year or day.month.year format. Supports day ranges with dash.
-    /// </summary>
-    /// <param name="dateText">The date text to parse</param>
-    /// <param name="dayTo">Output: the end day if a day range was specified, otherwise -1</param>
     public static DateTime? ParseDateMonthDayYear(string dateText, out int? dayTo)
     {
         dayTo = -1;
@@ -236,13 +218,7 @@ public partial class DTHelperMulti
     }
 
     static Type type = typeof(DTHelperMulti);
-    /// <summary>
-    /// Formats a DateTime as a localized date-time string (cs: 21.6.1989 11:22, en: 6/21/1989 11:22).
-    /// Returns "not indicated" text if equal to minimum value.
-    /// </summary>
-    /// <param name="dateTime">The DateTime to format</param>
-    /// <param name="lang">The language determining the format</param>
-    /// <param name="dtMinVal">The minimum DateTime value representing an unset date</param>
+
     public static string DateTimeToString(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
         if (dateTime == dtMinVal)

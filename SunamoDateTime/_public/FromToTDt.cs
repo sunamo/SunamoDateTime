@@ -1,18 +1,9 @@
 namespace SunamoDateTime._public;
 
-/// <summary>
-/// Generic time range class with parsing and formatting capabilities.
-/// EN: Contains methods that were earlier in FromToT class.
-/// CZ: Obsahuje metody které byly dříve ve třídě FromToT.
-/// </summary>
-/// <typeparam name="T">The type of the From and To values (must be a struct)</typeparam>
+// EN: Contains methods that were earlier in FromToT class.
+// CZ: Obsahuje metody které byly dříve ve třídě FromToT.
 public class FromToTDt<T> : FromToTSHDt<T> where T : struct
 {
-    /// <summary>
-    /// Initializes a new instance of the FromToTDt class.
-    /// EN: Sets UseType to None for int type.
-    /// CZ: Nastaví UseType na None pro typ int.
-    /// </summary>
     public FromToTDt()
     {
         var type = typeof(T);
@@ -22,25 +13,11 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         }
     }
 
-    /// <summary>
-    /// Initializes an empty time range.
-    /// EN: Use Empty constant outside of class instead of calling this constructor.
-    /// CZ: Použijte konstantu Empty mimo třídu místo volání tohoto konstruktoru.
-    /// </summary>
-    /// <param name="isEmpty">True to create an empty time range</param>
     private FromToTDt(bool isEmpty) : this()
     {
         this.IsEmpty = isEmpty;
     }
 
-    /// <summary>
-    /// Initializes a time range with specified From and To values.
-    /// EN: Creates a time range with the given start and end values.
-    /// CZ: Vytvoří časový rozsah se zadanými počáteční a koncovou hodnotou.
-    /// </summary>
-    /// <param name="from">The start value of the time range</param>
-    /// <param name="to">The end value of the time range</param>
-    /// <param name="useType">The type of time range usage (DateTime, Unix, None, etc.)</param>
     public FromToTDt(T from, T to, FromToUseDateTime useType = FromToUseDateTime.DateTime) : this()
     {
         this.From = from;
@@ -48,12 +25,8 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         this.UseType = useType;
     }
 
-    /// <summary>
-    /// Parses a time range string and populates From and To values.
-    /// EN: After calling this method, IsFilledWithData can be used to verify the data.
-    /// CZ: Po zavolání této metody lze použít IsFilledWithData k ověření dat.
-    /// </summary>
-    /// <param name="text">Time range string (e.g. "12:30-14:00" or "12-14")</param>
+    // EN: After calling this method, IsFilledWithData can be used to verify the data.
+    // CZ: Po zavolání této metody lze použít IsFilledWithData k ověření dat.
     public void Parse(string text)
     {
         List<string> parts;
@@ -90,12 +63,8 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         }
     }
 
-    /// <summary>
-    /// Checks if the time range has been filled with data.
-    /// EN: Returns true if To value is valid (>= 0 and != 0).
-    /// CZ: Vrací true pokud je hodnota To platná (>= 0 a != 0).
-    /// </summary>
-    /// <returns>True if data is filled, false otherwise</returns>
+    // EN: Returns true if To value is valid (>= 0 and != 0).
+    // CZ: Vrací true pokud je hodnota To platná (>= 0 a != 0).
     public bool IsFilledWithData()
     {
         // EN: from != 0 check removed - cannot be used because if "0-24" is entered it would fail
@@ -103,13 +72,8 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         return toLong >= 0 && toLong != 0;
     }
 
-    /// <summary>
-    /// Converts time format string to seconds.
-    /// EN: Use DTHelperCs.ToShortTimeFromSeconds to convert back.
-    /// CZ: Pro převod zpět použijte DTHelperCs.ToShortTimeFromSeconds.
-    /// </summary>
-    /// <param name="timeFormat">Time format string (e.g. "12:30" or "12")</param>
-    /// <returns>Number of seconds</returns>
+    // EN: Use DTHelperCs.ToShortTimeFromSeconds to convert back.
+    // CZ: Pro převod zpět použijte DTHelperCs.ToShortTimeFromSeconds.
     private int ConvertTimeFormatToSeconds(string timeFormat)
     {
         int result = 0;
@@ -132,13 +96,6 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         return result;
     }
 
-    /// <summary>
-    /// Converts the time range to a string representation.
-    /// EN: Returns formatted time range based on UseType.
-    /// CZ: Vrací formátovaný časový rozsah podle UseType.
-    /// </summary>
-    /// <param name="lang">Language for formatting</param>
-    /// <returns>String representation of the time range</returns>
     public string ToString(LangsDt lang)
     {
         if (IsEmpty)
@@ -163,13 +120,6 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         }
     }
 
-    /// <summary>
-    /// Converts the time range to DateTime string representation.
-    /// EN: Virtual method to be overridden by derived classes.
-    /// CZ: Virtuální metoda k přepsání v odvozených třídách.
-    /// </summary>
-    /// <param name="lang">Language for formatting</param>
-    /// <returns>DateTime string representation</returns>
     protected virtual string ToStringDateTime(LangsDt lang)
     {
         return "";

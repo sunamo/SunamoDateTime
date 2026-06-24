@@ -17,10 +17,6 @@ internal class Program
         var r = DTWeekGenerator.GenerateWeekRangesForMonth(2026, 1);
         var r2 = DTWeekGenerator.GenerateWeekRangesForMonth(2026, 2);
 
-        int i = 0;
-
-        // 
-
         //weekTests.GenerateDaysGroupedByWeeks_January2026_FirstWeek();
         //weekTests.GenerateDaysGroupedByWeeks_January2026_SecondWeek();
         //weekTests.GenerateDaysGroupedByWeeks_December2025_SecondToLastWeek();

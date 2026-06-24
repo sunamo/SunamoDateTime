@@ -4,13 +4,6 @@ namespace SunamoDateTime.DT;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperCs
 {
-    /// <summary>
-    /// Calculates age from a date and returns it as a Czech localized string with instrumental case (kym/cim).
-    /// </summary>
-    /// <param name="dateTime">The birth/start date</param>
-    /// <param name="calculateTime">Whether to include time units (hours, minutes, seconds)</param>
-    /// <param name="lang">The language for localization (must be Czech)</param>
-    /// <param name="dtMinVal">The minimum DateTime value representing an unset date</param>
     public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt lang, DateTime dtMinVal)
     {
         if (lang != LangsDt.cs)
@@ -100,30 +93,30 @@ public partial class DTHelperCs
                 }
                 else if (totalWeeks == 1)
                 {
-                    return totalWeeks + " t\u00FDdnem";
+                    return totalWeeks + " týdnem";
                 }
                 else if (totalWeeks < 5 && totalWeeks > 1)
                 {
-                    return totalWeeks + " t\u00FDdny";
+                    return totalWeeks + " týdny";
                 }
                 else
                 {
-                    return totalWeeks + " t\u00FDdny";
+                    return totalWeeks + " týdny";
                 }
             }
             else
             {
                 if (months == 1)
                 {
-                    return months + " m\u011Bs\u00EDcem";
+                    return months + " měsícem";
                 }
                 else if (months > 1 && months < 5)
                 {
-                    return months + " m\u011Bs\u00EDci";
+                    return months + " měsíci";
                 }
                 else
                 {
-                    return months + " m\u011Bs\u00EDc\u016F";
+                    return months + " měsíců";
                 }
             }
         }
@@ -141,24 +134,15 @@ public partial class DTHelperCs
         }
         else
         {
-            return "Nezn\u00E1m\u00FD v\u011Bk";
+            return "Neznámý věk";
         }
     }
 
-    /// <summary>
-    /// Formats a date-time interval as a localized string (e.g. "21.6.1989 11:22-22.6.1989 14:00").
-    /// </summary>
-    /// <param name="startDateTime">The start of the interval</param>
-    /// <param name="endDateTime">The end of the interval</param>
-    /// <param name="lang">The language for localization</param>
-    /// <param name="dtMinVal">The minimum DateTime value representing an unset date</param>
-    /// <returns>Formatted interval string</returns>
     public static string IntervalToString(DateTime startDateTime, DateTime endDateTime, LangsDt lang, DateTime dtMinVal)
     {
         return DTHelperMulti.DateTimeToString(startDateTime, lang, dtMinVal) + "-" + DTHelperMulti.DateTimeToString(endDateTime, lang, dtMinVal);
     }
 
-    /// <param name = "dayOfWeek"></param>
     public static string DayOfWeek2DenVTydnu(DayOfWeek dayOfWeek)
     {
         switch (dayOfWeek)
@@ -179,55 +163,34 @@ public partial class DTHelperCs
                 return DTConstants.Nedele;
         }
 
-        throw new Exception("Nezn\u00E1m\u00FD den v t\u00FDdnu");
+        throw new Exception("Neznámý den v týdnu");
     }
 
-    /// <summary>
-    /// Return actual time(for example 12:00:00:000) and after that A1 postfix
-    /// </summary>
-    /// <param name = "postfix"></param>
+    // Return actual time(for example 12:00:00:000) and after that A1 postfix
     public static string AppendToFrontOnlyTime(string postfix)
     {
         DateTime dt = DateTime.Now;
         return dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2") + ":" + dt.Millisecond.ToString("D3") + "" + postfix;
     }
 
-    /// <summary>
-    /// 21.6.1989
-    /// </summary>
-    /// <param name = "dateTime">DateTime to convert</param>
+    // 21.6.1989
     public static string ToShortDate(DateTime dateTime)
     {
         return string.Join(".", dateTime.Day, dateTime.Month, dateTime.Year);
     }
 
-    /// <summary>
-    ///
-    /// Wednesday, 21.6.1989 11:22 (dont fill with zero)
-    /// </summary>
-    /// <param name = "dateTime"></param>
+    // Wednesday, 21.6.1989 11:22 (dont fill with zero)
     public static string DateTimeToStringWithDayOfWeekCS(DateTime dateTime)
     {
         return DayOfWeek2DenVTydnu(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year + " " + dateTime.Hour.ToString("D2") + ":" + dateTime.Minute.ToString("D2");
     }
 
-    /// <summary>
-    /// Parses a Czech-formatted date-time string using the Czech culture info.
-    /// </summary>
-    /// <param name="text">The Czech date-time string to parse</param>
-    /// <returns>Parsed DateTime</returns>
     public static DateTime ParseDateTimeCzech(string text)
     {
         var dateTime = DateTime.Parse(text, CultureInfos.Cz);
         return dateTime;
     }
 
-    /// <summary>
-    /// Returns a Czech "time ago" string describing how long ago the past date was relative to the current date.
-    /// </summary>
-    /// <param name="pastDate">The past date to compare</param>
-    /// <param name="currentDate">The current/reference date</param>
-    /// <returns>Czech localized "time ago" string</returns>
     public static string ToTimeAgo(DateTime pastDate, DateTime currentDate)
     {
         TimeSpan timeSince = currentDate.Subtract(pastDate);
@@ -284,11 +247,6 @@ public partial class DTHelperCs
         }
     }
 
-    /// <summary>
-    /// Returns a Czech "time ago" string describing how long ago the past date was relative to now.
-    /// </summary>
-    /// <param name="pastDate">The past date to compare</param>
-    /// <returns>Czech localized "time ago" string</returns>
     public static string ToTimeAgo(DateTime pastDate)
     {
         return ToTimeAgo(pastDate, DateTime.Now);
