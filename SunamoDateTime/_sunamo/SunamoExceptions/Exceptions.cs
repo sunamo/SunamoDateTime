@@ -63,8 +63,8 @@ bool fillAlsoFirstTwo = true)
     /// <param name="methodName">Output: extracted method name</param>
     internal static void TypeAndMethodName(string stackTraceLine, out string type, out string methodName)
     {
-        var afterAt = stackTraceLine.Split("at ")[1].Trim();
-        var text = afterAt.Split("(")[0];
+        var afterAt = stackTraceLine.Split(new[] { "at " }, StringSplitOptions.None)[1].Trim();
+        var text = afterAt.Split(new[] { "(" }, StringSplitOptions.None)[0];
         var parts = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
         methodName = parts[^1];
         parts.RemoveAt(parts.Count - 1);

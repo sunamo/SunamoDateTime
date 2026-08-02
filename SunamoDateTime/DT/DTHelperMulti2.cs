@@ -170,7 +170,7 @@ public partial class DTHelperMulti
             }
         }
 
-        string text = string.Join(' ', timeParts);
+        string text = string.Join(" ", timeParts);
         return text;
     }
 
