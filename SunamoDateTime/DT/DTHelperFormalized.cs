@@ -1,17 +1,10 @@
 namespace SunamoDateTime.DT;
 
-/// <summary>
-/// Provides methods for formatting and parsing DateTime values in formalized ISO-like formats (yyyy-MM-dd).
-/// </summary>
 public class DTHelperFormalized
 {
     #region ToString
     #region Date with time (without seconds)
-    /// <summary>
-    /// 2011-10-18 10:30
-    /// </summary>
-    /// <param name="dt"></param>
-    /// <param name="fullCalendar"></param>
+    // 2011-10-18 10:30
     public static string FormatDateTime(DateTime dt, DateTimeFormatStyles fullCalendar)
     {
         if (fullCalendar == DateTimeFormatStyles.FullCalendar)
@@ -25,10 +18,7 @@ public class DTHelperFormalized
     #endregion
 
     #region Date
-    /// <summary>
-    /// 1989-06-21
-    /// </summary>
-    /// <param name = "dt"></param>
+    // 1989-06-21
     public static string DateTimeToStringFormalizeDate(DateTime dt)
     {
         return dt.Year + "-" + dt.Month.ToString("D2") + "-" + dt.Day.ToString("D2");
@@ -37,12 +27,8 @@ public class DTHelperFormalized
     #endregion
 
     #region Parse
-    /// <summary>
-    /// Is used in GpxTrackFile
-    /// 2018-08-10T11:33:19Z
-    ///
-    /// </summary>
-    /// <param name="text">DateTime string in formalized format</param>
+    // Is used in GpxTrackFile
+    // 2018-08-10T11:33:19Z
     public static DateTime StringToDateTimeFormalizeDate(string text)
     {
         if (string.IsNullOrEmpty(text))
@@ -59,21 +45,13 @@ public class DTHelperFormalized
     }
     #endregion
 
-    /// <summary>
-    /// Formats a DateTime as a dashed date string (yyyy-MM-dd). Alias for DateTimeToStringFormalizeDate.
-    /// </summary>
-    /// <param name="dt">The DateTime to format</param>
-    /// <returns>Dashed date string</returns>
+    // Formats a DateTime as a dashed date string (yyyy-MM-dd). Alias for DateTimeToStringFormalizeDate.
     public static string DateTimeToStringDashed(DateTime dt)
     {
         return DateTimeToStringFormalizeDate(dt);
     }
 
-    /// <summary>
-    /// Checks whether the text can be parsed as a formalized date.
-    /// </summary>
-    /// <param name="text">The text to check</param>
-    /// <returns>True if the text is a valid formalized date, false otherwise</returns>
+    // Checks whether the text can be parsed as a formalized date.
     public static bool IsFormalizedDate(string text)
     {
         var dateTime = DTHelperFormalized.StringToDateTimeFormalizeDate(text);

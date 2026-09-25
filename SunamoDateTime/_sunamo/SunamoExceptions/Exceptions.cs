@@ -12,7 +12,7 @@ internal sealed partial class Exceptions
     internal static string TextOfExceptions(Exception ex, bool alsoInner = true)
     {
         if (ex == null) return string.Empty;
-        StringBuilder stringBuilder = new();
+        var stringBuilder = new StringBuilder();
         stringBuilder.Append("Exception:");
         stringBuilder.AppendLine(ex.Message);
         if (alsoInner)
@@ -28,7 +28,7 @@ internal sealed partial class Exceptions
     internal static Tuple<string, string, string> PlaceOfException(
 bool fillAlsoFirstTwo = true)
     {
-        StackTrace st = new();
+        var st = new StackTrace();
         var value = st.ToString();
         var lines = value.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
         lines.RemoveAt(0);
@@ -53,14 +53,7 @@ bool fillAlsoFirstTwo = true)
         }
         return new Tuple<string, string, string>(type, methodName, string.Join(Environment.NewLine, lines));
     }
-    /// <summary>
-    /// Parses type and method name from stack trace line.
-    /// EN: Extracts type name and method name from stack trace line format.
-    /// CZ: Extrahuje název typu a metody z formátu řádku stack trace.
-    /// </summary>
-    /// <param name="stackTraceLine">Stack trace line (e.g. "at Namespace.Class.Method(params)")</param>
-    /// <param name="type">Output: extracted type name</param>
-    /// <param name="methodName">Output: extracted method name</param>
+
     internal static void TypeAndMethodName(string stackTraceLine, out string type, out string methodName)
     {
         var afterAt = stackTraceLine.Split(new[] { "at " }, StringSplitOptions.None)[1].Trim();
@@ -70,16 +63,10 @@ bool fillAlsoFirstTwo = true)
         parts.RemoveAt(parts.Count - 1);
         type = string.Join(".", parts);
     }
-    /// <summary>
-    /// Gets the calling method name from the stack trace.
-    /// EN: Returns method name at specified stack frame depth.
-    /// CZ: Vrací název metody na zadané hloubce zásobníku volání.
-    /// </summary>
-    /// <param name="stackFrameDepth">Stack frame depth (1 = immediate caller)</param>
-    /// <returns>Method name or error message</returns>
+
     internal static string CallingMethod(int stackFrameDepth = 1)
     {
-        StackTrace stackTrace = new();
+        var stackTrace = new StackTrace();
         var methodBase = stackTrace.GetFrame(stackFrameDepth)?.GetMethod();
         if (methodBase == null)
         {
@@ -95,7 +82,7 @@ bool fillAlsoFirstTwo = true)
     internal readonly static StringBuilder AdditionalInfoStringBuilder = new();
     #endregion
 
-    #region OnlyReturnString 
+    #region OnlyReturnString
     internal static string? Custom(string before, string message)
     {
         return CheckBefore(before) + message;

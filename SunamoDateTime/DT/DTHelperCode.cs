@@ -1,17 +1,10 @@
 namespace SunamoDateTime.DT;
 
-/// <summary>
-/// Provides DateTime formatting and parsing methods for code-oriented formats (Angular, jQuery, input datetime-local).
-/// </summary>
 public class DTHelperCode
 {
     #region ToString
     #region Date with time (without seconds)
-    /// <summary>
-    /// 1989-06-21T11:22
-    /// </summary>
-    /// <param name="dt"></param>
-    /// <param name="dtMinVal"></param>
+    // 1989-06-21T11:22
     public static string DateTimeToStringToInputDateTimeLocal(DateTime dt, DateTime dtMinVal)
     {
         if (dt == dtMinVal)
@@ -23,13 +16,10 @@ public class DTHelperCode
     #endregion
 
     #region Only date
-    /// <summary>
-    /// mm/dd/yyyy
-    ///
-    /// Method will be always timeless! Also because of has in name only Date.
-    /// Input in name mean that output of this method I will insert only to input, it dont mean anything method argument
-    /// </summary>
-    /// <param name="dt"></param>
+    // mm/dd/yyyy
+    //
+    // Method will be always timeless! Also because of has in name only Date.
+    // Input in name mean that output of this method I will insert only to input, it dont mean anything method argument
     public static string DateToStringjQueryDatePicker(DateTime dt)
     {
         //return dt.Day.ToString("D2") + "." + dt.Month.ToString("D2") + "." + dt.Year;
@@ -39,10 +29,7 @@ public class DTHelperCode
 
 
     #region Date with time
-    /// <summary>
-    /// 19890621T11:22:00
-    /// </summary>
-    /// <param name="dt"></param>
+    // 19890621T11:22:00
     public static string DateAndTimeToStringAngularDateTime(DateTime dt)
     {
         return dt.Year + dt.Month.ToString("D2") + dt.Day.ToString("D2") + "T" + dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2");
@@ -52,10 +39,7 @@ public class DTHelperCode
 
     #region ToString
     #region Time (with seconds)
-    /// <summary>
-    /// 12:00:00
-    /// </summary>
-    /// <param name="dt"></param>
+    // 12:00:00
     public static string TimeToStringAngularTime(DateTime dt)
     {
         return dt.Hour.ToString("D2") + ":" + dt.Minute.ToString("D2") + ":" + dt.Second.ToString("D2");
@@ -63,10 +47,7 @@ public class DTHelperCode
     #endregion
 
     #region Date and time (with seconds)
-    /// <summary>
-    /// 19890621T00:00:00
-    /// </summary>
-    /// <param name="dt"></param>
+    // 19890621T00:00:00
     public static string DateToStringAngularDate(DateTime dt)
     {
         return dt.Year + dt.Month.ToString("D2") + dt.Day.ToString("D2") + "T00:00:00";
@@ -76,11 +57,7 @@ public class DTHelperCode
 
     #region Parse
     #region Date with time (without seconds)
-    /// <summary>
-    /// Input in format like 2015-09-03T21:01
-    /// </summary>
-    /// <param name="text">Input text in format YYYY-MM-DDTHH:MM</param>
-    /// <param name="dtMinVal">Minimum DateTime value to return if parsing fails</param>
+    // Input in format like 2015-09-03T21:01
     public static DateTime StringToDateTimeFromInputDateTimeLocal(string text, DateTime dtMinVal)
     {
         if (!text.Contains("-"))
