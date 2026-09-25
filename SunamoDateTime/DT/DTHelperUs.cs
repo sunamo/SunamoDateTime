@@ -1,17 +1,26 @@
 namespace SunamoDateTime.DT;
 
-// Underscore
+/// <summary>
+/// Underscore
+/// </summary>
 public class DTHelperUs
 {
     #region ToString
-    // yyyy_mm_dd
+    /// <summary>
+    /// yyyy_mm_dd
+    /// </summary>
+    /// <param name="dt"></param>
     public static string DateTimeToFileName(DateTime dt)
     {
         return DateTimeToFileName(dt, true);
     }
 
-    // yyyy_mm_dd
-    // With A2 append hh_mm
+    /// <summary>
+    /// yyyy_mm_dd
+    /// With A2 append hh_mm
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <param name="time"></param>
     public static string DateTimeToFileName(DateTime dt, bool time)
     {
         string dDate = "_";
@@ -27,6 +36,13 @@ public class DTHelperUs
     #endregion
 
     #region Parse - FileNameToDateTime
+    /// <summary>
+    /// Parses a DateTime from a filename with date parts after a prefix (e.g. "prefix_1989_06_21_11_22").
+    /// Returns null if the format is invalid.
+    /// </summary>
+    /// <param name="filenameWithoutExtension">The filename without extension</param>
+    /// <param name="time">Whether the filename includes time parts (hour, minute)</param>
+    /// <param name="prefix">Output: the prefix text before the date parts</param>
     public static DateTime? FileNameToDateTimePrefix(string filenameWithoutExtension, bool time, out string prefix)
     {
         List<string> parts = SHSplit.SplitToPartsFromEnd(filenameWithoutExtension, time ? 6 : 4, new Char[] { "_"[0] });
@@ -52,10 +68,12 @@ public class DTHelperUs
         }
     }
 
-    // Return null if wont have right format
-    // If A2, A1 must have format ????_??_??_??_??
-    // if !A2, A1 must have format ????_??_??
-    // In any case what is after A2 is not important
+    /// <summary>
+    /// Return null if wont have right format
+    /// If A2, A1 must have format ????_??_??_??_??
+    /// if !A2, A1 must have format ????_??_??
+    /// In any case what is after A2 is not important
+    /// </summary>
     public static DateTime? FileNameToDateTimePostfix(string filenameWithoutExtension, bool time, out string postfix)
     {
         var parts = SHSplit.SplitToParts(filenameWithoutExtension, time ? 6 : 4, "_");
@@ -106,8 +124,11 @@ public class DTHelperUs
         }
     }
 
-    // Return null if wont have right format
-    // If A2, A1 must have format ????_??_??_S_?*
+    /// <summary>
+    /// Return null if wont have right format
+    /// If A2, A1 must have format ????_??_??_S_?*
+    ///
+    /// </summary>
     public static DateTime? FileNameToDateWithSeriePostfix(string filenameWithoutExtension, out int? serie, out string postfix)
     {
         postfix = "";
@@ -140,8 +161,11 @@ public class DTHelperUs
         return new DateTime(date[0], date[1], date[2]);
     }
 
-    // 1989_06_21_11_22
-    // Return null if wont have right format
+    /// <summary>
+    /// 1989_06_21_11_22
+    /// Return null if wont have right format
+    /// </summary>
+    /// <param name="filenameWithoutExtension"></param>
     public static DateTime? FileNameToDateTime(string filenameWithoutExtension)
     {
         var parts = filenameWithoutExtension.Split(new String[] { "_" }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(filenameWithoutExtension, "_");

@@ -4,6 +4,13 @@ namespace SunamoDateTime.DT;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperCs
 {
+    /// <summary>
+    /// Calculates age from a date and returns it as a Czech localized string with nominative case.
+    /// Returns empty string when dateTime equals dtMinVal.
+    /// </summary>
+    /// <param name="dateTime">The birth/start date</param>
+    /// <param name="calculateTime">Whether to include time units (hours, minutes, seconds) when age is less than 1 day</param>
+    /// <param name="dtMinVal">The minimum DateTime value representing an unset date</param>
     public static string CalculateAgeAndAddRightString(DateTime dateTime, bool calculateTime, DateTime dtMinVal = new DateTime())
     {
         if (dateTime == dtMinVal)
@@ -81,36 +88,36 @@ public partial class DTHelperCs
                         }
                         else
                         {
-                            return timeElapsed.Days + " dnů";
+                            return timeElapsed.Days + " dn\u016F";
                         }
                     }
                 }
                 else if (totalWeeks == 1)
                 {
-                    return totalWeeks + " týden";
+                    return totalWeeks + " t\u00FDden";
                 }
                 else if (totalWeeks < 5 && totalWeeks > 1)
                 {
-                    return totalWeeks + " týdny";
+                    return totalWeeks + " t\u00FDdny";
                 }
                 else
                 {
-                    return totalWeeks + " týdnů";
+                    return totalWeeks + " t\u00FDdn\u016F";
                 }
             }
             else
             {
                 if (months == 1)
                 {
-                    return months + " měsíc";
+                    return months + " m\u011Bs\u00EDc";
                 }
                 else if (months > 1 && months < 5)
                 {
-                    return months + " měsíce";
+                    return months + " m\u011Bs\u00EDce";
                 }
                 else
                 {
-                    return months + " měsíců";
+                    return months + " m\u011Bs\u00EDc\u016F";
                 }
             }
         }
@@ -124,11 +131,11 @@ public partial class DTHelperCs
         }
         else if (age > 4 || age == 0)
         {
-            return age + " roků";
+            return age + " rok\u016F";
         }
         else
         {
-            return "Neznámý věk";
+            return "Nezn\u00E1m\u00FD v\u011Bk";
         }
     }
 }

@@ -4,6 +4,12 @@ namespace SunamoDateTime.DT;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperMulti
 {
+    /// <summary>
+    /// Appends the appropriate localized time unit string to a TimeSpan value. Returns "~1 day" if the span is less than 1 day and calculateTime is false.
+    /// </summary>
+    /// <param name="timeSpan">The time span to describe</param>
+    /// <param name="calculateTime">Whether to include sub-day time units</param>
+    /// <param name="lang">The language for localization</param>
     public static string AddRightStringToTimeSpan(TimeSpan timeSpan, bool calculateTime, LangsDt lang)
     {
         int age = timeSpan.TotalYears();
@@ -30,7 +36,7 @@ public partial class DTHelperMulti
                     {
                         if (lang == LangsDt.cs)
                         {
-                            return timeSpan.Days + " dní";
+                            return timeSpan.Days + " dn\u00ED";
                         }
                         else
                         {
@@ -165,7 +171,7 @@ public partial class DTHelperMulti
                 {
                     if (lang == LangsDt.cs)
                     {
-                        return totalWeeks + " týden";
+                        return totalWeeks + " t\u00FDden";
                     }
                     else
                     {
@@ -176,7 +182,7 @@ public partial class DTHelperMulti
                 {
                     if (lang == LangsDt.cs)
                     {
-                        return totalWeeks + " týdny";
+                        return totalWeeks + " t\u00FDdny";
                     }
                     else
                     {
@@ -187,7 +193,7 @@ public partial class DTHelperMulti
                 {
                     if (lang == LangsDt.cs)
                     {
-                        return totalWeeks + " týdnů";
+                        return totalWeeks + " t\u00FDdn\u016F";
                     }
                     else
                     {
@@ -201,7 +207,7 @@ public partial class DTHelperMulti
                 {
                     if (lang == LangsDt.cs)
                     {
-                        return months + " měsíc";
+                        return months + " m\u011Bs\u00EDc";
                     }
                     else
                     {
@@ -212,7 +218,7 @@ public partial class DTHelperMulti
                 {
                     if (lang == LangsDt.cs)
                     {
-                        return months + " měsíce";
+                        return months + " m\u011Bs\u00EDce";
                     }
                     else
                     {
@@ -223,7 +229,7 @@ public partial class DTHelperMulti
                 {
                     if (lang == LangsDt.cs)
                     {
-                        return months + " měsíců";
+                        return months + " m\u011Bs\u00EDc\u016F";
                     }
                     else
                     {
@@ -258,7 +264,7 @@ public partial class DTHelperMulti
         {
             if (lang == LangsDt.cs)
             {
-                return age + " roků";
+                return age + " rok\u016F";
             }
             else
             {
@@ -269,7 +275,7 @@ public partial class DTHelperMulti
         {
             if (lang == LangsDt.cs)
             {
-                return "Neznámý čas";
+                return "Nezn\u00E1m\u00FD \u010Das";
             }
 
             return XNoKnownPeriod;

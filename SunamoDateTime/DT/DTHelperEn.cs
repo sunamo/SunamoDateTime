@@ -1,12 +1,18 @@
 namespace SunamoDateTime.DT;
 
+/// <summary>
+/// Provides English/US-localized DateTime formatting and parsing methods.
+/// </summary>
 public class DTHelperEn
 {
     static Type type = typeof(DTHelperEn);
 
     #region Parse
     #region Only Date
-    // return MinValue when fail
+    /// <summary>
+    /// return MinValue when fail
+    /// </summary>
+    /// <param name="text"></param>
     public static DateTime ParseDateUSA(string text)
     {
         DateTime result = DateTime.MinValue;
@@ -41,7 +47,10 @@ public class DTHelperEn
     #endregion
 
     #region Only time
-    // Parses a US time string (hh:mm tt). Seconds can be omitted.
+    /// <summary>
+    /// Parses a US time string (hh:mm tt). Seconds can be omitted.
+    /// </summary>
+    /// <param name="text">The time text to parse (e.g. "09:30 AM")</param>
     public static DateTime ParseTimeUSA(string text)
     {
         var result = DateTime.MinValue;
@@ -102,7 +111,10 @@ public class DTHelperEn
     #endregion
 
     #region Date and time
-    // Parses a US date-time string (mm/dd/yyyy hh:mm tt). Seconds can be omitted.
+    /// <summary>
+    /// Parses a US date-time string (mm/dd/yyyy hh:mm tt). Seconds can be omitted.
+    /// </summary>
+    /// <param name="text">The date-time text to parse (e.g. "5/19/2021 09:59 AM")</param>
     public static DateTime ParseDateTimeUSA(string text)
     {
         var parts = text.Split(' '); //SHSplit.Split(text, "");
@@ -117,8 +129,11 @@ public class DTHelperEn
 
 
     #region Helper
-    // Calculates a past date by subtracting the specified period from today.
-    // Input format: "{number}_{days|weeks|years|months}" (e.g. "7_days", "2_weeks").
+    /// <summary>
+    /// Calculates a past date by subtracting the specified period from today.
+    /// Input format: "{number}_{days|weeks|years|months}" (e.g. "7_days", "2_weeks").
+    /// </summary>
+    /// <param name="periodText">The period string in format "number_unit"</param>
     public static DateTime CalculateStartOfPeriod(string periodText)
     {
         int days = -1;
@@ -160,7 +175,11 @@ public class DTHelperEn
         return DateTime.Today.AddDays(days);
     }
 
-    // Formats a DateTime as an English date string with day of week prefix (e.g. "Wednesday, 6/21/1989").
+    /// <summary>
+    /// Formats a DateTime as an English date string with day of week prefix (e.g. "Wednesday, 6/21/1989").
+    /// </summary>
+    /// <param name="dt">The DateTime to format</param>
+    /// <returns>English-formatted date string with day of week</returns>
     public static string DateToStringWithDayOfWeekEN(DateTime dt)
     {
         return dt.DayOfWeek.ToString() + ", " + ToShortDateString(dt);
@@ -168,8 +187,10 @@ public class DTHelperEn
     #endregion
 
     #region Date and time
-    // Its named ToString due to exactly same format return dt.ToString while is en-us localization
-    // 21.6.1989 / 6/21/1989 + " " + mm:ss tt
+    /// <summary>
+    /// Its named ToString due to exactly same format return dt.ToString while is en-us localization
+    /// 21.6.1989 / 6/21/1989 + " " + mm:ss tt
+    /// </summary>
     public static string ToString(DateTime dt)
     {
         return ToShortDateString(dt) + " " + ToShortTimeString(dt);
@@ -178,13 +199,21 @@ public class DTHelperEn
 
     #region ToString
     #region Only date
-    // 21.6.1989 / 6/21/1989
+    /// <summary>
+    /// 21.6.1989 / 6/21/1989
+    /// </summary>
+    /// <param name="today"></param>
     public static string ToShortDateString(DateTime today)
     {
         return ToShortDateString(today, DateTime.MinValue, DTHelperMulti.DateToString(today, LangsDt.en));
     }
 
-    // 21.6.1989 / 6/21/1989
+    /// <summary>
+    /// 21.6.1989 / 6/21/1989
+    /// </summary>
+    /// <param name="today">DateTime to convert</param>
+    /// <param name="defaultValue">Default DateTime value</param>
+    /// <param name="returnWhenA1isA2">String to return when today equals defaultValue</param>
     public static string ToShortDateString(DateTime today, DateTime defaultValue, string returnWhenA1isA2)
     {
         if (today == defaultValue)
@@ -198,7 +227,10 @@ public class DTHelperEn
 
 
     #region Only time (without seconds)
-    // mm:ss tt
+    /// <summary>
+    /// mm:ss tt
+    /// </summary>
+    /// <param name="dt"></param>
     public static string ToShortTimeString(DateTime dt)
     {
         return string.Format("{0:hh:mm tt}", dt);

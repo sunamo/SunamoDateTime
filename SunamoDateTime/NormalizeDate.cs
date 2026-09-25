@@ -1,7 +1,15 @@
 namespace SunamoDateTime;
 
+/// <summary>
+/// Provides methods to convert between DateTime and a compact short (16-bit) date representation.
+/// </summary>
 public class NormalizeDate
 {
+    /// <summary>
+    /// Converts a compact short date representation back to a DateTime.
+    /// </summary>
+    /// <param name="shortDate">The compact short date value to convert</param>
+    /// <returns>The corresponding DateTime</returns>
     public static DateTime From(short shortDate)
     {
         var text = shortDate.ToString();
@@ -32,6 +40,11 @@ public class NormalizeDate
         return dateTime;
     }
 
+    /// <summary>
+    /// Converts a DateTime to a compact short (16-bit) date representation.
+    /// </summary>
+    /// <param name="dateTime">The DateTime to convert</param>
+    /// <returns>A short value encoding the date</returns>
     public static short To(DateTime dateTime)
     {
         var isNegative = false;
@@ -81,6 +94,12 @@ public class NormalizeDate
         return short.Parse(result);
     }
 
+    /// <summary>
+    /// Adds the specified number of months to a compact short date and returns the new compact short date.
+    /// </summary>
+    /// <param name="normalizedDate">The compact short date to add months to</param>
+    /// <param name="monthsToAdd">The number of months to add</param>
+    /// <returns>A new compact short date with the months added</returns>
     public static short AddMonths(short normalizedDate, int monthsToAdd)
     {
         var dateTime = From(normalizedDate);
