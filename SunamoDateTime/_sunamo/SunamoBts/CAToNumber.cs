@@ -53,7 +53,7 @@ internal class CAToNumber
             return null;
         }
 
-        List<T> result = new List<T>();
+        var result = new List<T>();
         T defaultValue = default(T)!;
         foreach (var item in list)
         {
@@ -89,10 +89,8 @@ internal class CAToNumber
         {
             return null;
         }
-        List<T> result = new List<T>(finalLength);
+        var result = new List<T>(finalLength);
 
-        // EN: WARNING - currentIndex is never incremented, this loop logic is broken!
-        // CZ: VAROVÁNÍ - currentIndex se nikdy neinkrementuje, logika této smyčky je rozbita!
         T currentIndex = default(T)!;
         foreach (var item in list)
         {
@@ -147,7 +145,7 @@ internal class CAToNumber
     /// <returns>List of successfully parsed values</returns>
     internal static List<T> ToNumber<T, U>(Func<string, T> parse, IList<U> list)
     {
-        List<T> result = new List<T>();
+        var result = new List<T>();
         foreach (var item in list)
         {
             if (item!.ToString() == "NA")
@@ -155,7 +153,7 @@ internal class CAToNumber
                 continue;
             }
 
-            if (double.TryParse(item.ToString(), out var _))
+            if (double.TryParse(item.ToString(), out _))
             {
                 var number = parse.Invoke(item.ToString()!);
                 result.Add(number);

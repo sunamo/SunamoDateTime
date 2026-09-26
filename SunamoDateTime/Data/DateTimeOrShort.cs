@@ -64,7 +64,7 @@ public class DateTimeOrShort
     /// <returns>DateTimeOrShort instance with short value</returns>
     public static DateTimeOrShort FromShort(short value)
     {
-        DateTimeOrShort result = new DateTimeOrShort();
+        DateTimeOrShort result = new();
         result.ShortValue = value;
         return result;
     }
@@ -78,7 +78,7 @@ public class DateTimeOrShort
     /// <returns>DateTimeOrShort instance with DateTime value</returns>
     public static DateTimeOrShort FromDateTime(DateTime dateTime)
     {
-        DateTimeOrShort result = new DateTimeOrShort();
+        DateTimeOrShort result = new();
         result.useDateTime = true;
         result.DateTimeValue = dateTime;
         return result;

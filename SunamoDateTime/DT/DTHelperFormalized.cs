@@ -50,7 +50,7 @@ public class DTHelperFormalized
             return DateTime.MinValue;
         }
 
-        if (DateTime.TryParse(text, null, out var result/*, System.Globalization.DateTimeStyles.None*/))
+        if (DateTime.TryParse(text, null, System.Globalization.DateTimeStyles.None, out var result))
         {
             return result;
         }

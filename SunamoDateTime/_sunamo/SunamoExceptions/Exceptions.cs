@@ -12,7 +12,7 @@ internal sealed partial class Exceptions
     internal static string TextOfExceptions(Exception ex, bool alsoInner = true)
     {
         if (ex == null) return string.Empty;
-        StringBuilder stringBuilder = new();
+        var stringBuilder = new StringBuilder();
         stringBuilder.Append("Exception:");
         stringBuilder.AppendLine(ex.Message);
         if (alsoInner)
@@ -28,7 +28,7 @@ internal sealed partial class Exceptions
     internal static Tuple<string, string, string> PlaceOfException(
 bool fillAlsoFirstTwo = true)
     {
-        StackTrace st = new();
+        var st = new StackTrace();
         var value = st.ToString();
         var lines = value.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
         lines.RemoveAt(0);
@@ -63,8 +63,8 @@ bool fillAlsoFirstTwo = true)
     /// <param name="methodName">Output: extracted method name</param>
     internal static void TypeAndMethodName(string stackTraceLine, out string type, out string methodName)
     {
-        var afterAt = stackTraceLine.Split("at ")[1].Trim();
-        var text = afterAt.Split("(")[0];
+        var afterAt = stackTraceLine.Split(new[] { "at " }, StringSplitOptions.None)[1].Trim();
+        var text = afterAt.Split(new[] { "(" }, StringSplitOptions.None)[0];
         var parts = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
         methodName = parts[^1];
         parts.RemoveAt(parts.Count - 1);
@@ -79,7 +79,7 @@ bool fillAlsoFirstTwo = true)
     /// <returns>Method name or error message</returns>
     internal static string CallingMethod(int stackFrameDepth = 1)
     {
-        StackTrace stackTrace = new();
+        var stackTrace = new StackTrace();
         var methodBase = stackTrace.GetFrame(stackFrameDepth)?.GetMethod();
         if (methodBase == null)
         {
@@ -95,7 +95,7 @@ bool fillAlsoFirstTwo = true)
     internal readonly static StringBuilder AdditionalInfoStringBuilder = new();
     #endregion
 
-    #region OnlyReturnString 
+    #region OnlyReturnString
     internal static string? Custom(string before, string message)
     {
         return CheckBefore(before) + message;

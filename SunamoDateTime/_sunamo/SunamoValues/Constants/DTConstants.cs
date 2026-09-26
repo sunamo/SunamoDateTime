@@ -42,25 +42,25 @@ internal class DTConstants
 
     #region Czech Day Names
     /// <summary>Monday in Czech</summary>
-    internal const string Pondeli = "Pond\u011Bl\u00ED";
+    internal const string Pondeli = "Pondělí";
 
     /// <summary>Tuesday in Czech</summary>
-    internal const string Utery = "\u00DAter\u00FD";
+    internal const string Utery = "Úterý";
 
     /// <summary>Wednesday in Czech</summary>
-    internal const string Streda = "St\u0159eda";
+    internal const string Streda = "Středa";
 
     /// <summary>Thursday in Czech</summary>
-    internal const string Ctvrtek = "\u010Ctvrtek";
+    internal const string Ctvrtek = "Čtvrtek";
 
     /// <summary>Friday in Czech</summary>
-    internal const string Patek = "P\u00E1tek";
+    internal const string Patek = "Pátek";
 
     /// <summary>Saturday in Czech</summary>
     internal const string Sobota = "Sobota";
 
     /// <summary>Sunday in Czech</summary>
-    internal const string Nedele = "Ned\u011Ble";
+    internal const string Nedele = "Neděle";
     #endregion
 
     #region Czech Month Names
@@ -68,31 +68,31 @@ internal class DTConstants
     internal const string Leden = "Leden";
 
     /// <summary>February in Czech</summary>
-    internal const string Unor = "\u00DAnor";
+    internal const string Unor = "Únor";
 
     /// <summary>March in Czech</summary>
-    internal const string Brezen = "B\u0159ezen";
+    internal const string Brezen = "Březen";
 
     /// <summary>April in Czech</summary>
     internal const string Duben = "Duben";
 
     /// <summary>May in Czech</summary>
-    internal const string Kveten = "Kv\u011Bten";
+    internal const string Kveten = "Květen";
 
     /// <summary>June in Czech</summary>
-    internal const string Cerven = "\u010Cerven";
+    internal const string Cerven = "Červen";
 
     /// <summary>July in Czech</summary>
-    internal const string Cervenec = "\u010Cervenec";
+    internal const string Cervenec = "Červenec";
 
     /// <summary>August in Czech</summary>
     internal const string Srpen = "Srpen";
 
     /// <summary>September in Czech</summary>
-    internal const string Zari = "Z\u00E1\u0159\u00ED";
+    internal const string Zari = "Září";
 
     /// <summary>October in Czech</summary>
-    internal const string Rijen = "\u0158\u00EDjen";
+    internal const string Rijen = "Říjen";
 
     /// <summary>November in Czech</summary>
     internal const string Listopad = "Listopad";

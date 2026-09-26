@@ -1,7 +1,7 @@
 namespace SunamoDateTime._sunamo.SunamoExceptions;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+// CZ: Nazvy promennych byly zkontrolovany a nahrazeny samopopisnymi nazvy
 internal partial class ThrowEx
 {
     internal static bool CannotCreateDateTime(
@@ -37,7 +37,7 @@ internal partial class ThrowEx
     #region Other
     internal static string FullNameOfExecutedCode()
     {
-        Tuple<string, string, string> placeOfExc = Exceptions.PlaceOfException();
+        var placeOfExc = Exceptions.PlaceOfException();
         string f = FullNameOfExecutedCode(placeOfExc.Item1, placeOfExc.Item2, true);
         return f;
     }

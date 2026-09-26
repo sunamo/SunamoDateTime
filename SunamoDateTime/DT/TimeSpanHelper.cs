@@ -12,9 +12,7 @@ public class TimeSpanHelper
     /// <returns>A TimeSpan representing the parsed hours and minutes</returns>
     public static TimeSpan Parse(string span)
     {
-        TimeSpan result = new TimeSpan(int.Parse(span.Split(':')[0]),    // hours
-        int.Parse(span.Split(':')[1]),    // minutes
-        0);
-        return result;
+        var parts = span.Split(':');
+        return new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), 0);
     }
 }

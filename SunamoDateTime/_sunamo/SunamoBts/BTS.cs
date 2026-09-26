@@ -17,8 +17,7 @@ internal static class BTS
     /// <returns>Parsed int or default value</returns>
     internal static int? ParseInt(string text, int? defaultValue)
     {
-        int parsedValue = 0;
-        if (int.TryParse(text, out parsedValue))
+        if (int.TryParse(text, out var parsedValue))
         {
             return parsedValue;
         }
@@ -49,8 +48,7 @@ internal static class BTS
     /// <returns>Parsed int or default value</returns>
     internal static int TryParseInt(string text, int defaultValue, bool throwException)
     {
-        int parsedValue = 0;
-        if (int.TryParse(text, out parsedValue))
+        if (int.TryParse(text, out var parsedValue))
         {
             return parsedValue;
         }
