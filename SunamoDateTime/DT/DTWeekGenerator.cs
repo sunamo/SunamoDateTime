@@ -1,16 +1,7 @@
 namespace SunamoDateTime.DT;
 
-/// <summary>
-/// Provides methods for generating days grouped by weeks for calendar/reporting purposes.
-/// </summary>
 public class DTWeekGenerator
 {
-    /// <summary>
-    /// Generates week ranges for a month in format "weekNumber startDate-endDate" (e.g., "2 5.1.-11.1.").
-    /// </summary>
-    /// <param name="year">The year to generate week ranges for.</param>
-    /// <param name="month">The month to generate week ranges for (1-12).</param>
-    /// <returns>Formatted string with week numbers and date ranges, one per line.</returns>
     public static string GenerateWeekRangesForMonth(int year, int month)
     {
         StringBuilder sb = new StringBuilder();
@@ -45,15 +36,9 @@ public class DTWeekGenerator
         return sb.ToString();
     }
 
-    /// <summary>
-    /// EN: Formats a single week range in format "weekNumber startDay.startMonth.-endDay.endMonth."
-    /// CZ: Formátuje jeden týdenní rozsah ve formátu "weekNumber startDay.startMonth.-endDay.endMonth."
-    ///
-    /// Example: FormatWeekRange(Monday 5.1.2026, 1) returns "1 5.1.-11.1."
-    /// </summary>
-    /// <param name="monday">Monday (start of week)</param>
-    /// <param name="weekNumber">ISO 8601 week number</param>
-    /// <returns>Formatted week range like "1 5.1.-11.1."</returns>
+    // EN: Formats a single week range in format "weekNumber startDay.startMonth.-endDay.endMonth."
+    // CZ: Formátuje jeden týdenní rozsah ve formátu "weekNumber startDay.startMonth.-endDay.endMonth."
+    // Example: FormatWeekRange(Monday 5.1.2026, 1) returns "1 5.1.-11.1."
     public static string FormatWeekRange(DateTime monday, int weekNumber)
     {
         DateTime sunday = monday.AddDays(6);

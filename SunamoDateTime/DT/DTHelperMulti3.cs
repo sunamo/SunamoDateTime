@@ -4,17 +4,8 @@ namespace SunamoDateTime.DT;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperMulti
 {
-    /// <summary>
-    /// Localization string for "not indicated" status.
-    /// </summary>
     public static string XNotIndicated = "NotIndicated";
-    /// <summary>
-    /// Formats a DateTime's time component as a localized string (HH:mm), or returns "not indicated" if equal to minimum value.
-    /// </summary>
-    /// <param name="dateTime">The DateTime whose time to format</param>
-    /// <param name="lang">The language for localization</param>
-    /// <param name="dtMinVal">The minimum DateTime value representing an unset date</param>
-    /// <returns>Formatted time string or localized "not indicated" text</returns>
+
     public static string TimeToString(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
         if (dateTime == dtMinVal)
@@ -41,11 +32,7 @@ public partial class DTHelperMulti
         }
     }
 
-    /// <summary>
-    /// 21.6.1989 (středa) / 6/21/1989 (wednesday)
-    /// </summary>
-    /// <param name = "dateTime"></param>
-    /// <param name = "lang"></param>
+    // 21.6.1989 (středa) / 6/21/1989 (wednesday)
     public static string DateWithDayOfWeek(DateTime dateTime, LangsDt lang)
     {
         int day = (int)dateTime.DayOfWeek;
@@ -67,12 +54,6 @@ public partial class DTHelperMulti
         return DateToString(dateTime, lang) + " (" + dayOfWeek + ")";
     }
 
-    /// <summary>
-    /// Formats a DateTime as a localized date string with day of week prefix (e.g. "Středa, 21.6.1989" / "Wednesday, 6/21/1989").
-    /// </summary>
-    /// <param name="dateTime">The DateTime to format</param>
-    /// <param name="lang">The language determining the format</param>
-    /// <returns>Date string with day of week prefix</returns>
     public static string DateToStringWithDayOfWeek(DateTime dateTime, LangsDt lang)
     {
         if (lang == LangsDt.en)
@@ -89,10 +70,7 @@ public partial class DTHelperMulti
         }
     }
 
-    /// <summary>
-    /// Return whether can be parse with DTHelperCs.ParseDateCzech or DTHelperEn.ParseDateUSA
-    /// </summary>
-    /// <param name = "text"></param>
+    // Return whether can be parse with DTHelperCs.ParseDateCzech or DTHelperEn.ParseDateUSA
     public static DateTime IsValidDateText(string text)
     {
         DateTime result = DateTime.MinValue;
@@ -113,11 +91,8 @@ public partial class DTHelperMulti
         return result;
     }
 
-    /// <summary>
-    /// A1 can be in en or cs
-    /// parse time after first space
-    /// </summary>
-    /// <param name = "text"></param>
+    // A1 can be in en or cs
+    // parse time after first space
     public static DateTime IsValidDateTimeText(string text)
     {
         DateTime result = DateTime.MinValue;
@@ -155,11 +130,6 @@ public partial class DTHelperMulti
         return result;
     }
 
-    /// <summary>
-    /// Validates whether the text represents a valid time (Czech hh:mm:ss or US hh:mm tt format).
-    /// </summary>
-    /// <param name="text">The time text to validate</param>
-    /// <returns>Parsed DateTime if valid, DateTime.MinValue otherwise</returns>
     public static DateTime IsValidTimeText(string text)
     {
         DateTime result = DateTime.MinValue;
@@ -180,11 +150,7 @@ public partial class DTHelperMulti
         return result;
     }
 
-    /// <summary>
-    /// 21.6.1989 / 6/21/1989
-    /// </summary>
-    /// <param name = "dateTime"></param>
-    /// <param name = "lang"></param>
+    // 21.6.1989 / 6/21/1989
     public static string DateToString(DateTime dateTime, LangsDt lang)
     {
         if (lang == LangsDt.cs)
@@ -195,12 +161,6 @@ public partial class DTHelperMulti
         return dateTime.Month + "/" + dateTime.Day + "/" + dateTime.Year;
     }
 
-    /// <summary>
-    /// Returns the localized string for "files found" with proper Czech declension based on count.
-    /// </summary>
-    /// <param name="count">The number of files found</param>
-    /// <param name="lang">The language for localization</param>
-    /// <returns>Localized "files found" string</returns>
     public static string FilesFounded(int count, LangsDt lang)
     {
         if (lang == LangsDt.cs)
@@ -221,12 +181,6 @@ public partial class DTHelperMulti
         return XFilesFounded;
     }
 
-    /// <summary>
-    /// Localization string for "files founded" in English.
-    /// </summary>
     public static string XFilesFounded = "filesFounded";
-    /// <summary>
-    /// Localization string for "it was not mentioned" status.
-    /// </summary>
     public static string XItWasNotMentioned = "ItWasNotMentioned";
 }
