@@ -1,5 +1,10 @@
 # SunamoDateTime
 
+## Short description
+
+Rozsáhlá knihovna pro práci s datem a časem v .NET.
+
+
 Working with date+time
 
 ## Overview

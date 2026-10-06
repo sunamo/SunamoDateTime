@@ -2,25 +2,17 @@ namespace SunamoDateTime.DT;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-/// <summary>
-/// Provides Czech-localized DateTime formatting, parsing and age calculation methods.
-/// </summary>
 public partial class DTHelperCs
 {
     static Type type = typeof(DTHelperCs);
-    /// <summary>
-    /// Středa, 21.6.1989
-    /// </summary>
-    /// <param name = "dateTime"></param>
+
+    // Středa, 21.6.1989
     public static string DateToStringWithDayOfWeekCS(DateTime dateTime)
     {
         return DayOfWeek2DenVTydnu(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year;
     }
 
-    /// <summary>
-    /// 11:22 dont fill up with zero
-    /// </summary>
-    /// <param name = "from"></param>
+    // 11:22 dont fill up with zero
     public static string ToShortTimeFromSeconds(long from)
     {
         var dt = DateTime.MinValue;
@@ -28,12 +20,8 @@ public partial class DTHelperCs
         return ToShortTime(dt, true);
     }
 
-    /// <summary>
-    /// With seconds
-    /// 11:22:00 (depends on A2)
-    /// </summary>
-    /// <param name = "dateTime"></param>
-    /// <param name = "fillUpByZeros"></param>
+    // With seconds
+    // 11:22:00 (depends on A2)
     public static string ToShortTimeWithSecond(DateTime dateTime, bool fillUpByZeros = false)
     {
         // Must be array due to params []
@@ -46,11 +34,7 @@ public partial class DTHelperCs
         return ToShortTimeWorker(parts, fillUpByZeros);
     }
 
-    /// <summary>
-    /// Must be int[] due to params[]
-    /// </summary>
-    /// <param name = "parts"></param>
-    /// <param name = "fillUpByZeros"></param>
+    // Must be int[] due to params[]
     static string ToShortTimeWorker(int[] parts, bool fillUpByZeros)
     {
         if (fillUpByZeros)
@@ -61,12 +45,8 @@ public partial class DTHelperCs
         return string.Join(":", parts);
     }
 
-    /// <summary>
-    /// 11:22
-    /// Without seconds
-    /// </summary>
-    /// <param name = "dateTime"></param>
-    /// <param name = "fillUpByZeros"></param>
+    // 11:22
+    // Without seconds
     public static string ToShortTime(DateTime dateTime, bool fillUpByZeros = false)
     {
         // Must be array due to params []
@@ -74,12 +54,9 @@ public partial class DTHelperCs
         return ToShortTimeWorker(parts, fillUpByZeros);
     }
 
-    /// <summary>
-    /// hh:mm:ss
-    /// If fail, return DT.MinValue
-    /// Seconds can be omit
-    /// </summary>
-    /// <param name = "text"></param>
+    // hh:mm:ss
+    // If fail, return DT.MinValue
+    // Seconds can be omit
     public static DateTime ParseTimeCzech(string text)
     {
         var vr = DateTime.MinValue;
@@ -117,10 +94,7 @@ public partial class DTHelperCs
         return vr;
     }
 
-    /// <summary>
-    /// 21.6.1989. DateTime.MinValue when cannot be parsed
-    /// </summary>
-    /// <param name = "text"></param>
+    // 21.6.1989. DateTime.MinValue when cannot be parsed
     public static DateTime ParseDateCzech(string text)
     {
         DateTime vr = DateTime.MinValue;
