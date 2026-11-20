@@ -7,7 +7,7 @@ public partial class DTHelperCs
     // Wednesday, 21.6.1989
     public static string DateToStringWithDayOfWeekCS(DateTime dateTime)
     {
-        return DayOfWeek2DenVTydnu(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year;
+        return DayOfWeek2DayOfWeek(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year;
     }
 
     // 11:22 dont fill up with zero

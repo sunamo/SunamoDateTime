@@ -18,7 +18,7 @@ internal class DTConstants
 
     internal static readonly DateTime UnixFsStart = new DateTime(YearStartUnixDate, 1, 1);
 
-    internal static readonly List<string> DaysInWeekCS = new List<string> { Pondeli, Utery, Streda, Ctvrtek, Patek, Sobota, Nedele };
+    internal static readonly List<string> DaysInWeekCS = new List<string> { MondayCs, TuesdayCs, WednesdayCs, ThursdayCs, FridayCs, SaturdayCs, SundayCs };
 
     internal static DateTime UnixTimeStartEpoch = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 
@@ -26,58 +26,58 @@ internal class DTConstants
 
     #region Czech Day Names
     /// <summary>Monday in Czech</summary>
-    internal const string Pondeli = "Pondělí";
+    internal const string MondayCs = "Pondělí";
 
     /// <summary>Tuesday in Czech</summary>
-    internal const string Utery = "Úterý";
+    internal const string TuesdayCs = "Úterý";
 
     /// <summary>Wednesday in Czech</summary>
-    internal const string Streda = "Středa";
+    internal const string WednesdayCs = "Středa";
 
     /// <summary>Thursday in Czech</summary>
-    internal const string Ctvrtek = "Čtvrtek";
+    internal const string ThursdayCs = "Čtvrtek";
 
     /// <summary>Friday in Czech</summary>
-    internal const string Patek = "Pátek";
+    internal const string FridayCs = "Pátek";
 
-    internal const string Sobota = "Sobota";
+    internal const string SaturdayCs = "Sobota";
 
     /// <summary>Sunday in Czech</summary>
-    internal const string Nedele = "Neděle";
+    internal const string SundayCs = "Neděle";
     #endregion
 
     #region Czech Month Names
-    internal const string Leden = "Leden";
+    internal const string JanuaryCs = "Leden";
 
     /// <summary>February in Czech</summary>
-    internal const string Unor = "Únor";
+    internal const string FebruaryCs = "Únor";
 
     /// <summary>March in Czech</summary>
-    internal const string Brezen = "Březen";
+    internal const string MarchCs = "Březen";
 
-    internal const string Duben = "Duben";
+    internal const string AprilCs = "Duben";
 
     /// <summary>May in Czech</summary>
-    internal const string Kveten = "Květen";
+    internal const string MayCs = "Květen";
 
     /// <summary>June in Czech</summary>
-    internal const string Cerven = "Červen";
+    internal const string JuneCs = "Červen";
 
     /// <summary>July in Czech</summary>
-    internal const string Cervenec = "Červenec";
+    internal const string JulyCs = "Červenec";
 
-    internal const string Srpen = "Srpen";
+    internal const string AugustCs = "Srpen";
 
     /// <summary>September in Czech</summary>
-    internal const string Zari = "Září";
+    internal const string SeptemberCs = "Září";
 
     /// <summary>October in Czech</summary>
-    internal const string Rijen = "Říjen";
+    internal const string OctoberCs = "Říjen";
 
-    internal const string Listopad = "Listopad";
+    internal const string NovemberCs = "Listopad";
 
-    internal const string Prosinec = "Prosinec";
+    internal const string DecemberCs = "Prosinec";
     #endregion
 
-    internal static readonly List<string> MonthsInYearCZ = new List<string> { Leden, Unor, Brezen, Duben, Kveten, Cerven, Cervenec, Srpen, Zari, Rijen, Listopad, Prosinec };
+    internal static readonly List<string> MonthsInYearCZ = new List<string> { JanuaryCs, FebruaryCs, MarchCs, AprilCs, MayCs, JuneCs, JulyCs, AugustCs, SeptemberCs, OctoberCs, NovemberCs, DecemberCs };
 }

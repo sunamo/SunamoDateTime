@@ -111,9 +111,9 @@ public partial class DTHelper
         return DTHelperCs.CalculateAgeAndAddRightString(dateTime, calculateTime, dtMinVal);
     }
 
-    public static string DayOfWeek2DenVTydnu(DayOfWeek dayOfWeek)
+    public static string DayOfWeek2DayOfWeek(DayOfWeek dayOfWeek)
     {
-        return DTHelperCs.DayOfWeek2DenVTydnu(dayOfWeek);
+        return DTHelperCs.DayOfWeek2DayOfWeek(dayOfWeek);
     }
 
     public static DateTime ParseLl(string text, Func<string, int> ConvertMonthShortcutNumberFromShortcut)

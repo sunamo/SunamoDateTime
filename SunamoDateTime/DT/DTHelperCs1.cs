@@ -140,24 +140,24 @@ public partial class DTHelperCs
         return DTHelperMulti.DateTimeToString(startDateTime, lang, dtMinVal) + "-" + DTHelperMulti.DateTimeToString(endDateTime, lang, dtMinVal);
     }
 
-    public static string DayOfWeek2DenVTydnu(DayOfWeek dayOfWeek)
+    public static string DayOfWeek2DayOfWeek(DayOfWeek dayOfWeek)
     {
         switch (dayOfWeek)
         {
             case DayOfWeek.Monday:
-                return DTConstants.Pondeli;
+                return DTConstants.MondayCs;
             case DayOfWeek.Tuesday:
-                return DTConstants.Utery;
+                return DTConstants.TuesdayCs;
             case DayOfWeek.Wednesday:
-                return DTConstants.Streda;
+                return DTConstants.WednesdayCs;
             case DayOfWeek.Thursday:
-                return DTConstants.Ctvrtek;
+                return DTConstants.ThursdayCs;
             case DayOfWeek.Friday:
-                return DTConstants.Patek;
+                return DTConstants.FridayCs;
             case DayOfWeek.Saturday:
-                return DTConstants.Sobota;
+                return DTConstants.SaturdayCs;
             case DayOfWeek.Sunday:
-                return DTConstants.Nedele;
+                return DTConstants.SundayCs;
         }
 
         throw new Exception("Neznámý den v týdnu");
@@ -179,7 +179,7 @@ public partial class DTHelperCs
     // Wednesday, 21.6.1989 11:22 (dont fill with zero)
     public static string DateTimeToStringWithDayOfWeekCS(DateTime dateTime)
     {
-        return DayOfWeek2DenVTydnu(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year + " " + dateTime.Hour.ToString("D2") + ":" + dateTime.Minute.ToString("D2");
+        return DayOfWeek2DayOfWeek(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year + " " + dateTime.Hour.ToString("D2") + ":" + dateTime.Minute.ToString("D2");
     }
 
     public static DateTime ParseDateTimeCzech(string text)
