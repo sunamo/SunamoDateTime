@@ -1,7 +1,6 @@
 namespace SunamoDateTime._public;
 
-// EN: Must have both from and to values entered. No event can have unlimited time.
-// CZ: Musí mít zadané obě hodnoty from a to. Žádná událost nemůže mít neomezený čas.
+// Must have both from and to values entered. No event can have unlimited time.
 public class FromToDt : FromToTSHDt<long>
 {
     public static FromToDt Empty = new(true);

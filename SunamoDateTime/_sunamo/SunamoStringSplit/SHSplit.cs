@@ -12,8 +12,7 @@ internal class SHSplit
         var splitParts = text.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(, delimiter);
         if (splitParts.Count < parts)
         {
-            // EN: If number of obtained parts is smaller, insert empty strings to the rest
-            // CZ: Pokud je pocet ziskanych partu mensi, vlozim do zbytku prazdne retezce
+            // If number of obtained parts is smaller, insert empty strings to the rest
             if (splitParts.Count > 0)
             {
                 List<string> result = new List<string>();
@@ -37,13 +36,11 @@ internal class SHSplit
         }
         else if (splitParts.Count == parts)
         {
-            // EN: If number of obtained parts matches exactly, return as is
-            // CZ: Pokud pocet ziskanych partu souhlasim presne, vratim jak je
+            // If number of obtained parts matches exactly, return as is
             return splitParts;
         }
 
-        // EN: If number of obtained parts is greater than expected, append extras to the rest
-        // CZ: Pokud je pocet ziskanych partu vetsi nez kolik ma byt, pripojim ty co jsou navic do zbytku
+        // If number of obtained parts is greater than expected, append extras to the rest
         parts--;
         List<string> result2 = new List<string>();
         for (int i = 0; i < splitParts.Count; i++)

@@ -1,7 +1,6 @@
 namespace SunamoDateTime._public;
 
-// EN: Contains methods that were earlier in FromToT class.
-// CZ: Obsahuje metody které byly dříve ve třídě FromToT.
+// Contains methods that were earlier in FromToT class.
 public class FromToTDt<T> : FromToTSHDt<T> where T : struct
 {
     public FromToTDt()
@@ -25,8 +24,7 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         this.UseType = useType;
     }
 
-    // EN: After calling this method, IsFilledWithData can be used to verify the data.
-    // CZ: Po zavolání této metody lze použít IsFilledWithData k ověření dat.
+    // After calling this method, IsFilledWithData can be used to verify the data.
     public void Parse(string text)
     {
         List<string> parts;
@@ -39,15 +37,13 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
             parts = new List<string>(new string[] { text });
         }
 
-        // EN: Normalize start time: "0" becomes "00:01"
-        // CZ: Normalizuje počáteční čas: "0" se stane "00:01"
+        // Normalize start time: "0" becomes "00:01"
         if (parts[0] == "0")
         {
             parts[0] = "00:01";
         }
 
-        // EN: Normalize end time: "24" becomes "23:59"
-        // CZ: Normalizuje koncový čas: "24" se stane "23:59"
+        // Normalize end time: "24" becomes "23:59"
         if (parts.Count > 1 && parts[1] == "24")
         {
             parts[1] = "23:59";
@@ -63,17 +59,14 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         }
     }
 
-    // EN: Returns true if To value is valid (>= 0 and != 0).
-    // CZ: Vrací true pokud je hodnota To platná (>= 0 a != 0).
+    // Returns true if To value is valid (>= 0 and != 0).
     public bool IsFilledWithData()
     {
-        // EN: from != 0 check removed - cannot be used because if "0-24" is entered it would fail
-        // CZ: kontrola from != 0 odstraněna - nelze použít protože pokud je zadáno "0-24" selže
+        // from != 0 check removed - cannot be used because if "0-24" is entered it would fail
         return toLong >= 0 && toLong != 0;
     }
 
-    // EN: Use DTHelperCs.ToShortTimeFromSeconds to convert back.
-    // CZ: Pro převod zpět použijte DTHelperCs.ToShortTimeFromSeconds.
+    // Use DTHelperCs.ToShortTimeFromSeconds to convert back.
     private int ConvertTimeFormatToSeconds(string timeFormat)
     {
         int result = 0;

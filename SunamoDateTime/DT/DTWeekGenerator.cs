@@ -36,8 +36,7 @@ public class DTWeekGenerator
         return sb.ToString();
     }
 
-    // EN: Formats a single week range in format "weekNumber startDay.startMonth.-endDay.endMonth."
-    // CZ: Formátuje jeden týdenní rozsah ve formátu "weekNumber startDay.startMonth.-endDay.endMonth."
+    // Formats a single week range in format "weekNumber startDay.startMonth.-endDay.endMonth."
     // Example: FormatWeekRange(Monday 5.1.2026, 1) returns "1 5.1.-11.1."
     public static string FormatWeekRange(DateTime monday, int weekNumber)
     {

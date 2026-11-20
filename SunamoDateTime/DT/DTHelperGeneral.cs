@@ -1,7 +1,6 @@
 namespace SunamoDateTime.DT;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+// Variable names have been checked and replaced with self-descriptive names
 public partial class DTHelperGeneral
 {
     public static List<DateTime> GetDatesBetween(DateTime startDate, DateTime endDate)
@@ -23,8 +22,7 @@ public partial class DTHelperGeneral
         return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(dateTime, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
     }
 
-    // EN: Gets the start of the week (Monday) for the specified date.
-    // CZ: Získá začátek týdne (pondělí) pro zadané datum.
+    // Gets the start of the week (Monday) for the specified date.
     // rolloverDayOfWeek: Optional day of week threshold. If the current day is >= this day, returns the start of NEXT week instead of current week.
     public static DateTime StartOfWeekMonday(DateTime dateTime, DayOfWeek? rolloverDayOfWeek)
     {
