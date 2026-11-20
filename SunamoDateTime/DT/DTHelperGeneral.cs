@@ -1,6 +1,5 @@
 namespace SunamoDateTime.DT;
 
-// Variable names have been checked and replaced with self-descriptive names
 public partial class DTHelperGeneral
 {
     public static List<DateTime> GetDatesBetween(DateTime startDate, DateTime endDate)

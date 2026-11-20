@@ -1,6 +1,5 @@
 namespace SunamoDateTime.DT;
 
-// Variable names have been checked and replaced with self-descriptive names
 public partial class DTHelperMulti
 {
     public static string XNotIndicated = "NotIndicated";

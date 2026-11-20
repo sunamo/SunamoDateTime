@@ -1,6 +1,5 @@
 namespace SunamoDateTime.DT;
 
-// Variable names have been checked and replaced with self-descriptive names
 public partial class DTHelperCs
 {
     public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt lang, DateTime dtMinVal)
