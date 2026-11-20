@@ -5,7 +5,7 @@ public partial class DTHelperCs
 {
     static Type type = typeof(DTHelperCs);
 
-    // Středa, 21.6.1989
+    // Wednesday, 21.6.1989
     public static string DateToStringWithDayOfWeekCS(DateTime dateTime)
     {
         return DayOfWeek2DenVTydnu(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year;

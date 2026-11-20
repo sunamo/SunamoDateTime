@@ -43,7 +43,7 @@ public partial class DTHelperMulti
         }
         else
         {
-            // Hodin je méně než 1
+            // Fewer than 1 hour
             if (timeSpan.Minutes == 1)
             {
                 if (lang == LangsDt.cs)

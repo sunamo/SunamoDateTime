@@ -145,7 +145,7 @@ public class DTHelperUs
     public static DateTime? FileNameToDateTime(string filenameWithoutExtension)
     {
         var parts = filenameWithoutExtension.Split(new String[] { "_" }, StringSplitOptions.RemoveEmptyEntries).ToList(); //SHSplit.Split(filenameWithoutExtension, "_");
-        // Tady jsem to rozděloval na 6 ale pak mi to vracelo null. Úprava na 5
+        // Here I split it into 6 but then it returned null. Changed to 5
         var dd = CAToNumber.ToInt1(parts, 5);
         if (dd == null)
         {

@@ -48,7 +48,7 @@ public partial class DTHelperCs
                             }
                             else
                             {
-                                // Hodin je méně než 1
+                                // Fewer than 1 hour
                                 if (timeElapsed.Minutes == 1)
                                 {
                                     return timeElapsed.Minutes + " minuta";

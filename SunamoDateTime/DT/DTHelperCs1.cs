@@ -53,7 +53,7 @@ public partial class DTHelperCs
                             }
                             else
                             {
-                                // Hodin je méně než 1
+                                // Fewer than 1 hour
                                 if (tt.Minutes == 1)
                                 {
                                     return tt.Minutes + " minutou";
@@ -222,17 +222,17 @@ public partial class DTHelperCs
                 return "včera";
             if (days < 5)
                 return $"před {days} dny"; // For 2, 3, 4 days
-            return $"před {days} dny"; // For 5+ days (same skloňování as above for simplicity)
+            return $"před {days} dny"; // For 5+ days (same declension as above for simplicity)
         }
 
         if (timeSince.TotalDays < 365) // Approximate year
         {
             int months = (int)(timeSince.TotalDays / 30.436875); // Average days in a month
             if (months <= 1)
-                return "před 1 měsícem"; // Handle 0 or 1 month as "před 1 měsícem"
+                return "před 1 měsícem"; // Handle 0 or 1 month as "1 month ago"
             if (months < 5)
                 return $"před {months} měsíci";
-            return $"před {months} měsíci"; // For 5+ months (same skloňování)
+            return $"před {months} měsíci"; // For 5+ months (same declension)
         }
         else
         {
@@ -241,7 +241,7 @@ public partial class DTHelperCs
                 return "před 1 rokem";
             if (years < 5)
                 return $"před {years} lety";
-            return $"před {years} lety"; // For 5+ years (same skloňování)
+            return $"před {years} lety"; // For 5+ years (same declension)
         }
     }
 

@@ -31,7 +31,7 @@ public partial class DTHelperMulti
         }
     }
 
-    // 21.6.1989 (středa) / 6/21/1989 (wednesday)
+    // 21.6.1989 (Wednesday) / 6/21/1989 (wednesday)
     public static string DateWithDayOfWeek(DateTime dateTime, LangsDt lang)
     {
         int day = (int)dateTime.DayOfWeek;
