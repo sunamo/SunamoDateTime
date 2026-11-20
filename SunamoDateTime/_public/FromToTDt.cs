@@ -1,8 +1,14 @@
 namespace SunamoDateTime._public;
 
 // Contains methods that were earlier in FromToT class.
+/// <summary>
+/// Represents the from to t dt t type.
+/// </summary>
 public class FromToTDt<T> : FromToTSHDt<T> where T : struct
 {
+    /// <summary>
+    /// Initializes a new instance of the from to t dt class.
+    /// </summary>
     public FromToTDt()
     {
         var type = typeof(T);
@@ -17,6 +23,12 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         this.IsEmpty = isEmpty;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the from to t dt class.
+    /// </summary>
+    /// <param name="from">The from.</param>
+    /// <param name="to">The to.</param>
+    /// <param name="useType">The use type.</param>
     public FromToTDt(T from, T to, FromToUseDateTime useType = FromToUseDateTime.DateTime) : this()
     {
         this.From = from;
@@ -25,6 +37,10 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
     }
 
     // After calling this method, IsFilledWithData can be used to verify the data.
+    /// <summary>
+    /// Parse.
+    /// </summary>
+    /// <param name="text">The text.</param>
     public void Parse(string text)
     {
         List<string> parts;
@@ -60,6 +76,10 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
     }
 
     // Returns true if To value is valid (>= 0 and != 0).
+    /// <summary>
+    /// Is filled with data.
+    /// </summary>
+    /// <returns>The is filled with data result.</returns>
     public bool IsFilledWithData()
     {
         // from != 0 check removed - cannot be used because if "0-24" is entered it would fail
@@ -89,6 +109,11 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         return result;
     }
 
+    /// <summary>
+    /// To string.
+    /// </summary>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The to string result.</returns>
     public string ToString(LangsDt lang)
     {
         if (IsEmpty)
@@ -113,6 +138,11 @@ public class FromToTDt<T> : FromToTSHDt<T> where T : struct
         }
     }
 
+    /// <summary>
+    /// To string date time.
+    /// </summary>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The to string date time result.</returns>
     protected virtual string ToStringDateTime(LangsDt lang)
     {
         return "";

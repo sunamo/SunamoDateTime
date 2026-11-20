@@ -2,8 +2,18 @@ namespace SunamoDateTime.DT;
 
 public partial class DTHelperMulti
 {
+    /// <summary>
+    /// The x not indicated.
+    /// </summary>
     public static string XNotIndicated = "NotIndicated";
 
+    /// <summary>
+    /// Time to string.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <param name="lang">The lang.</param>
+    /// <param name="dtMinVal">The dt min val.</param>
+    /// <returns>The time to string result.</returns>
     public static string TimeToString(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
         if (dateTime == dtMinVal)
@@ -31,6 +41,11 @@ public partial class DTHelperMulti
     }
 
     // 21.6.1989 (Wednesday) / 6/21/1989 (wednesday)
+    /// <summary>
+    /// Date with day of week.
+    /// </summary>
+    /// <param name="Wednesday">The wednesday.</param>
+    /// <returns>The date with day of week result.</returns>
     public static string DateWithDayOfWeek(DateTime dateTime, LangsDt lang)
     {
         int day = (int)dateTime.DayOfWeek;
@@ -52,6 +67,12 @@ public partial class DTHelperMulti
         return DateToString(dateTime, lang) + " (" + dayOfWeek + ")";
     }
 
+    /// <summary>
+    /// Date to string with day of week.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The date to string with day of week result.</returns>
     public static string DateToStringWithDayOfWeek(DateTime dateTime, LangsDt lang)
     {
         if (lang == LangsDt.en)
@@ -69,6 +90,11 @@ public partial class DTHelperMulti
     }
 
     // Return whether can be parse with DTHelperCs.ParseDateCzech or DTHelperEn.ParseDateUSA
+    /// <summary>
+    /// Is valid date text.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The is valid date text result.</returns>
     public static DateTime IsValidDateText(string text)
     {
         DateTime result = DateTime.MinValue;
@@ -91,6 +117,11 @@ public partial class DTHelperMulti
 
     // A1 can be in en or cs
     // parse time after first space
+    /// <summary>
+    /// Is valid date time text.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The is valid date time text result.</returns>
     public static DateTime IsValidDateTimeText(string text)
     {
         DateTime result = DateTime.MinValue;
@@ -128,6 +159,11 @@ public partial class DTHelperMulti
         return result;
     }
 
+    /// <summary>
+    /// Is valid time text.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The is valid time text result.</returns>
     public static DateTime IsValidTimeText(string text)
     {
         DateTime result = DateTime.MinValue;
@@ -149,6 +185,12 @@ public partial class DTHelperMulti
     }
 
     // 21.6.1989 / 6/21/1989
+    /// <summary>
+    /// Date to string.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The date to string result.</returns>
     public static string DateToString(DateTime dateTime, LangsDt lang)
     {
         if (lang == LangsDt.cs)
@@ -159,6 +201,12 @@ public partial class DTHelperMulti
         return dateTime.Month + "/" + dateTime.Day + "/" + dateTime.Year;
     }
 
+    /// <summary>
+    /// Files founded.
+    /// </summary>
+    /// <param name="count">The count.</param>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The files founded result.</returns>
     public static string FilesFounded(int count, LangsDt lang)
     {
         if (lang == LangsDt.cs)
@@ -179,6 +227,12 @@ public partial class DTHelperMulti
         return XFilesFounded;
     }
 
+    /// <summary>
+    /// The x files founded.
+    /// </summary>
     public static string XFilesFounded = "filesFounded";
+    /// <summary>
+    /// The x it was not mentioned.
+    /// </summary>
     public static string XItWasNotMentioned = "ItWasNotMentioned";
 }

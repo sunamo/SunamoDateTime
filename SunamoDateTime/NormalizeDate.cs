@@ -1,7 +1,15 @@
 namespace SunamoDateTime;
 
+/// <summary>
+/// Represents the normalize date type.
+/// </summary>
 public class NormalizeDate
 {
+    /// <summary>
+    /// From.
+    /// </summary>
+    /// <param name="shortDate">The short date.</param>
+    /// <returns>The from result.</returns>
     public static DateTime From(short shortDate)
     {
         var text = shortDate.ToString();
@@ -32,6 +40,11 @@ public class NormalizeDate
         return dateTime;
     }
 
+    /// <summary>
+    /// To.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <returns>The to result.</returns>
     public static short To(DateTime dateTime)
     {
         var isNegative = false;
@@ -76,6 +89,12 @@ public class NormalizeDate
         return short.Parse(result);
     }
 
+    /// <summary>
+    /// Add months.
+    /// </summary>
+    /// <param name="normalizedDate">The normalized date.</param>
+    /// <param name="monthsToAdd">The months to add.</param>
+    /// <returns>The add months result.</returns>
     public static short AddMonths(short normalizedDate, int monthsToAdd)
     {
         var dateTime = From(normalizedDate);

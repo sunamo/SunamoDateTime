@@ -2,6 +2,14 @@ namespace SunamoDateTime.DT;
 
 public partial class DTHelperCs
 {
+    /// <summary>
+    /// Calculate age and add right string kym cim.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <param name="calculateTime">The calculate time.</param>
+    /// <param name="lang">The lang.</param>
+    /// <param name="dtMinVal">The dt min val.</param>
+    /// <returns>The calculate age and add right string kym cim result.</returns>
     public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, LangsDt lang, DateTime dtMinVal)
     {
         if (lang != LangsDt.cs)
@@ -135,11 +143,24 @@ public partial class DTHelperCs
         }
     }
 
+    /// <summary>
+    /// Interval to string.
+    /// </summary>
+    /// <param name="startDateTime">The start date time.</param>
+    /// <param name="endDateTime">The end date time.</param>
+    /// <param name="lang">The lang.</param>
+    /// <param name="dtMinVal">The dt min val.</param>
+    /// <returns>The interval to string result.</returns>
     public static string IntervalToString(DateTime startDateTime, DateTime endDateTime, LangsDt lang, DateTime dtMinVal)
     {
         return DTHelperMulti.DateTimeToString(startDateTime, lang, dtMinVal) + "-" + DTHelperMulti.DateTimeToString(endDateTime, lang, dtMinVal);
     }
 
+    /// <summary>
+    /// Day of week 2 day of week.
+    /// </summary>
+    /// <param name="dayOfWeek">The day of week.</param>
+    /// <returns>The day of week 2 day of week result.</returns>
     public static string DayOfWeek2DayOfWeek(DayOfWeek dayOfWeek)
     {
         switch (dayOfWeek)
@@ -164,6 +185,11 @@ public partial class DTHelperCs
     }
 
     // Return actual time(for example 12:00:00:000) and after that A1 postfix
+    /// <summary>
+    /// Append to front only time.
+    /// </summary>
+    /// <param name="postfix">The postfix.</param>
+    /// <returns>The append to front only time result.</returns>
     public static string AppendToFrontOnlyTime(string postfix)
     {
         DateTime dt = DateTime.Now;
@@ -171,23 +197,44 @@ public partial class DTHelperCs
     }
 
     // 21.6.1989
+    /// <summary>
+    /// To short date.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <returns>The to short date result.</returns>
     public static string ToShortDate(DateTime dateTime)
     {
         return string.Join(".", dateTime.Day, dateTime.Month, dateTime.Year);
     }
 
     // Wednesday, 21.6.1989 11:22 (dont fill with zero)
+    /// <summary>
+    /// Date time to string with day of week CS.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <returns>The date time to string with day of week CS result.</returns>
     public static string DateTimeToStringWithDayOfWeekCS(DateTime dateTime)
     {
         return DayOfWeek2DayOfWeek(dateTime.DayOfWeek) + ", " + dateTime.Day + "." + dateTime.Month + "." + dateTime.Year + " " + dateTime.Hour.ToString("D2") + ":" + dateTime.Minute.ToString("D2");
     }
 
+    /// <summary>
+    /// Parse date time czech.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The parse date time czech result.</returns>
     public static DateTime ParseDateTimeCzech(string text)
     {
         var dateTime = DateTime.Parse(text, CultureInfos.Cz);
         return dateTime;
     }
 
+    /// <summary>
+    /// To time ago.
+    /// </summary>
+    /// <param name="pastDate">The past date.</param>
+    /// <param name="currentDate">The current date.</param>
+    /// <returns>The to time ago result.</returns>
     public static string ToTimeAgo(DateTime pastDate, DateTime currentDate)
     {
         TimeSpan timeSince = currentDate.Subtract(pastDate);
@@ -244,6 +291,11 @@ public partial class DTHelperCs
         }
     }
 
+    /// <summary>
+    /// To time ago.
+    /// </summary>
+    /// <param name="pastDate">The past date.</param>
+    /// <returns>The to time ago result.</returns>
     public static string ToTimeAgo(DateTime pastDate)
     {
         return ToTimeAgo(pastDate, DateTime.Now);
