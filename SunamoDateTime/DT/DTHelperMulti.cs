@@ -11,7 +11,6 @@ public partial class DTHelperMulti
         bool isValid = false;
         lastDateTime = DTHelper.IsValidDateTimeText(r);
         isValid = lastDateTime != System.DateTime.MinValue;
-        //}
         if (!isValid)
         {
             lastDateTime = DTHelper.IsValidDateText(r);

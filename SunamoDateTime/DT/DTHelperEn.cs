@@ -109,7 +109,6 @@ public class DTHelperEn
         DateTime date = ParseDateUSA(parts[0]);
         var time = ParseTimeUSA(parts[1] + " " + parts[2]);
         return DTHelperGeneral.Combine(date, time);
-        //return DateTime.Parse(text, CultureInfo.GetCultureInfo("en-us"));
     }
     #endregion
     #endregion

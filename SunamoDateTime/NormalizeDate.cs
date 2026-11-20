@@ -58,11 +58,6 @@ public class NormalizeDate
             monthString = "0";
         }
 
-        /*
-        In first place can be 0,1,2,3
-        november = 4,5,6,7
-        december = -4,5,6,7
-        */
         var dayValue = dateTime.Day.ToString("D2");
         var firstChar = dayValue[0];
 

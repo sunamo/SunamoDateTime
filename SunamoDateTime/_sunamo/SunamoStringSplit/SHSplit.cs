@@ -29,7 +29,6 @@ internal class SHSplit
                     }
                 }
                 return result;
-                //return new string[] { splitParts[0] };
             }
             else
             {
@@ -97,7 +96,6 @@ internal class SHSplit
             else
             {
                 stringBuilder.Insert(0, characters[i]);
-                //stringBuilder.Append(characters[i]);
             }
         }
         string lastPart = stringBuilder.ToString();
@@ -147,10 +145,4 @@ internal class SHSplit
     }
     #endregion
 
-    //    internal static Func<string, char[], List<string>> SplitChar;
-    //    internal static Func<string, String[], List<int>> SplitToIntList;
-    //    internal static Func<string, string, List<string>> Split;
-    //    internal static Func<string, String[], List<string>> SplitNone;
-    //    internal static Func<string, int, Char[], List<string>> SplitToPartsFromEnd;
-    //    internal static Func<string, int, string, List<string>> SplitToParts;
 }

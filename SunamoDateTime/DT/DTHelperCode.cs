@@ -22,7 +22,6 @@ public class DTHelperCode
     // Input in name mean that output of this method I will insert only to input, it dont mean anything method argument
     public static string DateToStringjQueryDatePicker(DateTime dt)
     {
-        //return dt.Day.ToString("D2") + "." + dt.Month.ToString("D2") + "." + dt.Year;
         return dt.Month.ToString("D2") + "/" + dt.Day.ToString("D2") + "/" + dt.Year;
     }
     #endregion

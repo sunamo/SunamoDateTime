@@ -64,10 +64,6 @@ public partial class DTHelper
         return DTHelperMulti.DateTimeToString(dateTime, lang, dtMinVal);
     }
 
-    //public static string DateTimeToStringWithoutDayOfWeek(DateTime actualMessageDt)
-    //{
-    //    return null;
-    //}
     public static DateTime OnlyDateProperties(DateTime parameter)
     {
         return new DateTime(parameter.Year, parameter.Month, parameter.Day);

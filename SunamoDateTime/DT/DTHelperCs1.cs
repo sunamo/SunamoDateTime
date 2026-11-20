@@ -89,7 +89,6 @@ public partial class DTHelperCs
                             return "  dnem";
                         }
                     }
-                //return tt.Days + " dnů";
                 }
                 else if (totalWeeks == 1)
                 {

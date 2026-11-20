@@ -98,7 +98,6 @@ public partial class DTHelperGeneral
         result += dateTime.Minute * DTConstants.SecondsInMinute;
         result += dateTime.Second;
         result *= TimeSpan.TicksPerSecond;
-        //result += SqlServerHelper.DateTimeMinVal
         return result;
     }
 
@@ -188,8 +187,6 @@ public partial class DTHelperGeneral
         return int.Parse("2" + yearString);
     }
 
-    // A2 = SqlServerHelper.DateTimeMinVal
-    // if A1 = A2, return 255
     public static byte CalculateAge(DateTime birthDate, DateTime dtMinVal)
     {
         if (birthDate == dtMinVal)
