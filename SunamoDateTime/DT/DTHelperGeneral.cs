@@ -35,6 +35,41 @@ public partial class DTHelperGeneral
         return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(dateTime, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
     }
 
+    /// <summary>
+    /// Returns the week number (calendar rule "first four day week", Monday first) of the week that contains the date, taken from the Monday of that week.
+    /// </summary>
+    /// <param name="dateTime">Any date in the week.</param>
+    /// <returns>The week number, 1 to 53.</returns>
+    public static int WeekOfYearByMonday(DateTime dateTime)
+    {
+        int daysFromMonday = ((int)dateTime.DayOfWeek - (int)DayOfWeek.Monday + 7) % 7;
+        DateTime mondayOfWeek = dateTime.AddDays(-daysFromMonday);
+        return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(mondayOfWeek, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+    }
+
+    /// <summary>
+    /// Returns the Monday of the given week of a year, counted from the week that contains January 4; the week number is validated against the last week of the year.
+    /// </summary>
+    /// <param name="year">The year.</param>
+    /// <param name="weekOfYear">The week number, 1 to 53.</param>
+    /// <returns>The Monday of the week.</returns>
+    public static DateTime GetFirstDayOfWeekByMonday(int year, int weekOfYear)
+    {
+        // January 4 is always in week 1.
+        DateTime january4 = new DateTime(year, 1, 4);
+        DateTime mondayOfWeek1 = january4.AddDays(-(((int)january4.DayOfWeek - (int)DayOfWeek.Monday + 7) % 7));
+
+        DateTime december31 = new DateTime(year, 12, 31);
+        DateTime lastMonday = december31.AddDays(-(((int)december31.DayOfWeek - (int)DayOfWeek.Monday + 7) % 7));
+        int lastWeekOfYear = WeekOfYearByMonday(lastMonday);
+
+        if (weekOfYear < 1 || weekOfYear > lastWeekOfYear)
+        {
+            throw new ArgumentOutOfRangeException(nameof(weekOfYear), $"Week number must be between 1 and {lastWeekOfYear} for the year {year}.");
+        }
+
+        return mondayOfWeek1.AddDays((weekOfYear - 1) * 7);
+    }
     // Gets the start of the week (Monday) for the specified date.
     // rolloverDayOfWeek: Optional day of week threshold. If the current day is >= this day, returns the start of NEXT week instead of current week.
     /// <summary>
