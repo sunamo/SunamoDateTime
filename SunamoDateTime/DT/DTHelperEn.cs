@@ -46,6 +46,34 @@ public class DTHelperEn
         }
         return result;
     }
+    /// <summary>
+    /// Parses a US date (M/d/yyyy) and returns DateTime.MinValue when the text has fewer than three parts, is not numeric or is not a valid date; never throws.
+    /// </summary>
+    /// <param name="text">The text in the form M/d/yyyy.</param>
+    /// <returns>The parsed date or DateTime.MinValue.</returns>
+    public static DateTime ParseDateUSAOrMin(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            return DateTime.MinValue;
+
+        var parts = text.Trim().Split('/');
+        if (parts.Length < 3)
+            return DateTime.MinValue;
+
+        if (int.TryParse(parts[0], out var month) && int.TryParse(parts[1], out var day) && int.TryParse(parts[2], out var year))
+        {
+            try
+            {
+                return new DateTime(year, month, day, 0, 0, 0);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return DateTime.MinValue;
+            }
+        }
+
+        return DateTime.MinValue;
+    }
     #endregion
 
     #region Only time

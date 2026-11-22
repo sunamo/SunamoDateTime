@@ -221,7 +221,7 @@ public partial class DTHelperGeneral
         catch (ArgumentOutOfRangeException ex)
         {
             // because can return null, wont throw excepiton there
-            ThrowEx.Custom(ex);
+            ThrowEx.Custom(ex, false);
             return null;
         }
     }

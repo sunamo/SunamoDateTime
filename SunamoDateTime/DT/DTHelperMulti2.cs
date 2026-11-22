@@ -228,8 +228,9 @@ public partial class DTHelperMulti
     {
         if (dayText.Contains("-"))
         {
-            var builder = dayText.Split('-')[0];
-            dayTo = int.Parse(dayText);
+            var dayParts = dayText.Split('-');
+            var builder = dayParts[0];
+            dayTo = int.Parse(dayParts[1]);
             return builder;
         }
 
