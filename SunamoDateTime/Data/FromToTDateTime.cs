@@ -1,7 +1,15 @@
 namespace SunamoDateTime.Data;
 
+/// <summary>
+/// Represents the from to t date time t type.
+/// </summary>
 public class FromToTDateTime<T> : FromToTDt<T> where T : struct
 {
+    /// <summary>
+    /// To string date time.
+    /// </summary>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The to string date time result.</returns>
     protected override string ToStringDateTime(LangsDt lang)
     {
         if (UseType == FromToUseDateTime.DateTime)

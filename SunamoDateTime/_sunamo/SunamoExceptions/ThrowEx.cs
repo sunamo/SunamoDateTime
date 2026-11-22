@@ -1,7 +1,5 @@
 namespace SunamoDateTime._sunamo.SunamoExceptions;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Nazvy promennych byly zkontrolovany a nahrazeny samopopisnymi nazvy
 internal partial class ThrowEx
 {
     internal static bool CannotCreateDateTime(

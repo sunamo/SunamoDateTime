@@ -1,9 +1,14 @@
 namespace SunamoDateTime.DT;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperCs
 {
+    /// <summary>
+    /// Calculate age and add right string.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <param name="calculateTime">The calculate time.</param>
+    /// <param name="dtMinVal">The dt min val.</param>
+    /// <returns>The calculate age and add right string result.</returns>
     public static string CalculateAgeAndAddRightString(DateTime dateTime, bool calculateTime, DateTime dtMinVal = new DateTime())
     {
         if (dateTime == dtMinVal)
@@ -49,7 +54,7 @@ public partial class DTHelperCs
                             }
                             else
                             {
-                                // Hodin je méně než 1
+                                // Fewer than 1 hour
                                 if (timeElapsed.Minutes == 1)
                                 {
                                     return timeElapsed.Minutes + " minuta";

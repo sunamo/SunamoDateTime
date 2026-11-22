@@ -1,7 +1,5 @@
 namespace SunamoDateTime.DT;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelper
 {
     /// <summary>
@@ -13,6 +11,11 @@ public partial class DTHelper
         return DTHelperCs.ParseDateCzech(text);
     }
 
+    /// <summary>
+    /// Parse date month day year.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The parse date month day year result.</returns>
     public static DateTime? ParseDateMonthDayYear(string text)
     {
         int? dayTo = -1;
@@ -88,36 +91,74 @@ public partial class DTHelper
         return DTHelperMulti.AddRightStringToTimeSpan(timeSpan, calculateTime, lang);
     }
 
+    /// <summary>
+    /// Operation lasted in localizate string.
+    /// </summary>
+    /// <param name="duration">The duration.</param>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The operation lasted in localizate string result.</returns>
     public static string OperationLastedInLocalizateString(TimeSpan duration, LangsDt lang)
     {
         return DTHelperMulti.OperationLastedInLocalizateString(duration, lang);
     }
 
+    /// <summary>
+    /// Time in ms to seconds.
+    /// </summary>
+    /// <param name="parameter">The parameter.</param>
+    /// <returns>The time in ms to seconds result.</returns>
     public static string TimeInMsToSeconds(Stopwatch parameter)
     {
         return DTHelperGeneral.TimeInMsToSeconds(parameter);
     }
 
+    /// <summary>
+    /// Today plus actual hour.
+    /// </summary>
+    /// <returns>The today plus actual hour result.</returns>
     public static DateTime TodayPlusActualHour()
     {
         return DTHelperGeneral.TodayPlusActualHour();
     }
 
+    /// <summary>
+    /// Date time to seconds only time.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <returns>The date time to seconds only time result.</returns>
     public static long DateTimeToSecondsOnlyTime(DateTime dateTime)
     {
         return DTHelperGeneral.DateTimeToSecondsOnlyTime(dateTime, DTConstants.SecondsInHour);
     }
 
+    /// <summary>
+    /// Calculate age and add right string.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <param name="calculateTime">The calculate time.</param>
+    /// <param name="dtMinVal">The dt min val.</param>
+    /// <returns>The calculate age and add right string result.</returns>
     public static string CalculateAgeAndAddRightString(DateTime dateTime, bool calculateTime, DateTime dtMinVal)
     {
         return DTHelperCs.CalculateAgeAndAddRightString(dateTime, calculateTime, dtMinVal);
     }
 
-    public static string DayOfWeek2DenVTydnu(DayOfWeek dayOfWeek)
+    /// <summary>
+    /// Day of week 2 day of week.
+    /// </summary>
+    /// <param name="dayOfWeek">The day of week.</param>
+    /// <returns>The day of week 2 day of week result.</returns>
+    public static string DayOfWeek2DayOfWeek(DayOfWeek dayOfWeek)
     {
-        return DTHelperCs.DayOfWeek2DenVTydnu(dayOfWeek);
+        return DTHelperCs.DayOfWeek2DayOfWeek(dayOfWeek);
     }
 
+    /// <summary>
+    /// Parse ll.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <param name="ConvertMonthShortcutNumberFromShortcut">The convert month shortcut number from shortcut.</param>
+    /// <returns>The parse ll result.</returns>
     public static DateTime ParseLl(string text, Func<string, int> ConvertMonthShortcutNumberFromShortcut)
     {
         var parts = text.Split(' '); //SHSplit.Split(text, "");

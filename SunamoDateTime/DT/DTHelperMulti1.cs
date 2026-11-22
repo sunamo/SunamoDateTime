@@ -1,9 +1,14 @@
 namespace SunamoDateTime.DT;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperMulti
 {
+    /// <summary>
+    /// Add right string to time span.
+    /// </summary>
+    /// <param name="timeSpan">The time span.</param>
+    /// <param name="calculateTime">The calculate time.</param>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The add right string to time span result.</returns>
     public static string AddRightStringToTimeSpan(TimeSpan timeSpan, bool calculateTime, LangsDt lang)
     {
         int age = timeSpan.TotalYears();
@@ -76,7 +81,7 @@ public partial class DTHelperMulti
                             }
                             else
                             {
-                                // Hodin je méně než 1
+                                // Fewer than 1 hour
                                 if (timeSpan.Minutes == 1)
                                 {
                                     if (lang == LangsDt.cs)

@@ -39,8 +39,7 @@ internal class CAToNumber
     }
     #endregion
 
-    // EN: WARNING - currentIndex is never incremented, this loop logic is broken!
-    // CZ: VAROVANI - currentIndex se nikdy neinkrementuje, logika teto smycky je rozbita!
+    // WARNING - currentIndex is never incremented, this loop logic is broken!
     internal static List<T>? ToNumber<T>(Func<string, T, T> tryParse, IList list, int requiredLength, T startFrom) where T : IComparable
     {
         int finalLength = list.Count - int.Parse(startFrom!.ToString()!);

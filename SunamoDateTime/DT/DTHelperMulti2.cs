@@ -1,11 +1,18 @@
 namespace SunamoDateTime.DT;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class DTHelperMulti
 {
+    /// <summary>
+    /// The x no known period.
+    /// </summary>
     public static string XNoKnownPeriod = "NoKnownPeriod";
 
+    /// <summary>
+    /// Operation lasted in localizate string.
+    /// </summary>
+    /// <param name="timeSpan">The time span.</param>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The operation lasted in localizate string result.</returns>
     public static string OperationLastedInLocalizateString(TimeSpan timeSpan, LangsDt lang)
     {
         List<string> timeParts = new List<string>();
@@ -44,7 +51,7 @@ public partial class DTHelperMulti
         }
         else
         {
-            // Hodin je méně než 1
+            // Fewer than 1 hour
             if (timeSpan.Minutes == 1)
             {
                 if (lang == LangsDt.cs)
@@ -167,6 +174,13 @@ public partial class DTHelperMulti
         return text;
     }
 
+    /// <summary>
+    /// Date to string or SE.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <param name="lang">The lang.</param>
+    /// <param name="dtMinVal">The dt min val.</param>
+    /// <returns>The date to string or SE result.</returns>
     public static string DateToStringOrSE(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
         if (dateTime == dtMinVal)
@@ -177,6 +191,12 @@ public partial class DTHelperMulti
         return DTHelperMulti.DateToString(dateTime, lang);
     }
 
+    /// <summary>
+    /// Parse date month day year.
+    /// </summary>
+    /// <param name="dateTime">The date time.</param>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The parse date month day year result.</returns>
     public static DateTime? ParseDateMonthDayYear(string dateText, out int? dayTo)
     {
         dayTo = -1;
@@ -208,8 +228,9 @@ public partial class DTHelperMulti
     {
         if (dayText.Contains("-"))
         {
-            var builder = dayText.Split('-')[0];
-            dayTo = int.Parse(dayText);
+            var dayParts = dayText.Split('-');
+            var builder = dayParts[0];
+            dayTo = int.Parse(dayParts[1]);
             return builder;
         }
 
@@ -219,6 +240,11 @@ public partial class DTHelperMulti
 
     static Type type = typeof(DTHelperMulti);
 
+    /// <summary>
+    /// Date time to string.
+    /// </summary>
+    /// <param name="DTHelperMulti">The DT helper multi.</param>
+    /// <returns>The date time to string result.</returns>
     public static string DateTimeToString(DateTime dateTime, LangsDt lang, DateTime dtMinVal)
     {
         if (dateTime == dtMinVal)
